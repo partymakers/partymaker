@@ -1,7 +1,8 @@
-package com.github.partymakers.partymaker.activities;
+package com.github.partymakers.partymaker;
 
 import androidx.appcompat.app.AppCompatActivity;
-import com.github.partymakers.partymaker.R;
+
+import com.github.partymakers.partymaker.user.LoginActivity;
 
 
 import android.content.Intent;
