@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
                 message += ". Error code: " + errorCode;
             }
             Log.e(TAG, message);
-            viewBinding.textViewLoginStatus.setText("Login failed");
+            viewBinding.textViewLoginStatus.setText(message);
         }
     }
 }
