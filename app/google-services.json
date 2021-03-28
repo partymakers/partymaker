@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "41797456050-9ms6f5189mj6ha6q61u6sso2b4nh1vod.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.github.partymakers.partymaker",
+            "certificate_hash": "39fda9d17a4657ba4341631e2642775a876b0ee3"
+          }
+        },
+        {
           "client_id": "41797456050-kl4jb4bf4stsfp7vkb9klu6rgncu1snt.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
