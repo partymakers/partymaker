@@ -3,12 +3,14 @@ package com.github.partymakers.partymaker;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.IdpResponse;
+import com.github.partymakers.partymaker.databinding.ActivityMainBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -21,11 +23,14 @@ public class MainActivity extends AppCompatActivity {
 
     private FirebaseAuth firebaseAuth;
     private FirebaseUser user;
+    private ActivityMainBinding viewBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        viewBinding = ActivityMainBinding.inflate(getLayoutInflater());
+        View view = viewBinding.getRoot();
+        setContentView(view);
 
         firebaseAuth = FirebaseAuth.getInstance();
         user = firebaseAuth.getCurrentUser();
@@ -64,10 +69,10 @@ public class MainActivity extends AppCompatActivity {
         if (resultCode == RESULT_OK) {
             Log.i(TAG, "Login successful");
             user = firebaseAuth.getCurrentUser();
-//                TODO handle
+            viewBinding.textViewLoginStatus.setText("Login successful");
         } else if (resultCode == RESULT_CANCELED || response == null) {
-            Log.w(TAG, "Login canceled");
-//                TODO handle
+            Log.w(TAG, "Login cancelled");
+            viewBinding.textViewLoginStatus.setText("Login cancelled");
         } else {
             String message = "Login failed";
             if (response != null) {
@@ -75,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
                 message += ". Error code: " + errorCode;
             }
             Log.e(TAG, message);
-//                TODO handle
+            viewBinding.textViewLoginStatus.setText(message);
         }
     }
 }
