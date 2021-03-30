@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         user = firebaseAuth.getCurrentUser();
         if (user == null) {
-            crateLoginIntent();
+            createLoginIntent();
         }
     }
 
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void crateLoginIntent() {
+    private void createLoginIntent() {
         List<AuthUI.IdpConfig> loginProviders = Arrays.asList(
                 new AuthUI.IdpConfig.EmailBuilder().build(),
                 new AuthUI.IdpConfig.GoogleBuilder().build()
