@@ -30,6 +30,14 @@
           }
         },
         {
+          "client_id": "41797456050-p5mbqejrjhq7obhol8o3egdm03vv1ov8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.github.partymakers.partymaker",
+            "certificate_hash": "bc8587f7e0e8b7f0b614ce164b3d6ea2a850de5a"
+          }
+        },
+        {
           "client_id": "41797456050-3p94uobnf6d5v1303hh76h2kksph29us.apps.googleusercontent.com",
           "client_type": 3
         }
