@@ -37,6 +37,11 @@ public class MainActivity extends AppCompatActivity {
         if (user == null) {
             createLoginIntent();
         }
+
+        if(user != null) {
+            viewBinding.textViewName.setText(user.getDisplayName());
+            viewBinding.textViewEmail.setText(user.getEmail());
+        }
     }
 
     @Override
