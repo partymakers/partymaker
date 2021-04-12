@@ -25,6 +25,11 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseUser user;
     private ActivityMainBinding viewBinding;
 
+    protected void setUserInfoTextViews(ActivityMainBinding view, FirebaseUser usr) {
+        view.textViewName.setText(usr.getDisplayName());
+        view.textViewEmail.setText(usr.getEmail());
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,11 +42,8 @@ public class MainActivity extends AppCompatActivity {
         if (user == null) {
             createLoginIntent();
         }
-
-        if(user != null) {
-            viewBinding.textViewName.setText(user.getDisplayName());
-            viewBinding.textViewEmail.setText(user.getEmail());
-        }
+        else
+            setUserInfoTextViews(viewBinding, user);
     }
 
     @Override
@@ -75,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
             Log.i(TAG, "Login successful");
             user = firebaseAuth.getCurrentUser();
             viewBinding.textViewLoginStatus.setText("Login successful");
+            setUserInfoTextViews(viewBinding, user);
         } else if (resultCode == RESULT_CANCELED || response == null) {
             Log.w(TAG, "Login cancelled");
             viewBinding.textViewLoginStatus.setText("Login cancelled");
