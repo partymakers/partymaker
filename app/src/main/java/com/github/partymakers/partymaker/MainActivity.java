@@ -90,4 +90,9 @@ public class MainActivity extends AppCompatActivity {
             viewBinding.textViewLoginStatus.setText(message);
         }
     }
+
+    public void mainActivityToCreatePartyActivity(View v) {
+        Intent intent = new Intent(this, CreatePartyActivity.class);
+        startActivity(intent);
+    }
 }
