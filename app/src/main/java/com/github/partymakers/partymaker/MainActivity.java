@@ -41,8 +41,7 @@ public class MainActivity extends AppCompatActivity {
         user = firebaseAuth.getCurrentUser();
         if (user == null) {
             createLoginIntent();
-        }
-        else
+        } else
             setUserInfoTextViews(viewBinding, user);
     }
 
