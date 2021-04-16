@@ -17,6 +17,7 @@ public class CreatePartyActivity extends AppCompatActivity implements View.OnCli
     private int year, month, day, hour, minute;
     private ActivityCreatePartyBinding viewBinding;
 
+    // TODO: text input check and set errors https://codelabs.developers.google.com/codelabs/mdc-111-kotlin/#2
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,14 +25,14 @@ public class CreatePartyActivity extends AppCompatActivity implements View.OnCli
         View view = viewBinding.getRoot();
         setContentView(view);
 
-        viewBinding.buttonDatePicker.setOnClickListener(this);
-        viewBinding.buttonTimePicker.setOnClickListener(this);
+        viewBinding.textDatePicked.setOnClickListener(this);
+        viewBinding.textTimePicked.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
 
-        if (v == viewBinding.buttonDatePicker) {
+        if (v == viewBinding.textDatePicked) {
             // Get Current Date
             final Calendar calendar = Calendar.getInstance();
             year = calendar.get(Calendar.YEAR);
@@ -44,10 +45,11 @@ public class CreatePartyActivity extends AppCompatActivity implements View.OnCli
                     viewBinding.textDatePicked.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
                 }
             }, year, month, day);
+            datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis()); //sets today's date as minimum date -> all the past dates are disabled
             datePickerDialog.show();
         }
 
-        if (v == viewBinding.buttonTimePicker) {
+        if (v == viewBinding.textTimePicked) {
             // Get Current Time
             final Calendar calendar = Calendar.getInstance();
             hour = calendar.get(Calendar.HOUR_OF_DAY);
