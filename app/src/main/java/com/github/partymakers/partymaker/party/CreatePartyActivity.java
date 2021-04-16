@@ -48,6 +48,23 @@ public class CreatePartyActivity extends AppCompatActivity implements View.OnCli
             }
 
         });
+
+        viewBinding.switchTheme.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    // If the switch button is on
+                    viewBinding.themeInputLayout.setVisibility(View.VISIBLE);
+                    viewBinding.textInputTheme.setVisibility(View.VISIBLE);
+                    //viewBinding.textInputDressCode.setText("Sup fucker");
+                } else {
+                    // If the switch button is off
+                    viewBinding.themeInputLayout.setVisibility(View.GONE);
+                    viewBinding.textInputTheme.setVisibility(View.GONE);
+                }
+            }
+
+        });
     }
 
     @Override

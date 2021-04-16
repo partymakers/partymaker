@@ -70,7 +70,6 @@
                 </com.google.android.material.textfield.TextInputLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            //paste options here
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/DateTimePicker"
@@ -79,8 +78,7 @@
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="30dp"
-                android:layout_marginBottom="10dp"
-                app:layout_constraintBottom_toTopOf="@+id/Options"
+                app:layout_constraintBottom_toTopOf="@+id/LocationPicker"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/DateDescription">
@@ -98,7 +96,7 @@
                     app:layout_constraintEnd_toStartOf="@+id/layoutTimePicker"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:startIconDrawable="@android:drawable/ic_menu_my_calendar">
+                    app:startIconDrawable="@drawable/baseline_event_black_18">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/textDatePicked"
@@ -133,21 +131,107 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/LocationPicker"
+                android:layout_width="350dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
+                app:layout_constraintBottom_toTopOf="@+id/Options"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/DateTimePicker">
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layoutLocation"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:singleLine="true"
+                    app:errorEnabled="true"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:startIconDrawable="@android:drawable/ic_dialog_map">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/textLocationPicked"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:focusable="false"
+                        android:hint="Location" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+
+
+
             <LinearLayout
                 android:id="@+id/Options"
-                android:layout_width="320dp"
+                android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/DateTimePicker">
+                app:layout_constraintTop_toBottomOf="@+id/LocationPicker">
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/Theme"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <Switch
+                        android:id="@+id/switchTheme"
+                        android:layout_width="0dp"
+                        android:layout_height="20dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="3dp"
+                        android:layout_weight="1"
+                        android:fontFamily="sans-serif"
+                        android:text="Theme"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toTopOf="@+id/themeInputLayout"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/themeInputLayout"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="2dp"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/switchTheme">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/textInputTheme"
+                            android:layout_width="match_parent"
+                            android:layout_height="53dp"
+                            android:hint="Party theme"
+                            android:textSize="16sp"
+                            android:visibility="gone" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/DressCode"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
+                    app:layout_constraintStart_toBottomOf="themeInputLayout"
 
                     <Switch
                         android:id="@+id/switchDressCode"
@@ -156,6 +240,7 @@
                         android:layout_marginTop="4dp"
                         android:layout_marginBottom="3dp"
                         android:layout_weight="1"
+                        android:fontFamily="sans-serif"
                         android:text="Dress code"
                         android:textSize="16sp"
                         app:layout_constraintBottom_toTopOf="@+id/dressCodeInputLayout"
