@@ -96,7 +96,7 @@
                     app:layout_constraintEnd_toStartOf="@+id/layoutTimePicker"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:startIconDrawable="@drawable/baseline_event_black_18">
+                    app:startIconDrawable="@drawable/ic_baseline_date_range_24">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/textDatePicked"
@@ -164,12 +164,6 @@
                         android:hint="Location" />
                 </com.google.android.material.textfield.TextInputLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-
-
-
 
 
             <LinearLayout
@@ -261,6 +255,51 @@
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/textInputDressCode"
+                            android:layout_width="match_parent"
+                            android:layout_height="53dp"
+                            android:hint="Costume requirements"
+                            android:textSize="14sp"
+                            android:visibility="gone" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/Food"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    app:layout_constraintStart_toBottomOf="themeInputLayout"
+
+                    <Switch
+                        android:id="@+id/switchFood"
+                        android:layout_width="0dp"
+                        android:layout_height="20dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="3dp"
+                        android:layout_weight="1"
+                        android:fontFamily="sans-serif"
+                        android:text="Food"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toTopOf="@+id/foodInputLayout"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/foodInputLayout"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="2dp"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/switchFood"
+                        app:startIconDrawable="@drawable/ic_baseline_date_range_24">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/textInputFood"
                             android:layout_width="match_parent"
                             android:layout_height="53dp"
                             android:hint="Costume requirements"

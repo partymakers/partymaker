@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CompoundButton;
@@ -80,7 +79,7 @@ public class CreatePartyActivity extends AppCompatActivity implements View.OnCli
             DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
                 @Override
                 public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                    viewBinding.textDatePicked.setText(dayOfMonth + "-" + ((monthOfYear+1) <= 9 ? "0" + (monthOfYear+1) : String.valueOf((monthOfYear+1)))  + "-" + year);
+                    viewBinding.textDatePicked.setText(dayOfMonth + "-" + ((monthOfYear + 1) <= 9 ? "0" + (monthOfYear + 1) : String.valueOf((monthOfYear + 1))) + "-" + year);
                 }
             }, year, month, day);
             datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis()); //sets today's date as minimum date -> all the past dates are disabled
