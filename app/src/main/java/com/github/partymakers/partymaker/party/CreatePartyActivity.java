@@ -5,20 +5,27 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.Switch;
 import android.widget.TimePicker;
 
+import com.github.partymakers.partymaker.R;
 import com.github.partymakers.partymaker.databinding.ActivityCreatePartyBinding;
+import com.google.android.material.chip.Chip;
+import com.google.android.material.chip.ChipGroup;
 
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.List;
 
 public class CreatePartyActivity extends AppCompatActivity implements View.OnClickListener {
     private int year, month, day, hour, minute;
     private ActivityCreatePartyBinding viewBinding;
     Switch dressCode = null;
+    final List<String> tagList = Arrays.asList("Polish", "Pizza", "Kebab", "Sushi", "Asian", "Italian", "Burgers", "Mexican", "Vietnamese");
 
     // TODO: text input check and set errors https://codelabs.developers.google.com/codelabs/mdc-111-kotlin/#2
     @Override
@@ -27,6 +34,7 @@ public class CreatePartyActivity extends AppCompatActivity implements View.OnCli
         viewBinding = ActivityCreatePartyBinding.inflate(getLayoutInflater());
         View view = viewBinding.getRoot();
         setContentView(view);
+        setTag(tagList);
 
         viewBinding.textDatePicked.setOnClickListener(this);
         viewBinding.textTimePicked.setOnClickListener(this);
@@ -38,7 +46,6 @@ public class CreatePartyActivity extends AppCompatActivity implements View.OnCli
                     // If the switch button is on
                     viewBinding.dressCodeInputLayout.setVisibility(View.VISIBLE);
                     viewBinding.textInputDressCode.setVisibility(View.VISIBLE);
-                    //viewBinding.textInputDressCode.setText("Sup fucker");
                 } else {
                     // If the switch button is off
                     viewBinding.dressCodeInputLayout.setVisibility(View.GONE);
@@ -55,11 +62,28 @@ public class CreatePartyActivity extends AppCompatActivity implements View.OnCli
                     // If the switch button is on
                     viewBinding.themeInputLayout.setVisibility(View.VISIBLE);
                     viewBinding.textInputTheme.setVisibility(View.VISIBLE);
-                    //viewBinding.textInputDressCode.setText("Sup fucker");
                 } else {
                     // If the switch button is off
                     viewBinding.themeInputLayout.setVisibility(View.GONE);
                     viewBinding.textInputTheme.setVisibility(View.GONE);
+                }
+            }
+
+        });
+
+        viewBinding.switchFood.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    // If the switch button is on
+                    viewBinding.chipGroup.setVisibility(View.VISIBLE);
+                    viewBinding.foodInputLayout.setVisibility(View.VISIBLE);
+                    viewBinding.textInputFood.setVisibility(View.VISIBLE);
+                } else {
+                    // If the switch button is off
+                    viewBinding.chipGroup.setVisibility(View.GONE);
+                    viewBinding.foodInputLayout.setVisibility(View.GONE);
+                    viewBinding.textInputFood.setVisibility(View.GONE);
                 }
             }
 
@@ -106,4 +130,29 @@ public class CreatePartyActivity extends AppCompatActivity implements View.OnCli
         }
     }
 
+
+    private void setTag(final List<String> tagList) {
+            final ChipGroup chipGroup = viewBinding.chipGroup;
+            for (int index = 0; index < tagList.size(); index++) {
+                final String tagName = tagList.get(index);
+                final Chip chip = new Chip(this);
+                int paddingDp = (int) TypedValue.applyDimension(
+                        TypedValue.COMPLEX_UNIT_DIP, 10,
+                        getResources().getDisplayMetrics()
+                );
+                chip.setPadding(paddingDp, paddingDp, paddingDp, paddingDp);
+                chip.setText(tagName);
+                chip.setCloseIconEnabled(false);
+                //Added click listener on close icon to remove tag from ChipGroup
+                chip.setOnCloseIconClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        tagList.remove(tagName);
+                        chipGroup.removeView(chip);
+                    }
+                });
+
+                chipGroup.addView(chip);
+            }
+        }
 }

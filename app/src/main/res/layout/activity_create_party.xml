@@ -212,7 +212,7 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/textInputTheme"
                             android:layout_width="match_parent"
-                            android:layout_height="53dp"
+                            android:layout_height="50dp"
                             android:hint="Party theme"
                             android:textSize="16sp"
                             android:visibility="gone" />
@@ -224,8 +224,8 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/DressCode"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    app:layout_constraintStart_toBottomOf="themeInputLayout"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/Theme">
 
                     <Switch
                         android:id="@+id/switchDressCode"
@@ -256,7 +256,7 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/textInputDressCode"
                             android:layout_width="match_parent"
-                            android:layout_height="53dp"
+                            android:layout_height="50dp"
                             android:hint="Costume requirements"
                             android:textSize="14sp"
                             android:visibility="gone" />
@@ -268,20 +268,19 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/Food"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    app:layout_constraintStart_toBottomOf="themeInputLayout"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/DressCode">
 
                     <Switch
                         android:id="@+id/switchFood"
                         android:layout_width="0dp"
                         android:layout_height="20dp"
                         android:layout_marginTop="4dp"
-                        android:layout_marginBottom="3dp"
+                        android:layout_marginBottom="0dp"
                         android:layout_weight="1"
                         android:fontFamily="sans-serif"
                         android:text="Food"
                         android:textSize="16sp"
-                        app:layout_constraintBottom_toTopOf="@+id/foodInputLayout"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -292,30 +291,36 @@
                         android:layout_height="50dp"
                         android:layout_marginTop="2dp"
                         android:visibility="gone"
-                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintBottom_toTopOf="@+id/chip_group"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/switchFood"
-                        app:startIconDrawable="@drawable/ic_baseline_date_range_24">
+                        app:layout_constraintTop_toBottomOf="@+id/switchFood">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/textInputFood"
                             android:layout_width="match_parent"
-                            android:layout_height="53dp"
-                            android:hint="Costume requirements"
+                            android:layout_height="50dp"
+                            android:hint="Food servings"
                             android:textSize="14sp"
                             android:visibility="gone" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
+                    <com.google.android.material.chip.ChipGroup
+                        android:id="@+id/chip_group"
+                        android:layout_width="350dp"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        app:chipSpacing="5dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/foodInputLayout">
+
+                    </com.google.android.material.chip.ChipGroup>
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/Other"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
 
             </LinearLayout>
 
