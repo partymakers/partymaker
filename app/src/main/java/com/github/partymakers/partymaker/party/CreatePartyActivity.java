@@ -79,11 +79,13 @@ public class CreatePartyActivity extends AppCompatActivity implements View.OnCli
                     viewBinding.chipGroup.setVisibility(View.VISIBLE);
                     viewBinding.foodInputLayout.setVisibility(View.VISIBLE);
                     viewBinding.textInputFood.setVisibility(View.VISIBLE);
+                    viewBinding.foodChipButton.setVisibility(View.VISIBLE);
                 } else {
                     // If the switch button is off
                     viewBinding.chipGroup.setVisibility(View.GONE);
                     viewBinding.foodInputLayout.setVisibility(View.GONE);
                     viewBinding.textInputFood.setVisibility(View.GONE);
+                    viewBinding.foodChipButton.setVisibility(View.GONE);
                 }
             }
 
@@ -148,26 +150,26 @@ public class CreatePartyActivity extends AppCompatActivity implements View.OnCli
 
 
     private void setTag(final List<String> tagList) {
-            final ChipGroup chipGroup = viewBinding.chipGroup;
-            for (int index = 0; index < tagList.size(); index++) {
-                final String tagName = tagList.get(index);
-                final Chip chip = new Chip(this);
-                int paddingDp = (int) TypedValue.applyDimension(
-                        TypedValue.COMPLEX_UNIT_DIP, 10,
-                        getResources().getDisplayMetrics()
-                );
-                chip.setPadding(paddingDp, paddingDp, paddingDp, paddingDp);
-                chip.setText(tagName);
-                chip.setCloseIconEnabled(false);
-                //Added click listener on close icon to remove tag from ChipGroup
-                chip.setOnCloseIconClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        tagList.remove(tagName);
-                        chipGroup.removeView(chip);
-                    }
-                });
-                chipGroup.addView(chip);
-            }
+        final ChipGroup chipGroup = viewBinding.chipGroup;
+        for (int index = 0; index < tagList.size(); index++) {
+            final String tagName = tagList.get(index);
+            final Chip chip = new Chip(this);
+            int paddingDp = (int) TypedValue.applyDimension(
+                    TypedValue.COMPLEX_UNIT_DIP, 10,
+                    getResources().getDisplayMetrics()
+            );
+            chip.setPadding(paddingDp, paddingDp, paddingDp, paddingDp);
+            chip.setText(tagName);
+            chip.setCloseIconEnabled(false);
+            //Added click listener on close icon to remove tag from ChipGroup
+            chip.setOnCloseIconClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    tagList.remove(tagName);
+                    chipGroup.removeView(chip);
+                }
+            });
+            chipGroup.addView(chip);
         }
+    }
 }

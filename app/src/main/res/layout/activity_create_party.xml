@@ -193,6 +193,7 @@
                         android:fontFamily="sans-serif"
                         android:text="Theme"
                         android:textSize="16sp"
+                        android:theme="@style/CustomSwitch"
                         app:layout_constraintBottom_toTopOf="@+id/themeInputLayout"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -238,6 +239,7 @@
                         android:fontFamily="sans-serif"
                         android:text="Dress code"
                         android:textSize="16sp"
+                        android:theme="@style/CustomSwitch"
                         app:layout_constraintBottom_toTopOf="@+id/dressCodeInputLayout"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -283,48 +285,71 @@
                         android:fontFamily="sans-serif"
                         android:text="Food"
                         android:textSize="16sp"
+                        android:theme="@style/CustomSwitch"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/foodInputLayout"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="0dp"
+                    <LinearLayout
+                        android:id="@+id/foodChipInputLayout"
+                        android:layout_width="350dp"
                         android:layout_height="65dp"
-                        android:layout_marginTop="2dp"
-                        android:visibility="gone"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal"
                         app:layout_constraintBottom_toTopOf="@+id/chip_group"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/switchFood">
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/textInputFood"
-                            android:layout_width="match_parent"
-                            android:layout_height="60dp"
-                            android:hint="Food servings"
-                            android:imeOptions="actionDone"
-                            android:inputType="textImeMultiLine"
-                            android:textSize="16sp"
-                            android:visibility="gone" />
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/foodInputLayout"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="290dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginEnd="5dp"
+                            android:visibility="gone"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/switchFood">
 
-                    </com.google.android.material.textfield.TextInputLayout>
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/textInputFood"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:hint="Food servings"
+                                android:imeOptions="actionDone"
+                                android:inputType="textImeMultiLine"
+                                android:textSize="16sp"
+                                android:visibility="gone" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <ImageButton
+                            android:id="@+id/foodChipButton"
+                            android:layout_width="50dp"
+                            android:layout_height="match_parent"
+                            android:backgroundTint="@color/white"
+                            android:visibility="gone"
+                            app:srcCompat="@drawable/ic_baseline_add_circle_24" />
+
+                    </LinearLayout>
 
                     <com.google.android.material.chip.ChipGroup
                         android:id="@+id/chip_group"
                         android:layout_width="350dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
                         android:visibility="gone"
                         app:chipSpacing="5dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/foodInputLayout">
+                        app:layout_constraintTop_toBottomOf="@id/foodChipInputLayout">
 
                     </com.google.android.material.chip.ChipGroup>
                 </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 
             </LinearLayout>
