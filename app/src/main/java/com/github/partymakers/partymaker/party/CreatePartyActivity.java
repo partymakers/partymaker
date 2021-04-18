@@ -16,8 +16,10 @@ import android.widget.DatePicker;
 import android.widget.Switch;
 import android.widget.TimePicker;
 
+import com.github.partymakers.partymaker.R;
 import com.github.partymakers.partymaker.databinding.ActivityCreatePartyBinding;
 import com.google.android.material.chip.Chip;
+import com.google.android.material.chip.ChipDrawable;
 import com.google.android.material.chip.ChipGroup;
 
 import java.util.Arrays;
@@ -29,6 +31,7 @@ public class CreatePartyActivity extends AppCompatActivity implements View.OnCli
     private ActivityCreatePartyBinding viewBinding;
     Switch dressCode = null;
     private List<String> tagListFood = Arrays.asList("Polish", "Pizza", "Kebab", "Sushi", "Asian", "Italian", "Burgers", "Mexican", "Vietnamese"); //make it final?
+    private List<String> tagListDrinks = Arrays.asList("Coke", "Sprite", "Fanta", "Beer", "Warka", "Heineken", "Vodka", "Whiskey", "Martini", "Shots");
 
     // TODO: text input check and set errors https://codelabs.developers.google.com/codelabs/mdc-111-kotlin/#2
     @Override
@@ -37,11 +40,13 @@ public class CreatePartyActivity extends AppCompatActivity implements View.OnCli
         viewBinding = ActivityCreatePartyBinding.inflate(getLayoutInflater());
         View view = viewBinding.getRoot();
         setContentView(view);
-        setTag(tagListFood);
+        setTag(tagListFood, viewBinding.foodChipGroup);
+        setTag(tagListDrinks, viewBinding.drinksChipGroup);
 
         viewBinding.textDatePicked.setOnClickListener(this);
         viewBinding.textTimePicked.setOnClickListener(this);
         viewBinding.foodChipButton.setOnClickListener(this);
+        viewBinding.drinksChipButton.setOnClickListener(this);
 
         viewBinding.switchDressCode.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -80,22 +85,58 @@ public class CreatePartyActivity extends AppCompatActivity implements View.OnCli
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     // If the switch button is on
-                    viewBinding.chipGroup.setVisibility(View.VISIBLE);
+                    viewBinding.foodChipGroup.setVisibility(View.VISIBLE);
                     viewBinding.foodInputLayout.setVisibility(View.VISIBLE);
                     viewBinding.textInputFood.setVisibility(View.VISIBLE);
                     viewBinding.foodChipButton.setVisibility(View.VISIBLE);
+                    viewBinding.foodChipInputLayout.setVisibility(View.VISIBLE);
                 } else {
                     // If the switch button is off
-                    viewBinding.chipGroup.setVisibility(View.GONE);
+                    viewBinding.foodChipGroup.setVisibility(View.GONE);
                     viewBinding.foodInputLayout.setVisibility(View.GONE);
                     viewBinding.textInputFood.setVisibility(View.GONE);
                     viewBinding.foodChipButton.setVisibility(View.GONE);
+                    viewBinding.foodChipInputLayout.setVisibility(View.GONE);
                 }
             }
 
         });
 
         viewBinding.textInputFood.setOnKeyListener(new View.OnKeyListener() {
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                // If the event is a key-down event on the "enter" button
+                if ((keyCode == EditorInfo.IME_ACTION_DONE)) {
+                    // hide virtual keyboard
+                    InputMethodManager imm = (InputMethodManager) CreatePartyActivity.this.getSystemService(Context.INPUT_METHOD_SERVICE);
+                    return true;
+                }
+                return false;
+            }
+        });
+
+        viewBinding.switchDrinks.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    // If the switch button is on
+                    viewBinding.drinksChipGroup.setVisibility(View.VISIBLE);
+                    viewBinding.drinksInputLayout.setVisibility(View.VISIBLE);
+                    viewBinding.textInputDrinks.setVisibility(View.VISIBLE);
+                    viewBinding.drinksChipButton.setVisibility(View.VISIBLE);
+                    viewBinding.drinksChipInputLayout.setVisibility(View.VISIBLE);
+                } else {
+                    // If the switch button is off
+                    viewBinding.drinksChipGroup.setVisibility(View.GONE);
+                    viewBinding.drinksInputLayout.setVisibility(View.GONE);
+                    viewBinding.textInputDrinks.setVisibility(View.GONE);
+                    viewBinding.drinksChipButton.setVisibility(View.GONE);
+                    viewBinding.drinksChipInputLayout.setVisibility(View.GONE);
+                }
+            }
+
+        });
+
+        viewBinding.textInputDrinks.setOnKeyListener(new View.OnKeyListener() {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 // If the event is a key-down event on the "enter" button
                 if ((keyCode == EditorInfo.IME_ACTION_DONE)) {
@@ -147,26 +188,44 @@ public class CreatePartyActivity extends AppCompatActivity implements View.OnCli
         }
 
         if (v == viewBinding.foodChipButton) {
-            Chip newChip = new Chip(CreatePartyActivity.this);
-            newChip.setText(viewBinding.textInputFood.getText().toString());
-            viewBinding.chipGroup.addView(newChip);
+            if (!viewBinding.textInputFood.getText().toString().trim().isEmpty() && !chipExists(viewBinding.textInputFood.getText().toString(), viewBinding.foodChipGroup)) {
+                Chip newChip = new Chip(CreatePartyActivity.this);
+                ChipDrawable drawable = ChipDrawable.createFromAttributes(this, null, 0, R.style.Widget_MaterialComponents_Chip_Choice);  //change to CustomChip style in the future
+                newChip.setChipDrawable(drawable);
+                newChip.setText(viewBinding.textInputFood.getText().toString());
+                newChip.setChecked(true);
+                viewBinding.foodChipGroup.addView(newChip);
+            }
             viewBinding.textInputFood.setText("");
+        }
+
+        if (v == viewBinding.drinksChipButton) {
+            if (!viewBinding.textInputDrinks.getText().toString().trim().isEmpty() && !chipExists(viewBinding.textInputDrinks.getText().toString(), viewBinding.drinksChipGroup)) {
+                Chip newChip = new Chip(CreatePartyActivity.this);
+                ChipDrawable drawable = ChipDrawable.createFromAttributes(this, null, 0, R.style.Widget_MaterialComponents_Chip_Choice);  //change to CustomChip style in the future
+                newChip.setChipDrawable(drawable);
+                newChip.setText(viewBinding.textInputDrinks.getText().toString());
+                newChip.setChecked(true);
+                viewBinding.drinksChipGroup.addView(newChip);
+            }
+            viewBinding.textInputDrinks.setText("");
         }
     }
 
 
-    private void setTag(final List<String> tagList) {
-        final ChipGroup chipGroup = viewBinding.chipGroup;
+    private void setTag(final List<String> tagList, ChipGroup chipGroup) {
         for (int index = 0; index < tagList.size(); index++) {
             final String tagName = tagList.get(index);
             final Chip chip = new Chip(this);
+            ChipDrawable drawable = ChipDrawable.createFromAttributes(this, null, 0, R.style.Widget_MaterialComponents_Chip_Choice);  //change to CustomChip style in the future
+            chip.setChipDrawable(drawable);
+
             int paddingDp = (int) TypedValue.applyDimension(
                     TypedValue.COMPLEX_UNIT_DIP, 10,
                     getResources().getDisplayMetrics()
             );
             chip.setPadding(paddingDp, paddingDp, paddingDp, paddingDp);
             chip.setText(tagName);
-            chip.setCloseIconEnabled(false);
             //Added click listener on close icon to remove tag from ChipGroup
             chip.setOnCloseIconClickListener(new View.OnClickListener() {
                 @Override
@@ -177,5 +236,17 @@ public class CreatePartyActivity extends AppCompatActivity implements View.OnCli
             });
             chipGroup.addView(chip);
         }
+    }
+
+    //checks if chip with text already exists in the chipGroup
+    private Boolean chipExists(String text, ChipGroup chipGroup) {
+        for (int i = 0; i < chipGroup.getChildCount(); i++) {
+            Chip chip = (Chip) chipGroup.getChildAt(i);
+            if (text.equals(chip.getText().toString())) {
+                chip.setChecked(true);
+                return true;
+            }
+        }
+        return false;
     }
 }

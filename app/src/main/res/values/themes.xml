@@ -27,4 +27,8 @@
         <item name="android:colorForeground">#42221f1f
         </item>
     </style>
+
+    <style name="CustomChipStyle" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="chipBackgroundColor">@color/chip_backgroud_color</item>item>
+    </style>>
 </resources>

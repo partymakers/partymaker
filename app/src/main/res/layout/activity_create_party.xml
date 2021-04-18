@@ -311,7 +311,8 @@
                         android:layout_height="65dp"
                         android:layout_marginTop="5dp"
                         android:orientation="horizontal"
-                        app:layout_constraintBottom_toTopOf="@+id/chip_group"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toTopOf="@+id/foodChipGroup"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/switchFood">
@@ -352,7 +353,7 @@
                     </LinearLayout>
 
                     <com.google.android.material.chip.ChipGroup
-                        android:id="@+id/chip_group"
+                        android:id="@+id/foodChipGroup"
                         android:layout_width="350dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
@@ -361,7 +362,90 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
                         app:layout_constraintTop_toBottomOf="@id/foodChipInputLayout">
+
+                    </com.google.android.material.chip.ChipGroup>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/Drinks"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/Food">
+
+                    <Switch
+                        android:id="@+id/switchDrinks"
+                        android:layout_width="0dp"
+                        android:layout_height="20dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="sans-serif"
+                        android:text="Beverages"
+                        android:textSize="16sp"
+                        android:theme="@style/CustomSwitch"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <LinearLayout
+                        android:id="@+id/drinksChipInputLayout"
+                        android:layout_width="350dp"
+                        android:layout_height="65dp"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toTopOf="@+id/drinksChipGroup"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/switchDrinks">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/drinksInputLayout"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="290dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginEnd="5dp"
+                            android:visibility="gone"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/switchDrinks">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/textInputDrinks"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:hint="drinks servings"
+                                android:imeOptions="actionDone"
+                                android:inputType="textImeMultiLine"
+                                android:textSize="16sp"
+                                android:visibility="gone" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <ImageButton
+                            android:id="@+id/drinksChipButton"
+                            android:layout_width="50dp"
+                            android:layout_height="match_parent"
+                            android:backgroundTint="@color/white"
+                            android:visibility="gone"
+                            app:srcCompat="@drawable/ic_baseline_add_circle_24" />
+
+                    </LinearLayout>
+
+                    <com.google.android.material.chip.ChipGroup
+                        android:id="@+id/drinksChipGroup"
+                        android:layout_width="350dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:visibility="gone"
+                        app:chipSpacing="5dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/drinksChipInputLayout">
 
                     </com.google.android.material.chip.ChipGroup>
                 </androidx.constraintlayout.widget.ConstraintLayout>
