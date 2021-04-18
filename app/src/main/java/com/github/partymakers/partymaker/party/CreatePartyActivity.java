@@ -11,6 +11,8 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.Switch;
@@ -29,9 +31,10 @@ import java.util.List;
 public class CreatePartyActivity extends AppCompatActivity implements View.OnClickListener {
     private int year, month, day, hour, minute;
     private ActivityCreatePartyBinding viewBinding;
-    Switch dressCode = null;
+
     private List<String> tagListFood = Arrays.asList("Polish", "Pizza", "Kebab", "Sushi", "Asian", "Italian", "Burgers", "Mexican", "Vietnamese"); //make it final?
     private List<String> tagListDrinks = Arrays.asList("Coke", "Sprite", "Fanta", "Beer", "Warka", "Heineken", "Vodka", "Whiskey", "Martini", "Shots");
+    final List<String> currencies = Arrays.asList("PLN", "USD", "EUR");
 
     // TODO: text input check and set errors https://codelabs.developers.google.com/codelabs/mdc-111-kotlin/#2
     @Override
@@ -102,18 +105,6 @@ public class CreatePartyActivity extends AppCompatActivity implements View.OnCli
 
         });
 
-        viewBinding.textInputFood.setOnKeyListener(new View.OnKeyListener() {
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                // If the event is a key-down event on the "enter" button
-                if ((keyCode == EditorInfo.IME_ACTION_DONE)) {
-                    // hide virtual keyboard
-                    InputMethodManager imm = (InputMethodManager) CreatePartyActivity.this.getSystemService(Context.INPUT_METHOD_SERVICE);
-                    return true;
-                }
-                return false;
-            }
-        });
-
         viewBinding.switchDrinks.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -136,17 +127,42 @@ public class CreatePartyActivity extends AppCompatActivity implements View.OnCli
 
         });
 
-        viewBinding.textInputDrinks.setOnKeyListener(new View.OnKeyListener() {
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                // If the event is a key-down event on the "enter" button
-                if ((keyCode == EditorInfo.IME_ACTION_DONE)) {
-                    // hide virtual keyboard
-                    InputMethodManager imm = (InputMethodManager) CreatePartyActivity.this.getSystemService(Context.INPUT_METHOD_SERVICE);
-                    return true;
+        viewBinding.switchFee.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    // If the switch button is on
+                    viewBinding.feeLinearLayout.setVisibility(View.VISIBLE);
+                    viewBinding.feeInputLayout.setVisibility(View.VISIBLE);
+                    viewBinding.textInputFee.setVisibility(View.VISIBLE);
+                } else {
+                    // If the switch button is off
+                    viewBinding.feeLinearLayout.setVisibility(View.GONE);
+                    viewBinding.feeInputLayout.setVisibility(View.GONE);
+                    viewBinding.textInputFee.setVisibility(View.GONE);
                 }
-                return false;
+            }
+
+        });
+
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, currencies);
+        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        viewBinding.feeSpinner.setAdapter(arrayAdapter);
+
+        viewBinding.feeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (parent.getItemAtPosition(position).equals("Currency")) { //might be useful later
+                } else {
+                    //String item = parent.getItemAtPosition(position).toString();  //might be useful later
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) { //might be useful later
             }
         });
+
     }
 
     //onclick listeners for date/time pickers, food/... chip input

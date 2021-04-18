@@ -45,12 +45,13 @@
                         android:id="@+id/textPartyName"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:imeOptions="actionNext"
-                        android:maxLines="1"
-                        android:inputType="text"
-                        android:nextFocusDown="@+id/textPartyDescription"
                         android:hint="Name"
+                        android:imeOptions="actionNext"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:nextFocusDown="@+id/textPartyDescription"
                         android:textSize="20sp" />
+
                     <requestFocus />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -70,11 +71,11 @@
                         android:id="@+id/textPartyDescription"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:hint="Description"
                         android:imeOptions="actionNext"
-                        android:maxLines="1"
                         android:inputType="text"
-                        android:nextFocusDown="@+id/DateTimePicker"
-                        android:hint="Description" />
+                        android:maxLines="1"
+                        android:nextFocusDown="@+id/DateTimePicker" />
                 </com.google.android.material.textfield.TextInputLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -222,11 +223,11 @@
                             android:id="@+id/textInputTheme"
                             android:layout_width="match_parent"
                             android:layout_height="60dp"
-                            android:imeOptions="actionNext"
-                            android:maxLines="1"
-                            android:inputType="text"
-                            android:nextFocusDown="@+id/dressCodeInputLayout"
                             android:hint="Party theme"
+                            android:imeOptions="actionNext"
+                            android:inputType="text"
+                            android:maxLines="1"
+                            android:nextFocusDown="@+id/dressCodeInputLayout"
                             android:textSize="16sp"
                             android:visibility="gone" />
 
@@ -272,11 +273,11 @@
                             android:id="@+id/textInputDressCode"
                             android:layout_width="match_parent"
                             android:layout_height="60dp"
-                            android:imeOptions="actionNext"
-                            android:maxLines="1"
-                            android:inputType="text"
-                            android:nextFocusDown="@+id/foodChipInputLayout"
                             android:hint="Costume requirements"
+                            android:imeOptions="actionNext"
+                            android:inputType="text"
+                            android:maxLines="1"
+                            android:nextFocusDown="@+id/foodChipInputLayout"
                             android:textSize="16sp"
                             android:visibility="gone" />
 
@@ -354,6 +355,7 @@
 
                     <com.google.android.material.chip.ChipGroup
                         android:id="@+id/foodChipGroup"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
                         android:layout_width="350dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
@@ -362,7 +364,6 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        style="@style/Widget.MaterialComponents.Chip.Choice"
                         app:layout_constraintTop_toBottomOf="@id/foodChipInputLayout">
 
                     </com.google.android.material.chip.ChipGroup>
@@ -395,6 +396,7 @@
                         android:layout_height="65dp"
                         android:layout_marginTop="5dp"
                         android:orientation="horizontal"
+                        android:visibility="gone"
                         app:layout_constraintBottom_toTopOf="@+id/drinksChipGroup"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -448,6 +450,81 @@
                         app:layout_constraintTop_toBottomOf="@id/drinksChipInputLayout">
 
                     </com.google.android.material.chip.ChipGroup>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/Fee"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/Drinks">
+
+                    <Switch
+                        android:id="@+id/switchFee"
+                        android:layout_width="0dp"
+                        android:layout_height="20dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="3dp"
+                        android:layout_weight="1"
+                        android:fontFamily="sans-serif"
+                        android:text="Charge an entry fee"
+                        android:textSize="16sp"
+                        android:theme="@style/CustomSwitch"
+                        app:layout_constraintBottom_toTopOf="@+id/feeLinearLayout"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <LinearLayout
+                        android:id="@+id/feeLinearLayout"
+                        android:layout_width="350dp"
+                        android:layout_height="65dp"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/switchFee">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/feeInputLayout"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="220dp"
+                            android:layout_height="65dp"
+                            android:layout_marginTop="0dp"
+                            android:visibility="gone"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/switchFee"
+                            app:startIconDrawable="@drawable/ic_baseline_monetization_on_24">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/textInputFee"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:hint="Entry fee"
+                                android:imeOptions="actionNext"
+                                android:inputType="numberDecimal"
+                                android:maxLines="1"
+                                android:textSize="16sp"
+                                android:visibility="gone" />
+
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <!--TODO! add custom style for the spinner -->
+                        <Spinner
+                            android:id="@+id/feeSpinner"
+                            style="@style/Widget.AppCompat.Spinner"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@android:drawable/btn_dropdown"
+                            android:spinnerMode="dropdown" />
+
+                    </LinearLayout>
+
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
