@@ -35,7 +35,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="70dp"
                     android:layout_marginBottom="2dp"
-                    android:singleLine="true"
                     app:errorEnabled="true"
                     app:layout_constraintBottom_toTopOf="@+id/PartyDescription"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -46,8 +45,13 @@
                         android:id="@+id/textPartyName"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:imeOptions="actionNext"
+                        android:maxLines="1"
+                        android:inputType="text"
+                        android:nextFocusDown="@+id/textPartyDescription"
                         android:hint="Name"
                         android:textSize="20sp" />
+                    <requestFocus />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -66,6 +70,10 @@
                         android:id="@+id/textPartyDescription"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:imeOptions="actionNext"
+                        android:maxLines="1"
+                        android:inputType="text"
+                        android:nextFocusDown="@+id/DateTimePicker"
                         android:hint="Description" />
                 </com.google.android.material.textfield.TextInputLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -148,7 +156,6 @@
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:singleLine="true"
                     app:errorEnabled="true"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -215,6 +222,10 @@
                             android:id="@+id/textInputTheme"
                             android:layout_width="match_parent"
                             android:layout_height="60dp"
+                            android:imeOptions="actionNext"
+                            android:maxLines="1"
+                            android:inputType="text"
+                            android:nextFocusDown="@+id/dressCodeInputLayout"
                             android:hint="Party theme"
                             android:textSize="16sp"
                             android:visibility="gone" />
@@ -261,6 +272,10 @@
                             android:id="@+id/textInputDressCode"
                             android:layout_width="match_parent"
                             android:layout_height="60dp"
+                            android:imeOptions="actionNext"
+                            android:maxLines="1"
+                            android:inputType="text"
+                            android:nextFocusDown="@+id/foodChipInputLayout"
                             android:hint="Costume requirements"
                             android:textSize="16sp"
                             android:visibility="gone" />

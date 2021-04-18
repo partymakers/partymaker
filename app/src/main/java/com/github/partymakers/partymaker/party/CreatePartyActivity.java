@@ -4,10 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.Switch;
@@ -25,7 +28,7 @@ public class CreatePartyActivity extends AppCompatActivity implements View.OnCli
     private int year, month, day, hour, minute;
     private ActivityCreatePartyBinding viewBinding;
     Switch dressCode = null;
-    private List<String> tagListFood = Arrays.asList("Polish", "Pizza", "Kebab", "Sushi", "Asian", "Italian", "Burgers", "Mexican", "Vietnamese");
+    private List<String> tagListFood = Arrays.asList("Polish", "Pizza", "Kebab", "Sushi", "Asian", "Italian", "Burgers", "Mexican", "Vietnamese"); //make it final?
 
     // TODO: text input check and set errors https://codelabs.developers.google.com/codelabs/mdc-111-kotlin/#2
     @Override
@@ -38,6 +41,7 @@ public class CreatePartyActivity extends AppCompatActivity implements View.OnCli
 
         viewBinding.textDatePicked.setOnClickListener(this);
         viewBinding.textTimePicked.setOnClickListener(this);
+        viewBinding.foodChipButton.setOnClickListener(this);
 
         viewBinding.switchDressCode.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -94,13 +98,9 @@ public class CreatePartyActivity extends AppCompatActivity implements View.OnCli
         viewBinding.textInputFood.setOnKeyListener(new View.OnKeyListener() {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 // If the event is a key-down event on the "enter" button
-                if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
-                        (keyCode == KeyEvent.KEYCODE_ENTER)) {
-                    // Perform action on key press
-                    Chip newChip = new Chip(CreatePartyActivity.this);
-                    newChip.setText(viewBinding.textInputFood.getText().toString());
-                    viewBinding.chipGroup.addView(newChip);
-                    viewBinding.textInputFood.setText("");
+                if ((keyCode == EditorInfo.IME_ACTION_DONE)) {
+                    // hide virtual keyboard
+                    InputMethodManager imm = (InputMethodManager) CreatePartyActivity.this.getSystemService(Context.INPUT_METHOD_SERVICE);
                     return true;
                 }
                 return false;
@@ -108,6 +108,7 @@ public class CreatePartyActivity extends AppCompatActivity implements View.OnCli
         });
     }
 
+    //onclick listeners for date/time pickers, food/... chip input
     @Override
     public void onClick(View v) {
 
@@ -143,8 +144,13 @@ public class CreatePartyActivity extends AppCompatActivity implements View.OnCli
                 }
             }, hour, minute, false);
             timePickerDialog.show();
+        }
 
-            // TODO: date and time validation
+        if (v == viewBinding.foodChipButton) {
+            Chip newChip = new Chip(CreatePartyActivity.this);
+            newChip.setText(viewBinding.textInputFood.getText().toString());
+            viewBinding.chipGroup.addView(newChip);
+            viewBinding.textInputFood.setText("");
         }
     }
 
