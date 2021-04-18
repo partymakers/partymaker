@@ -6,13 +6,13 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.util.TypedValue;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.Switch;
 import android.widget.TimePicker;
 
-import com.github.partymakers.partymaker.R;
 import com.github.partymakers.partymaker.databinding.ActivityCreatePartyBinding;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
@@ -25,7 +25,7 @@ public class CreatePartyActivity extends AppCompatActivity implements View.OnCli
     private int year, month, day, hour, minute;
     private ActivityCreatePartyBinding viewBinding;
     Switch dressCode = null;
-    final List<String> tagList = Arrays.asList("Polish", "Pizza", "Kebab", "Sushi", "Asian", "Italian", "Burgers", "Mexican", "Vietnamese");
+    private List<String> tagListFood = Arrays.asList("Polish", "Pizza", "Kebab", "Sushi", "Asian", "Italian", "Burgers", "Mexican", "Vietnamese");
 
     // TODO: text input check and set errors https://codelabs.developers.google.com/codelabs/mdc-111-kotlin/#2
     @Override
@@ -34,7 +34,7 @@ public class CreatePartyActivity extends AppCompatActivity implements View.OnCli
         viewBinding = ActivityCreatePartyBinding.inflate(getLayoutInflater());
         View view = viewBinding.getRoot();
         setContentView(view);
-        setTag(tagList);
+        setTag(tagListFood);
 
         viewBinding.textDatePicked.setOnClickListener(this);
         viewBinding.textTimePicked.setOnClickListener(this);
@@ -87,6 +87,22 @@ public class CreatePartyActivity extends AppCompatActivity implements View.OnCli
                 }
             }
 
+        });
+
+        viewBinding.textInputFood.setOnKeyListener(new View.OnKeyListener() {
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                // If the event is a key-down event on the "enter" button
+                if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
+                        (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                    // Perform action on key press
+                    Chip newChip = new Chip(CreatePartyActivity.this);
+                    newChip.setText(viewBinding.textInputFood.getText().toString());
+                    viewBinding.chipGroup.addView(newChip);
+                    viewBinding.textInputFood.setText("");
+                    return true;
+                }
+                return false;
+            }
         });
     }
 
@@ -151,7 +167,6 @@ public class CreatePartyActivity extends AppCompatActivity implements View.OnCli
                         chipGroup.removeView(chip);
                     }
                 });
-
                 chipGroup.addView(chip);
             }
         }

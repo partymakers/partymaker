@@ -200,8 +200,9 @@
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/themeInputLayout"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="0dp"
-                        android:layout_height="50dp"
+                        android:layout_height="65dp"
                         android:layout_marginTop="2dp"
                         android:visibility="gone"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -212,7 +213,7 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/textInputTheme"
                             android:layout_width="match_parent"
-                            android:layout_height="50dp"
+                            android:layout_height="60dp"
                             android:hint="Party theme"
                             android:textSize="16sp"
                             android:visibility="gone" />
@@ -244,8 +245,9 @@
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/dressCodeInputLayout"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="0dp"
-                        android:layout_height="50dp"
+                        android:layout_height="65dp"
                         android:layout_marginTop="2dp"
                         android:visibility="gone"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -256,9 +258,9 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/textInputDressCode"
                             android:layout_width="match_parent"
-                            android:layout_height="50dp"
+                            android:layout_height="60dp"
                             android:hint="Costume requirements"
-                            android:textSize="14sp"
+                            android:textSize="16sp"
                             android:visibility="gone" />
 
                     </com.google.android.material.textfield.TextInputLayout>
@@ -287,8 +289,9 @@
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/foodInputLayout"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="0dp"
-                        android:layout_height="50dp"
+                        android:layout_height="65dp"
                         android:layout_marginTop="2dp"
                         android:visibility="gone"
                         app:layout_constraintBottom_toTopOf="@+id/chip_group"
@@ -299,9 +302,11 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/textInputFood"
                             android:layout_width="match_parent"
-                            android:layout_height="50dp"
+                            android:layout_height="60dp"
                             android:hint="Food servings"
-                            android:textSize="14sp"
+                            android:imeOptions="actionDone"
+                            android:inputType="textImeMultiLine"
+                            android:textSize="16sp"
                             android:visibility="gone" />
 
                     </com.google.android.material.textfield.TextInputLayout>
