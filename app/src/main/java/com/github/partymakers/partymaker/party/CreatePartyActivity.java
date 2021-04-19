@@ -4,18 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
-import android.content.Context;
 import android.os.Bundle;
 import android.util.TypedValue;
-import android.view.KeyEvent;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
 import android.widget.DatePicker;
-import android.widget.Switch;
 import android.widget.TimePicker;
 
 import com.github.partymakers.partymaker.R;
@@ -161,6 +156,22 @@ public class CreatePartyActivity extends AppCompatActivity implements View.OnCli
             @Override
             public void onNothingSelected(AdapterView<?> parent) { //might be useful later
             }
+        });
+
+        viewBinding.switchParking.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    // If the switch button is on
+                    viewBinding.parkingInputLayout.setVisibility(View.VISIBLE);
+                    viewBinding.textInputParking.setVisibility(View.VISIBLE);
+                } else {
+                    // If the switch button is off
+                    viewBinding.parkingInputLayout.setVisibility(View.GONE);
+                    viewBinding.textInputParking.setVisibility(View.GONE);
+                }
+            }
+
         });
 
     }
