@@ -75,9 +75,9 @@
                         android:layout_height="match_parent"
                         android:hint="Description"
                         android:imeOptions="actionNext"
-                        android:inputType="text"
-                        android:maxLines="3"
-                        android:nextFocusDown="@+id/DateTimePicker" />
+                        android:inputType="textMultiLine"
+                        android:maxLines="5"
+                        android:scrollbars="vertical" />
                 </com.google.android.material.textfield.TextInputLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -652,8 +652,9 @@
                             android:layout_height="90dp"
                             android:hint="Additional information"
                             android:imeOptions="actionNext"
-                            android:inputType="text"
-                            android:maxLines="1"
+                            android:inputType="textMultiLine"
+                            android:maxLines="5"
+                            android:scrollbars="vertical"
                             android:textSize="16sp" />
 
                     </com.google.android.material.textfield.TextInputLayout>
