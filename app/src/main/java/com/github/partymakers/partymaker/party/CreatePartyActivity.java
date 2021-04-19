@@ -28,7 +28,7 @@ public class CreatePartyActivity extends AppCompatActivity implements View.OnCli
     private ActivityCreatePartyBinding viewBinding;
 
     private List<String> tagListFood = Arrays.asList("Polish", "Pizza", "Kebab", "Sushi", "Asian", "Italian", "Burgers", "Mexican", "Vietnamese"); //make it final?
-    private List<String> tagListDrinks = Arrays.asList("Coke", "Sprite", "Fanta", "Beer", "Warka", "Heineken", "Vodka", "Whiskey", "Martini", "Shots");
+    private List<String> tagListDrinks = Arrays.asList("Soda", "Light beer", "Craft beer", "Cocktail", "Juice", "Soft drinks", "Vodka", "Whiskey", "Martini", "Shots", "Wine", "Tea", "Coffee");
     final List<String> currencies = Arrays.asList("PLN", "USD", "EUR");
 
     // TODO: text input check and set errors https://codelabs.developers.google.com/codelabs/mdc-111-kotlin/#2
@@ -195,9 +195,7 @@ public class CreatePartyActivity extends AppCompatActivity implements View.OnCli
             }, year, month, day);
             datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis()); //sets today's date as minimum date -> all the past dates are disabled
             datePickerDialog.show();
-        }
-
-        if (v == viewBinding.textTimePicked) {
+        } else if (v == viewBinding.textTimePicked) {
             // Get Current Time
             final Calendar calendar = Calendar.getInstance();
             hour = calendar.get(Calendar.HOUR_OF_DAY);
@@ -212,9 +210,7 @@ public class CreatePartyActivity extends AppCompatActivity implements View.OnCli
                 }
             }, hour, minute, false);
             timePickerDialog.show();
-        }
-
-        if (v == viewBinding.foodChipButton) {
+        } else if (v == viewBinding.foodChipButton) {
             if (!viewBinding.textInputFood.getText().toString().trim().isEmpty() && !chipExists(viewBinding.textInputFood.getText().toString(), viewBinding.foodChipGroup)) {
                 Chip newChip = new Chip(CreatePartyActivity.this);
                 ChipDrawable drawable = ChipDrawable.createFromAttributes(this, null, 0, R.style.Widget_MaterialComponents_Chip_Choice);  //change to CustomChip style in the future
@@ -224,9 +220,7 @@ public class CreatePartyActivity extends AppCompatActivity implements View.OnCli
                 viewBinding.foodChipGroup.addView(newChip);
             }
             viewBinding.textInputFood.setText("");
-        }
-
-        if (v == viewBinding.drinksChipButton) {
+        } else if (v == viewBinding.drinksChipButton) {
             if (!viewBinding.textInputDrinks.getText().toString().trim().isEmpty() && !chipExists(viewBinding.textInputDrinks.getText().toString(), viewBinding.drinksChipGroup)) {
                 Chip newChip = new Chip(CreatePartyActivity.this);
                 ChipDrawable drawable = ChipDrawable.createFromAttributes(this, null, 0, R.style.Widget_MaterialComponents_Chip_Choice);  //change to CustomChip style in the future
