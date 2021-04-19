@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.IdpResponse;
 import com.github.partymakers.partymaker.databinding.ActivityMainBinding;
+import com.github.partymakers.partymaker.party.CreatePartyActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -25,6 +26,11 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseUser user;
     private ActivityMainBinding viewBinding;
 
+    protected void setUserInfoTextViews() {
+        viewBinding.textViewName.setText(user.getDisplayName());
+        viewBinding.textViewEmail.setText(user.getEmail());
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
         user = firebaseAuth.getCurrentUser();
         if (user == null) {
             createLoginIntent();
+        } else {
+            setUserInfoTextViews();
         }
     }
 
@@ -70,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
             Log.i(TAG, "Login successful");
             user = firebaseAuth.getCurrentUser();
             viewBinding.textViewLoginStatus.setText("Login successful");
+            setUserInfoTextViews();
         } else if (resultCode == RESULT_CANCELED || response == null) {
             Log.w(TAG, "Login cancelled");
             viewBinding.textViewLoginStatus.setText("Login cancelled");
@@ -82,5 +91,10 @@ public class MainActivity extends AppCompatActivity {
             Log.e(TAG, message);
             viewBinding.textViewLoginStatus.setText(message);
         }
+    }
+
+    public void mainActivityToCreatePartyActivity(View v) {
+        Intent intent = new Intent(this, CreatePartyActivity.class);
+        startActivity(intent);
     }
 }
