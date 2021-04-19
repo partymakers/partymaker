@@ -32,7 +32,8 @@ public class CreatePartyActivity extends AppCompatActivity implements View.OnCli
     private List<String> tagListFood = Arrays.asList("Polish", "Pizza", "Kebab", "Sushi", "Asian", "Italian", "Burgers", "Mexican", "Vietnamese"); //make it final?
     private List<String> tagListDrinks = Arrays.asList("Soda", "Light beer", "Craft beer", "Cocktail", "Juice", "Soft drinks", "Vodka", "Whiskey", "Martini", "Shots", "Wine", "Tea", "Coffee");
     final List<String> currencies = Arrays.asList("PLN", "USD", "EUR");
-    private Set<String> userInput = new HashSet<String>();
+    private Set<String> checkedChipsFood = new HashSet<String>();
+    private Set<String> checkedChipsDrinks = new HashSet<String>();
 
     // TODO: text input check and set errors https://codelabs.developers.google.com/codelabs/mdc-111-kotlin/#2
     @Override
@@ -48,6 +49,7 @@ public class CreatePartyActivity extends AppCompatActivity implements View.OnCli
         viewBinding.textTimePicked.setOnClickListener(this);
         viewBinding.foodChipButton.setOnClickListener(this);
         viewBinding.drinksChipButton.setOnClickListener(this);
+        viewBinding.submitButton.setOnClickListener(this);
 
         viewBinding.switchDressCode.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -233,6 +235,21 @@ public class CreatePartyActivity extends AppCompatActivity implements View.OnCli
                 viewBinding.drinksChipGroup.addView(newChip);
             }
             viewBinding.textInputDrinks.setText("");
+        } else if (v == viewBinding.submitButton) {
+            for (int i = 0; i < viewBinding.foodChipGroup.getChildCount(); i++) {
+                Chip chip = (Chip) viewBinding.foodChipGroup.getChildAt(i);
+                if (chip.isChecked()) {
+                    checkedChipsFood.add(chip.getText().toString());
+                }
+            }
+
+            for (int i = 0; i < viewBinding.drinksChipGroup.getChildCount(); i++) {
+                Chip chip = (Chip) viewBinding.drinksChipGroup.getChildAt(i);
+                if (chip.isChecked()) {
+                    checkedChipsDrinks.add(chip.getText().toString());
+                }
+            }
+
         }
     }
 
