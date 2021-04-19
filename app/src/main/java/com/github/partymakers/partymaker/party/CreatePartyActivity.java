@@ -21,7 +21,9 @@ import com.google.android.material.chip.ChipGroup;
 
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class CreatePartyActivity extends AppCompatActivity implements View.OnClickListener {
     private int year, month, day, hour, minute;
@@ -30,6 +32,7 @@ public class CreatePartyActivity extends AppCompatActivity implements View.OnCli
     private List<String> tagListFood = Arrays.asList("Polish", "Pizza", "Kebab", "Sushi", "Asian", "Italian", "Burgers", "Mexican", "Vietnamese"); //make it final?
     private List<String> tagListDrinks = Arrays.asList("Soda", "Light beer", "Craft beer", "Cocktail", "Juice", "Soft drinks", "Vodka", "Whiskey", "Martini", "Shots", "Wine", "Tea", "Coffee");
     final List<String> currencies = Arrays.asList("PLN", "USD", "EUR");
+    private Set<String> userInput = new HashSet<String>();
 
     // TODO: text input check and set errors https://codelabs.developers.google.com/codelabs/mdc-111-kotlin/#2
     @Override

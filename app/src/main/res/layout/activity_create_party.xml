@@ -17,7 +17,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/CreatePartyForm"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent">
 
 
@@ -26,6 +26,7 @@
                 android:layout_width="350dp"
                 android:layout_height="200dp"
                 android:layout_marginTop="5dp"
+                app:layout_constraintBottom_toTopOf="@+id/DateTimePicker"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -90,6 +91,7 @@
                 android:layout_marginEnd="30dp"
                 app:layout_constraintBottom_toTopOf="@+id/LocationPicker"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/NameDescription">
 
@@ -657,8 +659,23 @@
                     </com.google.android.material.textfield.TextInputLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-            </LinearLayout>
+                <Button
+                    android:id="@+id/submitButton"
+                    android:layout_width="120dp"
+                    android:layout_height="65dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="120dp"
+                    android:layout_marginRight="120dp"
+                    android:backgroundTint="@color/purple_500"
+                    android:textColor="@color/white"
+                    android:text="Submit"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/infoAddInputLayout" />
 
+            </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
