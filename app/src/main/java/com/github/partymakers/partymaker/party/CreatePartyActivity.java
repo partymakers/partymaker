@@ -10,14 +10,19 @@ import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.github.partymakers.partymaker.R;
 import com.github.partymakers.partymaker.databinding.ActivityCreatePartyBinding;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipDrawable;
 import com.google.android.material.chip.ChipGroup;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.math.BigDecimal;
@@ -339,7 +344,22 @@ public class CreatePartyActivity extends AppCompatActivity implements View.OnCli
             }
             viewBinding.textInputDrinks.setText("");
         } else if (v == viewBinding.submitButton) {
-
+            partiesRepo.add(party)
+                    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                        @Override
+                        public void onSuccess(DocumentReference documentReference) {
+                            Log.i(TAG, "Party persisted.");
+                            finish();
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            e.printStackTrace();
+                            Log.e(TAG,"Persisting party failed");
+                            Snackbar.make(viewBinding.getRoot(), "Saving failed", Snackbar.LENGTH_SHORT).show();
+                        }
+                    });
         }
     }
 
