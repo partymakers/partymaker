@@ -497,7 +497,7 @@
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/feeInputLayout"
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                            android:layout_width="220dp"
+                            android:layout_width="match_parent"
                             android:layout_height="65dp"
                             android:layout_marginTop="0dp"
                             android:visibility="gone"
@@ -520,15 +520,6 @@
 
 
                         </com.google.android.material.textfield.TextInputLayout>
-
-                        <!--TODO! add custom style for the spinner -->
-                        <Spinner
-                            android:id="@+id/feeSpinner"
-                            style="@style/Widget.AppCompat.Spinner"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="@android:drawable/btn_dropdown"
-                            android:spinnerMode="dropdown" />
 
                     </LinearLayout>
 
@@ -671,6 +662,7 @@
                     android:backgroundTint="@color/purple_500"
                     android:text="Submit"
                     android:textColor="@color/white"
+                    android:focusableInTouchMode="true"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
