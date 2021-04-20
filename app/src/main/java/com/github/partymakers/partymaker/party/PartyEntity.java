@@ -2,13 +2,12 @@ package com.github.partymakers.partymaker.party;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 public class PartyEntity {
     private String name;
     private String description;
-    private Calendar time;
+    private Long timestamp;
     private String location;
     private String theme;
     private String dressCode;
@@ -38,12 +37,12 @@ public class PartyEntity {
         this.description = description;
     }
 
-    public Calendar getTime() {
-        return time;
+    public Long getTimestamp() {
+        return timestamp;
     }
 
-    public void setTime(Calendar time) {
-        this.time = time;
+    public void setTimestamp(Long timestamp) {
+        this.timestamp = timestamp;
     }
 
     public String getLocation() {

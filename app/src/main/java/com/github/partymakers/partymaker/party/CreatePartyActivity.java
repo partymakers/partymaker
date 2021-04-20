@@ -26,6 +26,8 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.math.BigDecimal;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
@@ -281,22 +283,26 @@ public class CreatePartyActivity extends AppCompatActivity implements View.OnCli
 
         if (v == viewBinding.textDatePicked) {
             // Get Current Date
-            final Calendar calendar = Calendar.getInstance();
-            int year = calendar.get(Calendar.YEAR);
-            int month = calendar.get(Calendar.MONTH);
-            int day = calendar.get(Calendar.DAY_OF_MONTH);
+            final Calendar currentDate = Calendar.getInstance();
+            int currentYear = currentDate.get(Calendar.YEAR);
+            int currentMonth = currentDate.get(Calendar.MONTH);
+            int currentDay = currentDate.get(Calendar.DAY_OF_MONTH);
 
             DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
                 @Override
                 public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                    viewBinding.textDatePicked.setText(dayOfMonth + "-" + ((monthOfYear + 1) <= 9 ? "0" + (monthOfYear + 1) : String.valueOf((monthOfYear + 1))) + "-" + year);
-                    if (party.getTime() == null) {
-                        party.setTime(Calendar.getInstance());
+                    Calendar date = Calendar.getInstance();
+                    if (party.getTimestamp() != null) {
+                        date.setTimeInMillis(party.getTimestamp());
                     }
-                    Calendar partyTime = party.getTime();
-                    partyTime.set(year, monthOfYear, dayOfMonth);
+                    date.set(year, monthOfYear, dayOfMonth);
+                    party.setTimestamp(date.getTimeInMillis());
+
+                    String dateText = SimpleDateFormat.getDateInstance(DateFormat.SHORT).format(date.getTime());
+                    viewBinding.textDatePicked.setText(dateText);
+//                    viewBinding.textDatePicked.setText(dayOfMonth + "-" + ((monthOfYear + 1) <= 9 ? "0" + (monthOfYear + 1) : String.valueOf((monthOfYear + 1))) + "-" + year);
                 }
-            }, year, month, day);
+            }, currentYear, currentMonth, currentDay);
             datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis()); //sets today's date as minimum date -> all the past dates are disabled
             datePickerDialog.show();
         } else if (v == viewBinding.textTimePicked) {
@@ -305,20 +311,22 @@ public class CreatePartyActivity extends AppCompatActivity implements View.OnCli
             int hour = calendar.get(Calendar.HOUR_OF_DAY);
             int minute = calendar.get(Calendar.MINUTE);
 
+
             // Launch Time Picker Dialog
-            TimePickerDialog timePickerDialog = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
+            new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
                 @Override
                 public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                    viewBinding.textTimePicked.setText(hourOfDay + ":" + (minute <= 9 ? "0" + minute : String.valueOf(minute)));
-                    if (party.getTime() == null) {
-                        party.setTime(Calendar.getInstance());
+                    Calendar time = Calendar.getInstance();
+                    if (party.getTimestamp() != null) {
+                        time.setTimeInMillis(party.getTimestamp());
                     }
-                    Calendar partyTime = party.getTime();
-                    partyTime.set(Calendar.HOUR_OF_DAY, hourOfDay);
-                    partyTime.set(Calendar.MINUTE, minute);
+                    time.set(Calendar.HOUR_OF_DAY, hourOfDay);
+                    time.set(Calendar.MINUTE, minute);
+                    party.setTimestamp(time.getTimeInMillis());
+                    String timeText = SimpleDateFormat.getTimeInstance(DateFormat.SHORT).format(time.getTime());
+                    viewBinding.textTimePicked.setText(timeText);
                 }
-            }, hour, minute, false);
-            timePickerDialog.show();
+            }, hour, minute, android.text.format.DateFormat.is24HourFormat(getApplicationContext())).show();
         } else if (v == viewBinding.foodChipButton) {
             String foodEntered = viewBinding.textInputFood.getText().toString();
             if (!foodEntered.trim().isEmpty() && !chipExists(foodEntered, viewBinding.foodChipGroup)) {
