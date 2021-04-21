@@ -98,6 +98,13 @@ public class CreatePartyActivity extends AppCompatActivity implements View.OnCli
                 }
             }
         });
+        viewBinding.checkBoxPartner.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                party.setAllowsPartner(isChecked);
+            }
+        });
+
         viewBinding.checkBoxFriends.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
