@@ -91,7 +91,6 @@
                 android:layout_marginEnd="30dp"
                 app:layout_constraintBottom_toTopOf="@+id/LocationPicker"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/NameDescription">
 
@@ -100,8 +99,8 @@
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="160dp"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="27dp"
-                    android:layout_marginEnd="7dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginEnd="0dp"
                     android:singleLine="true"
                     app:errorEnabled="true"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -123,8 +122,8 @@
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="160dp"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="7dp"
-                    android:layout_marginEnd="27dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginEnd="0dp"
                     android:singleLine="true"
                     app:errorEnabled="true"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -497,7 +496,7 @@
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/feeInputLayout"
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                            android:layout_width="220dp"
+                            android:layout_width="match_parent"
                             android:layout_height="65dp"
                             android:layout_marginTop="0dp"
                             android:visibility="gone"
@@ -520,15 +519,6 @@
 
 
                         </com.google.android.material.textfield.TextInputLayout>
-
-                        <!--TODO! add custom style for the spinner -->
-                        <Spinner
-                            android:id="@+id/feeSpinner"
-                            style="@style/Widget.AppCompat.Spinner"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="@android:drawable/btn_dropdown"
-                            android:spinnerMode="dropdown" />
 
                     </LinearLayout>
 
@@ -554,12 +544,20 @@
                         android:textSize="16sp" />
 
                     <CheckBox
-                        android:id="@+id/checkBoxPets"
+                        android:id="@+id/checkBoxPartner"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
                         android:buttonTint="@color/purple_500"
-                        android:text="Pets" />
+                        android:text="Partner" />
+
+                    <CheckBox
+                        android:id="@+id/checkBoxFriends"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:buttonTint="@color/purple_500"
+                        android:text="Friends" />
 
                     <CheckBox
                         android:id="@+id/checkBoxChildren"
@@ -570,12 +568,13 @@
                         android:text="Children" />
 
                     <CheckBox
-                        android:id="@+id/checkBoxFriends"
+                        android:id="@+id/checkBoxPets"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
                         android:buttonTint="@color/purple_500"
-                        android:text="Friends" />
+                        android:text="Pets" />
+
 
                 </LinearLayout>
 
@@ -669,6 +668,7 @@
                     android:layout_marginRight="120dp"
                     android:layout_marginBottom="10dp"
                     android:backgroundTint="@color/purple_500"
+                    android:focusableInTouchMode="true"
                     android:text="Submit"
                     android:textColor="@color/white"
                     app:layout_constraintBottom_toBottomOf="parent"
