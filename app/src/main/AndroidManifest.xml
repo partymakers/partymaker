@@ -9,8 +9,9 @@
         android:roundIcon="@mipmap/app_logo_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PartyMaker">
-        <activity android:name=".party.CreatePartyActivity"></activity>
-        <activity android:name=".user.LoginActivity"></activity>
+
+        <activity android:name=".party.CreatePartyActivity" />
+        <activity android:name=".user.LoginActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

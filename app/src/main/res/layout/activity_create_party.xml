@@ -548,7 +548,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
-                        android:buttonTint="@color/purple_500"
+                        android:buttonTint="@color/gorgeous_purple"
                         android:text="Partner" />
 
                     <CheckBox
@@ -556,7 +556,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
-                        android:buttonTint="@color/purple_500"
+                        android:buttonTint="@color/gorgeous_purple"
                         android:text="Friends" />
 
                     <CheckBox
@@ -564,7 +564,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
-                        android:buttonTint="@color/purple_500"
+                        android:buttonTint="@color/gorgeous_purple"
                         android:text="Children" />
 
                     <CheckBox
@@ -572,7 +572,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
-                        android:buttonTint="@color/purple_500"
+                        android:buttonTint="@color/gorgeous_purple"
                         android:text="Pets" />
 
 
@@ -667,7 +667,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="120dp"
                     android:layout_marginBottom="10dp"
-                    android:backgroundTint="@color/purple_500"
+                    android:backgroundTint="@color/gorgeous_purple"
                     android:focusableInTouchMode="true"
                     android:text="Submit"
                     android:textColor="@color/white"
