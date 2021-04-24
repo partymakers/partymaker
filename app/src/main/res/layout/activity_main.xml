@@ -19,13 +19,14 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/Scrollability"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@drawable/main_backgr2">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/Header"
                 android:layout_width="0dp"
                 android:layout_height="100dp"
-                android:background="@color/purple_500"
+                android:background="@color/logo_backgr_light"
                 app:layout_constraintBottom_toTopOf="@+id/Buttons"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

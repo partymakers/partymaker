@@ -8,5 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="light_pink">#FFF1FF</color>
-    <color name="dark_pink">#AF8EB5</color>color>
+    <color name="dark_pink">#AF8EB5</color>
+    <color name="logo_backgr">#E36D85</color>
+    <color name="logo_backgr_light">#e87d93</color>
 </resources>
