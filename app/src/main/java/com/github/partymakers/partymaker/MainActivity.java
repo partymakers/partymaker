@@ -30,7 +30,9 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseUser user;
 
     private ActivityMainBinding dataBinding;
-//
+
+// TODO: user name&email setter
+
 //    protected void setUserInfoTextViews() {
 //        dataBinding.textViewName.setText(user.getDisplayName());
 //        dataBinding.textViewEmail.setText(user.getEmail());
@@ -84,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
         );
     }
 
+    // TODO: login status setter
     private void handleLoginResult(int resultCode, Intent intent) {
         IdpResponse response = IdpResponse.fromResultIntent(intent);
         if (resultCode == RESULT_OK) {

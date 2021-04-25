@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/main_backgr2"
-    tools:context=".MainActivity"
     tools:visibility="visible">
 
     <ScrollView
@@ -50,6 +49,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
+                        android:text="[login status]"
                         android:textColor="@color/white"
                         android:textSize="10sp"
                         android:visibility="visible"
@@ -59,6 +59,7 @@
                         android:id="@+id/textViewName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:text="[User Name]"
                         android:textColor="@color/white"
                         android:textSize="30sp" />
 
@@ -66,6 +67,7 @@
                         android:id="@+id/textViewEmail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:text="[user email]"
                         android:textColor="@color/white"
                         android:textSize="16sp" />
                 </LinearLayout>

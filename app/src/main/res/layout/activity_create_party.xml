@@ -439,7 +439,7 @@
                             android:backgroundTint="@color/white"
                             android:visibility="gone"
                             app:srcCompat="@drawable/ic_baseline_add_circle_24" />
-
+<!--TODO! change add button color (new image asset)-->
                     </LinearLayout>
 
                     <com.google.android.material.chip.ChipGroup
