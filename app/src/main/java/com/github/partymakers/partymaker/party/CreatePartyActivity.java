@@ -297,7 +297,7 @@ public class CreatePartyActivity extends AppCompatActivity implements View.OnCli
             int currentMonth = currentDate.get(Calendar.MONTH);
             int currentDay = currentDate.get(Calendar.DAY_OF_MONTH);
 
-            DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+            DatePickerDialog datePickerDialog = new DatePickerDialog(this, R.style.DialogTheme, new DatePickerDialog.OnDateSetListener() {
                 @Override
                 public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                     Calendar date = Calendar.getInstance();
@@ -322,7 +322,7 @@ public class CreatePartyActivity extends AppCompatActivity implements View.OnCli
 
 
             // Launch Time Picker Dialog
-            new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
+            new TimePickerDialog(this, R.style.DialogTheme, new TimePickerDialog.OnTimeSetListener() {
                 @Override
                 public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                     Calendar time = Calendar.getInstance();
