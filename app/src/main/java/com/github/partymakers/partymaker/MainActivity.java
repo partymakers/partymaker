@@ -12,7 +12,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.IdpResponse;
 import com.github.partymakers.partymaker.databinding.ActivityMainBinding;
-import com.github.partymakers.partymaker.ui.main.SectionsPagerAdapter;
+import com.github.partymakers.partymaker.dashboard.SectionsPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -41,8 +41,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         dataBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        //dataBinding = ActivityMainBinding.inflate(getLayoutInflater());
-        //setContentView(dataBinding.getRoot());
 
         SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
         ViewPager viewPager = dataBinding.viewPager;

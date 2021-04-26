@@ -1,4 +1,4 @@
-package com.github.partymakers.partymaker.ui.main;
+package com.github.partymakers.partymaker.dashboard;
 
 import android.content.Context;
 
@@ -8,9 +8,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.github.partymakers.partymaker.FragmentPartyMaker;
-import com.github.partymakers.partymaker.FragmentPast;
-import com.github.partymakers.partymaker.FragmentUpcoming;
+import com.github.partymakers.partymaker.dashboard.DashboardFragment;
+import com.github.partymakers.partymaker.dashboard.PastPartiesFragment;
+import com.github.partymakers.partymaker.dashboard.UpcomingPartiesFragment;
 import com.github.partymakers.partymaker.R;
 
 /**
@@ -34,13 +34,13 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         Fragment fragment = null;
         switch (position) {
             case 0:
-                fragment = new FragmentPartyMaker();
+                fragment = new DashboardFragment();
                 break;
             case 1:
-                fragment = new FragmentUpcoming();
+                fragment = new UpcomingPartiesFragment();
                 break;
             case 2:
-                fragment = new FragmentPast();
+                fragment = new PastPartiesFragment();
                 break;
         }
         return fragment;

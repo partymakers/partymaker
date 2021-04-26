@@ -1,4 +1,4 @@
-package com.github.partymakers.partymaker.ui.main;
+package com.github.partymakers.partymaker.dashboard;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,7 +12,6 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.github.partymakers.partymaker.R;
 import com.github.partymakers.partymaker.databinding.FragmentMainBinding;
 
 /**

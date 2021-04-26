@@ -1,4 +1,4 @@
-package com.github.partymakers.partymaker.ui.main;
+package com.github.partymakers.partymaker.dashboard;
 
 import androidx.arch.core.util.Function;
 import androidx.lifecycle.LiveData;
