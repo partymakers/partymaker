@@ -22,6 +22,7 @@ import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipDrawable;
 import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -39,9 +40,8 @@ public class CreatePartyActivity extends AppCompatActivity implements View.OnCli
     static private final List<String> tagListDrinks = Arrays.asList("Soda", "Light beer", "Craft beer", "Cocktail", "Juice", "Soft drinks", "Vodka", "Whiskey", "Martini", "Shots", "Wine", "Tea", "Coffee");
 
     private ActivityCreatePartyBinding dataBinding;
-    private FirebaseFirestore firestore;
     private CollectionReference partiesRepo;
-    private PartyEntity party = new PartyEntity();
+    private final PartyEntity party = new PartyEntity();
 
     // TODO: text input check and set errors https://codelabs.developers.google.com/codelabs/mdc-111-kotlin/#2
     @Override
@@ -51,8 +51,9 @@ public class CreatePartyActivity extends AppCompatActivity implements View.OnCli
         dataBinding = DataBindingUtil.setContentView(this, R.layout.activity_create_party);
         setContentView(dataBinding.getRoot());
 
-        firestore = FirebaseFirestore.getInstance();
-        partiesRepo = firestore.collection("parties");
+        partiesRepo = FirebaseFirestore.getInstance().collection("parties");
+        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        party.getOrganizersIds().add(userId);
 
         setTag(tagListFood, party.getFood(), dataBinding.foodChipGroup);
         setTag(tagListDrinks, party.getDrinks(), dataBinding.drinksChipGroup);

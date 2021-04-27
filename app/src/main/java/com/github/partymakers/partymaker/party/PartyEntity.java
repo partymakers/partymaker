@@ -1,18 +1,23 @@
 package com.github.partymakers.partymaker.party;
 
+import com.google.firebase.firestore.DocumentId;
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
 public class PartyEntity {
+    @DocumentId
+    private String id;
+    private final List<String> organizersIds = new ArrayList<>();
     private String name;
     private String description;
     private Long timestamp;
     private String location;
     private String theme;
     private String dressCode;
-    private List<String> food = new ArrayList<>();
-    private List<String> drinks = new ArrayList<>();
+    private final List<String> food = new ArrayList<>();
+    private final List<String> drinks = new ArrayList<>();
     private BigDecimal fee;
     private boolean allowsPartner;
     private boolean allowsChildren;
@@ -20,6 +25,14 @@ public class PartyEntity {
     private boolean allowsPets;
     private String parkingDetails;
     private String additionalInformation;
+
+    public String getId() {
+        return id;
+    }
+
+    public List<String> getOrganizersIds() {
+        return organizersIds;
+    }
 
     public String getName() {
         return name;
