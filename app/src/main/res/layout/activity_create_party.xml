@@ -10,9 +10,11 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/main_backgr_opaque"
         tools:context=".party.CreatePartyActivity">
 
         <ScrollView
+            android:id="@+id/back"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="5dp"
@@ -53,7 +55,7 @@
                             android:id="@+id/textPartyName"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:hint="Name"
+                            android:hint="Give your party a catchy name"
                             android:imeOptions="actionNext"
                             android:inputType="text"
                             android:maxLines="1"
@@ -113,7 +115,8 @@
                         app:layout_constraintEnd_toStartOf="@+id/layoutTimePicker"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:startIconDrawable="@drawable/ic_baseline_date_range_24">
+                        app:startIconDrawable="@drawable/ic_baseline_date_range_24"
+                        app:startIconTint="@color/gorgeous_purple">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/textDatePicked"
@@ -136,7 +139,8 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/layoutDatePicker"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:startIconDrawable="@drawable/baseline_schedule_black_18">
+                        app:startIconDrawable="@drawable/baseline_schedule_black_18"
+                        app:startIconTint="@color/gorgeous_purple">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/textTimePicked"
@@ -170,7 +174,8 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:startIconDrawable="@android:drawable/ic_dialog_map">
+                        app:startIconDrawable="@android:drawable/ic_dialog_map"
+                        app:startIconTint="@color/gorgeous_purple">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/textLocationPicked"
@@ -198,6 +203,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp">
+
 
                         <Switch
                             android:id="@+id/switchTheme"
@@ -357,10 +363,9 @@
                                 android:id="@+id/foodChipButton"
                                 android:layout_width="50dp"
                                 android:layout_height="match_parent"
-                                android:backgroundTint="@color/white"
+                                android:backgroundTint="@color/pastel_purple_light"
                                 android:visibility="gone"
                                 app:srcCompat="@drawable/ic_baseline_add_circle_24" />
-
                         </LinearLayout>
 
                         <com.google.android.material.chip.ChipGroup
@@ -442,10 +447,9 @@
                                 android:id="@+id/drinksChipButton"
                                 android:layout_width="50dp"
                                 android:layout_height="match_parent"
-                                android:backgroundTint="@color/white"
+                                android:backgroundTint="@color/pastel_purple_light"
                                 android:visibility="gone"
                                 app:srcCompat="@drawable/ic_baseline_add_circle_24" />
-                            <!--TODO! change add button color (new image asset)-->
                         </LinearLayout>
 
                         <com.google.android.material.chip.ChipGroup
@@ -510,7 +514,8 @@
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toBottomOf="@+id/switchFee"
-                                app:startIconDrawable="@drawable/ic_baseline_monetization_on_24">
+                                app:startIconDrawable="@drawable/ic_baseline_monetization_on_24"
+                                app:startIconTint="@color/gorgeous_purple">
 
                                 <com.google.android.material.textfield.TextInputEditText
                                     android:id="@+id/textInputFee"
@@ -649,7 +654,8 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            app:startIconDrawable="@drawable/ic_baseline_info_24">>
+                            app:startIconDrawable="@drawable/ic_baseline_info_24"
+                            app:startIconTint="@color/gorgeous_purple">
 
                             <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/textInputInfo"
