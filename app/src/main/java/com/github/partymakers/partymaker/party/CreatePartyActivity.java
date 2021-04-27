@@ -54,6 +54,7 @@ public class CreatePartyActivity extends AppCompatActivity implements View.OnCli
         partiesRepo = FirebaseFirestore.getInstance().collection("parties");
         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         party.getOrganizersIds().add(userId);
+        party.getParticipantsIds().add(userId);
 
         setTag(tagListFood, party.getFood(), dataBinding.foodChipGroup);
         setTag(tagListDrinks, party.getDrinks(), dataBinding.drinksChipGroup);

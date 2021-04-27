@@ -10,6 +10,7 @@ public class PartyEntity {
     @DocumentId
     private String id;
     private final List<String> organizersIds = new ArrayList<>();
+    private final List<String> participantsIds = new ArrayList<>();
     private String name;
     private String description;
     private Long timestamp;
@@ -32,6 +33,10 @@ public class PartyEntity {
 
     public List<String> getOrganizersIds() {
         return organizersIds;
+    }
+
+    public List<String> getParticipantsIds() {
+        return participantsIds;
     }
 
     public String getName() {
