@@ -77,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
                 AuthUI.getInstance()
                         .createSignInIntentBuilder()
                         .setAvailableProviders(loginProviders)
+                        .setTheme(R.style.LoginTheme)
                         .setIsSmartLockEnabled(false, true)
                         .build(),
                 REQUEST_CODE_LOGIN
