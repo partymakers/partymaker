@@ -11,6 +11,7 @@ import android.widget.Button;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
+import com.github.partymakers.partymaker.MainActivity;
 import com.github.partymakers.partymaker.R;
 import com.github.partymakers.partymaker.databinding.FragmentDashboardBinding;
 import com.github.partymakers.partymaker.party.CreatePartyActivity;
@@ -24,8 +25,11 @@ public class DashboardFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         dataBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_dashboard, container, false);
         View view = dataBinding.getRoot();
-        //set data
 
+        //set data
+        MainActivity mainActivity = (MainActivity) getActivity();
+        Bundle userInfo = mainActivity.getUserInfo();
+        setUserInfo(userInfo);
 
         Button organize = dataBinding.buttonOrganize;
         organize.setOnClickListener(new View.OnClickListener() {
@@ -36,5 +40,11 @@ public class DashboardFragment extends Fragment {
             }
         });
         return view;
+    }
+
+    public void setUserInfo(Bundle userInfo) {
+        dataBinding.textViewName.setText(userInfo.getString("name"));
+        dataBinding.textViewEmail.setText(userInfo.getString("email"));
+        dataBinding.textViewLoginStatus.setText(userInfo.getString("status"));
     }
 }
