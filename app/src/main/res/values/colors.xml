@@ -8,5 +8,11 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="light_pink">#FFF1FF</color>
-    <color name="dark_pink">#AF8EB5</color>color>
+    <color name="dark_pink">#AF8EB5</color>
+    <color name="logo_backgr">#E36D85</color>
+    <color name="logo_backgr_light">#e87d93</color>
+    <color name="gorgeous_purple">#301b3f</color>
+    <color name="gorgeous_purple_darker">#1f1129</color>
+    <color name="pastel_nude">#fcecdd</color>
+    <color name="pastel_purple">#f6dfeb</color>
 </resources>

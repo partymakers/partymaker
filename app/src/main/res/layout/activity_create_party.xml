@@ -1,684 +1,691 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".party.CreatePartyActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <ScrollView
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="5dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        tools:context=".party.CreatePartyActivity">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/CreatePartyForm"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent">
-
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/NameDescription"
-                android:layout_width="350dp"
-                android:layout_height="200dp"
-                android:layout_marginTop="5dp"
-                app:layout_constraintBottom_toTopOf="@+id/DateTimePicker"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                android:id="@+id/CreatePartyForm"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/PartyName"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="70dp"
-                    android:layout_marginBottom="2dp"
-                    app:errorEnabled="true"
-                    app:layout_constraintBottom_toTopOf="@+id/PartyDescription"
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/NameDescription"
+                    android:layout_width="350dp"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="5dp"
+                    app:layout_constraintBottom_toTopOf="@+id/DateTimePicker"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/textPartyName"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:hint="Name"
-                        android:imeOptions="actionNext"
-                        android:inputType="text"
-                        android:maxLines="1"
-                        android:nextFocusDown="@+id/textPartyDescription"
-                        android:textSize="20sp" />
-
-                    <requestFocus />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/PartyDescription"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:layout_marginTop="2dp"
-                    app:errorEnabled="true"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/PartyName">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/textPartyDescription"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:hint="Description"
-                        android:imeOptions="actionNext"
-                        android:inputType="textMultiLine"
-                        android:maxLines="5"
-                        android:scrollbars="vertical" />
-                </com.google.android.material.textfield.TextInputLayout>
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/DateTimePicker"
-                android:layout_width="350dp"
-                android:layout_height="60dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="30dp"
-                app:layout_constraintBottom_toTopOf="@+id/LocationPicker"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/NameDescription">
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/layoutDatePicker"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="160dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="0dp"
-                    android:layout_marginEnd="0dp"
-                    android:singleLine="true"
-                    app:errorEnabled="true"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/layoutTimePicker"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:startIconDrawable="@drawable/ic_baseline_date_range_24">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/textDatePicked"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:focusable="false"
-                        android:hint="Date" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/layoutTimePicker"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="160dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="0dp"
-                    android:layout_marginEnd="0dp"
-                    android:singleLine="true"
-                    app:errorEnabled="true"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/layoutDatePicker"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:startIconDrawable="@drawable/baseline_schedule_black_18">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/textTimePicked"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:focusable="false"
-                        android:hint="Time" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/LocationPicker"
-                android:layout_width="350dp"
-                android:layout_height="80dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="5dp"
-                app:layout_constraintBottom_toTopOf="@+id/Options"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/DateTimePicker">
-
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/layoutLocation"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:errorEnabled="true"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:startIconDrawable="@android:drawable/ic_dialog_map">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/textLocationPicked"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:hint="Location" />
-                </com.google.android.material.textfield.TextInputLayout>
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-            <LinearLayout
-                android:id="@+id/Options"
-                android:layout_width="350dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:orientation="vertical"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/LocationPicker">
-
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/Theme"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp">
-
-                    <Switch
-                        android:id="@+id/switchTheme"
-                        android:layout_width="0dp"
-                        android:layout_height="20dp"
-                        android:layout_marginTop="4dp"
-                        android:layout_marginBottom="3dp"
-                        android:layout_weight="1"
-                        android:fontFamily="sans-serif"
-                        android:text="Theme"
-                        android:textSize="16sp"
-                        android:theme="@style/CustomSwitch"
-                        app:layout_constraintBottom_toTopOf="@+id/themeInputLayout"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/themeInputLayout"
+                        android:id="@+id/PartyName"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="0dp"
-                        android:layout_height="65dp"
-                        android:layout_marginTop="2dp"
-                        android:visibility="gone"
-                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:layout_marginBottom="2dp"
+                        app:errorEnabled="true"
+                        app:layout_constraintBottom_toTopOf="@+id/PartyDescription"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/switchTheme">
+                        app:layout_constraintTop_toTopOf="parent">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/textInputTheme"
+                            android:id="@+id/textPartyName"
                             android:layout_width="match_parent"
-                            android:layout_height="60dp"
-                            android:hint="Party theme"
+                            android:layout_height="match_parent"
+                            android:hint="Name"
                             android:imeOptions="actionNext"
                             android:inputType="text"
                             android:maxLines="1"
-                            android:nextFocusDown="@+id/dressCodeInputLayout"
-                            android:textSize="16sp"
-                            android:visibility="gone" />
+                            android:nextFocusDown="@+id/textPartyDescription"
+                            android:textSize="20sp" />
 
+                        <requestFocus />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/PartyDescription"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:layout_marginTop="2dp"
+                        app:errorEnabled="true"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/PartyName">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/textPartyDescription"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:hint="Description"
+                            android:imeOptions="actionNext"
+                            android:inputType="textMultiLine"
+                            android:maxLines="5"
+                            android:scrollbars="vertical" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/DateTimePicker"
+                    android:layout_width="350dp"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="30dp"
+                    app:layout_constraintBottom_toTopOf="@+id/LocationPicker"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/NameDescription">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/layoutDatePicker"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="160dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginEnd="0dp"
+                        android:singleLine="true"
+                        app:errorEnabled="true"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/layoutTimePicker"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:startIconDrawable="@drawable/ic_baseline_date_range_24">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/textDatePicked"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:focusable="false"
+                            android:hint="Date" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/layoutTimePicker"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="160dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginEnd="0dp"
+                        android:singleLine="true"
+                        app:errorEnabled="true"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/layoutDatePicker"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:startIconDrawable="@drawable/baseline_schedule_black_18">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/textTimePicked"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:focusable="false"
+                            android:hint="Time" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/DressCode"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    app:layout_constraintTop_toBottomOf="@+id/Theme">
+                    android:id="@+id/LocationPicker"
+                    android:layout_width="350dp"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
+                    app:layout_constraintBottom_toTopOf="@+id/Options"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/DateTimePicker">
 
-                    <Switch
-                        android:id="@+id/switchDressCode"
-                        android:layout_width="0dp"
-                        android:layout_height="20dp"
-                        android:layout_marginTop="4dp"
-                        android:layout_marginBottom="3dp"
-                        android:layout_weight="1"
-                        android:fontFamily="sans-serif"
-                        android:text="Dress code"
-                        android:textSize="16sp"
-                        android:theme="@style/CustomSwitch"
-                        app:layout_constraintBottom_toTopOf="@+id/dressCodeInputLayout"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/dressCodeInputLayout"
+                        android:id="@+id/layoutLocation"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="0dp"
-                        android:layout_height="65dp"
-                        android:layout_marginTop="2dp"
-                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:errorEnabled="true"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/switchDressCode">
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:startIconDrawable="@android:drawable/ic_dialog_map">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/textInputDressCode"
+                            android:id="@+id/textLocationPicked"
                             android:layout_width="match_parent"
-                            android:layout_height="60dp"
-                            android:hint="Costume requirements"
-                            android:imeOptions="actionNext"
-                            android:inputType="text"
-                            android:maxLines="1"
-                            android:nextFocusDown="@+id/foodChipInputLayout"
-                            android:textSize="16sp"
-                            android:visibility="gone" />
-
+                            android:layout_height="match_parent"
+                            android:hint="Location" />
                     </com.google.android.material.textfield.TextInputLayout>
-
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/Food"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    app:layout_constraintTop_toBottomOf="@+id/DressCode">
-
-                    <Switch
-                        android:id="@+id/switchFood"
-                        android:layout_width="0dp"
-                        android:layout_height="20dp"
-                        android:layout_marginTop="4dp"
-                        android:layout_marginBottom="0dp"
-                        android:layout_weight="1"
-                        android:fontFamily="sans-serif"
-                        android:text="Food"
-                        android:textSize="16sp"
-                        android:theme="@style/CustomSwitch"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <LinearLayout
-                        android:id="@+id/foodChipInputLayout"
-                        android:layout_width="350dp"
-                        android:layout_height="65dp"
-                        android:layout_marginTop="5dp"
-                        android:orientation="horizontal"
-                        android:visibility="gone"
-                        app:layout_constraintBottom_toTopOf="@+id/foodChipGroup"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/switchFood">
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/foodInputLayout"
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                            android:layout_width="290dp"
-                            android:layout_height="match_parent"
-                            android:layout_marginTop="0dp"
-                            android:layout_marginEnd="5dp"
-                            android:visibility="gone"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="@+id/switchFood">
-
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/textInputFood"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:hint="Food servings"
-                                android:imeOptions="actionDone"
-                                android:inputType="textImeMultiLine"
-                                android:textSize="16sp"
-                                android:visibility="gone" />
-
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                        <ImageButton
-                            android:id="@+id/foodChipButton"
-                            android:layout_width="50dp"
-                            android:layout_height="match_parent"
-                            android:backgroundTint="@color/white"
-                            android:visibility="gone"
-                            app:srcCompat="@drawable/ic_baseline_add_circle_24" />
-
-                    </LinearLayout>
-
-                    <com.google.android.material.chip.ChipGroup
-                        android:id="@+id/foodChipGroup"
-                        style="@style/Widget.MaterialComponents.Chip.Choice"
-                        android:layout_width="350dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:visibility="gone"
-                        app:chipSpacing="5dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/foodChipInputLayout">
-
-                    </com.google.android.material.chip.ChipGroup>
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/Drinks"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    app:layout_constraintTop_toBottomOf="@+id/Food">
-
-                    <Switch
-                        android:id="@+id/switchDrinks"
-                        android:layout_width="0dp"
-                        android:layout_height="20dp"
-                        android:layout_marginTop="4dp"
-                        android:layout_marginBottom="0dp"
-                        android:layout_weight="1"
-                        android:fontFamily="sans-serif"
-                        android:text="Beverages"
-                        android:textSize="16sp"
-                        android:theme="@style/CustomSwitch"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <LinearLayout
-                        android:id="@+id/drinksChipInputLayout"
-                        android:layout_width="350dp"
-                        android:layout_height="65dp"
-                        android:layout_marginTop="5dp"
-                        android:orientation="horizontal"
-                        android:visibility="gone"
-                        app:layout_constraintBottom_toTopOf="@+id/drinksChipGroup"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/switchDrinks">
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/drinksInputLayout"
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                            android:layout_width="290dp"
-                            android:layout_height="match_parent"
-                            android:layout_marginTop="0dp"
-                            android:layout_marginEnd="5dp"
-                            android:visibility="gone"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="@+id/switchDrinks">
-
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/textInputDrinks"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:hint="drinks servings"
-                                android:imeOptions="actionDone"
-                                android:inputType="textImeMultiLine"
-                                android:textSize="16sp"
-                                android:visibility="gone" />
-
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                        <ImageButton
-                            android:id="@+id/drinksChipButton"
-                            android:layout_width="50dp"
-                            android:layout_height="match_parent"
-                            android:backgroundTint="@color/white"
-                            android:visibility="gone"
-                            app:srcCompat="@drawable/ic_baseline_add_circle_24" />
-
-                    </LinearLayout>
-
-                    <com.google.android.material.chip.ChipGroup
-                        android:id="@+id/drinksChipGroup"
-                        android:layout_width="350dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:visibility="gone"
-                        app:chipSpacing="5dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/drinksChipInputLayout">
-
-                    </com.google.android.material.chip.ChipGroup>
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/Fee"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    app:layout_constraintTop_toBottomOf="@+id/Drinks">
-
-                    <Switch
-                        android:id="@+id/switchFee"
-                        android:layout_width="0dp"
-                        android:layout_height="20dp"
-                        android:layout_marginTop="4dp"
-                        android:layout_marginBottom="3dp"
-                        android:layout_weight="1"
-                        android:fontFamily="sans-serif"
-                        android:text="Charge an entry fee"
-                        android:textSize="16sp"
-                        android:theme="@style/CustomSwitch"
-                        app:layout_constraintBottom_toTopOf="@+id/feeLinearLayout"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-
-                    <LinearLayout
-                        android:id="@+id/feeLinearLayout"
-                        android:layout_width="350dp"
-                        android:layout_height="65dp"
-                        android:layout_marginTop="5dp"
-                        android:orientation="horizontal"
-                        android:visibility="gone"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/switchFee">
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/feeInputLayout"
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                            android:layout_width="match_parent"
-                            android:layout_height="65dp"
-                            android:layout_marginTop="0dp"
-                            android:visibility="gone"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/switchFee"
-                            app:startIconDrawable="@drawable/ic_baseline_monetization_on_24">
-
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/textInputFee"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:hint="Entry fee"
-                                android:imeOptions="actionNext"
-                                android:inputType="numberDecimal"
-                                android:maxLines="1"
-                                android:textSize="16sp"
-                                android:visibility="gone" />
-
-
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                    </LinearLayout>
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <LinearLayout
-                    android:id="@+id/otherOptionsLinearLayout"
+                    android:id="@+id/Options"
                     android:layout_width="350dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="10dp"
                     android:orientation="vertical"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/Fee">
+                    app:layout_constraintTop_toBottomOf="@+id/LocationPicker">
 
-                    <TextView
-                        android:id="@+id/otherOptions"
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/Theme"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Guests can bring along"
-                        android:textColor="@color/black"
-                        android:textSize="16sp" />
+                        android:layout_marginTop="5dp">
 
-                    <CheckBox
-                        android:id="@+id/checkBoxPartner"
+                        <Switch
+                            android:id="@+id/switchTheme"
+                            android:layout_width="0dp"
+                            android:layout_height="20dp"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginBottom="3dp"
+                            android:layout_weight="1"
+                            android:fontFamily="sans-serif"
+                            android:text="Theme"
+                            android:textSize="16sp"
+                            android:theme="@style/CustomSwitch"
+                            app:layout_constraintBottom_toTopOf="@+id/themeInputLayout"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/themeInputLayout"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="0dp"
+                            android:layout_height="65dp"
+                            android:layout_marginTop="2dp"
+                            android:visibility="gone"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/switchTheme">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/textInputTheme"
+                                android:layout_width="match_parent"
+                                android:layout_height="60dp"
+                                android:hint="Party theme"
+                                android:imeOptions="actionNext"
+                                android:inputType="text"
+                                android:maxLines="1"
+                                android:nextFocusDown="@+id/dressCodeInputLayout"
+                                android:textSize="16sp"
+                                android:visibility="gone" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/DressCode"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:buttonTint="@color/purple_500"
-                        android:text="Partner" />
+                        android:layout_marginTop="5dp"
+                        app:layout_constraintTop_toBottomOf="@+id/Theme">
 
-                    <CheckBox
-                        android:id="@+id/checkBoxFriends"
+                        <Switch
+                            android:id="@+id/switchDressCode"
+                            android:layout_width="0dp"
+                            android:layout_height="20dp"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginBottom="3dp"
+                            android:layout_weight="1"
+                            android:fontFamily="sans-serif"
+                            android:text="Dress code"
+                            android:textSize="16sp"
+                            android:theme="@style/CustomSwitch"
+                            app:layout_constraintBottom_toTopOf="@+id/dressCodeInputLayout"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/dressCodeInputLayout"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="0dp"
+                            android:layout_height="65dp"
+                            android:layout_marginTop="2dp"
+                            android:visibility="gone"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/switchDressCode">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/textInputDressCode"
+                                android:layout_width="match_parent"
+                                android:layout_height="60dp"
+                                android:hint="Costume requirements"
+                                android:imeOptions="actionNext"
+                                android:inputType="text"
+                                android:maxLines="1"
+                                android:nextFocusDown="@+id/foodChipInputLayout"
+                                android:textSize="16sp"
+                                android:visibility="gone" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/Food"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:buttonTint="@color/purple_500"
-                        android:text="Friends" />
+                        android:layout_marginTop="5dp"
+                        app:layout_constraintTop_toBottomOf="@+id/DressCode">
 
-                    <CheckBox
-                        android:id="@+id/checkBoxChildren"
+                        <Switch
+                            android:id="@+id/switchFood"
+                            android:layout_width="0dp"
+                            android:layout_height="20dp"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginBottom="0dp"
+                            android:layout_weight="1"
+                            android:fontFamily="sans-serif"
+                            android:text="Food"
+                            android:textSize="16sp"
+                            android:theme="@style/CustomSwitch"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <LinearLayout
+                            android:id="@+id/foodChipInputLayout"
+                            android:layout_width="350dp"
+                            android:layout_height="65dp"
+                            android:layout_marginTop="5dp"
+                            android:orientation="horizontal"
+                            android:visibility="gone"
+                            app:layout_constraintBottom_toTopOf="@+id/foodChipGroup"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/switchFood">
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/foodInputLayout"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                android:layout_width="290dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="0dp"
+                                android:layout_marginEnd="5dp"
+                                android:visibility="gone"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="@+id/switchFood">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/textInputFood"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:hint="Food servings"
+                                    android:imeOptions="actionDone"
+                                    android:inputType="textImeMultiLine"
+                                    android:textSize="16sp"
+                                    android:visibility="gone" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <ImageButton
+                                android:id="@+id/foodChipButton"
+                                android:layout_width="50dp"
+                                android:layout_height="match_parent"
+                                android:backgroundTint="@color/white"
+                                android:visibility="gone"
+                                app:srcCompat="@drawable/ic_baseline_add_circle_24" />
+
+                        </LinearLayout>
+
+                        <com.google.android.material.chip.ChipGroup
+                            android:id="@+id/foodChipGroup"
+                            style="@style/Widget.MaterialComponents.Chip.Choice"
+                            android:layout_width="350dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:visibility="gone"
+                            app:chipSpacing="5dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/foodChipInputLayout">
+
+                        </com.google.android.material.chip.ChipGroup>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/Drinks"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:buttonTint="@color/purple_500"
-                        android:text="Children" />
+                        android:layout_marginTop="5dp"
+                        app:layout_constraintTop_toBottomOf="@+id/Food">
 
-                    <CheckBox
-                        android:id="@+id/checkBoxPets"
+                        <Switch
+                            android:id="@+id/switchDrinks"
+                            android:layout_width="0dp"
+                            android:layout_height="20dp"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginBottom="0dp"
+                            android:layout_weight="1"
+                            android:fontFamily="sans-serif"
+                            android:text="Beverages"
+                            android:textSize="16sp"
+                            android:theme="@style/CustomSwitch"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <LinearLayout
+                            android:id="@+id/drinksChipInputLayout"
+                            android:layout_width="350dp"
+                            android:layout_height="65dp"
+                            android:layout_marginTop="5dp"
+                            android:orientation="horizontal"
+                            android:visibility="gone"
+                            app:layout_constraintBottom_toTopOf="@+id/drinksChipGroup"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/switchDrinks">
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/drinksInputLayout"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                android:layout_width="290dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="0dp"
+                                android:layout_marginEnd="5dp"
+                                android:visibility="gone"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="@+id/switchDrinks">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/textInputDrinks"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:hint="drinks servings"
+                                    android:imeOptions="actionDone"
+                                    android:inputType="textImeMultiLine"
+                                    android:textSize="16sp"
+                                    android:visibility="gone" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <ImageButton
+                                android:id="@+id/drinksChipButton"
+                                android:layout_width="50dp"
+                                android:layout_height="match_parent"
+                                android:backgroundTint="@color/white"
+                                android:visibility="gone"
+                                app:srcCompat="@drawable/ic_baseline_add_circle_24" />
+                            <!--TODO! change add button color (new image asset)-->
+                        </LinearLayout>
+
+                        <com.google.android.material.chip.ChipGroup
+                            android:id="@+id/drinksChipGroup"
+                            android:layout_width="350dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:visibility="gone"
+                            app:chipSpacing="5dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/drinksChipInputLayout">
+
+                        </com.google.android.material.chip.ChipGroup>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/Fee"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:buttonTint="@color/purple_500"
-                        android:text="Pets" />
+                        android:layout_marginTop="5dp"
+                        app:layout_constraintTop_toBottomOf="@+id/Drinks">
+
+                        <Switch
+                            android:id="@+id/switchFee"
+                            android:layout_width="0dp"
+                            android:layout_height="20dp"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginBottom="3dp"
+                            android:layout_weight="1"
+                            android:fontFamily="sans-serif"
+                            android:text="Charge an entry fee"
+                            android:textSize="16sp"
+                            android:theme="@style/CustomSwitch"
+                            app:layout_constraintBottom_toTopOf="@+id/feeLinearLayout"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
 
-                </LinearLayout>
+                        <LinearLayout
+                            android:id="@+id/feeLinearLayout"
+                            android:layout_width="350dp"
+                            android:layout_height="65dp"
+                            android:layout_marginTop="5dp"
+                            android:orientation="horizontal"
+                            android:visibility="gone"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/switchFee">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/Parking"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp">
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/feeInputLayout"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                android:layout_width="match_parent"
+                                android:layout_height="65dp"
+                                android:layout_marginTop="0dp"
+                                android:visibility="gone"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/switchFee"
+                                app:startIconDrawable="@drawable/ic_baseline_monetization_on_24">
 
-                    <Switch
-                        android:id="@+id/switchParking"
-                        android:layout_width="0dp"
-                        android:layout_height="20dp"
-                        android:layout_marginTop="4dp"
-                        android:layout_marginBottom="3dp"
-                        android:layout_weight="1"
-                        android:fontFamily="sans-serif"
-                        android:text="Parking information"
-                        android:textSize="16sp"
-                        android:theme="@style/CustomSwitch"
-                        app:layout_constraintBottom_toTopOf="@+id/parkingInputLayout"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/textInputFee"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:hint="Entry fee"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="numberDecimal"
+                                    android:maxLines="1"
+                                    android:textSize="16sp"
+                                    android:visibility="gone" />
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/parkingInputLayout"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="0dp"
-                        android:layout_height="65dp"
-                        android:layout_marginTop="2dp"
-                        android:visibility="gone"
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                        </LinearLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <LinearLayout
+                        android:id="@+id/otherOptionsLinearLayout"
+                        android:layout_width="350dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:orientation="vertical"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/switchParking">
+                        app:layout_constraintTop_toBottomOf="@+id/Fee">
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/textInputParking"
+                        <TextView
+                            android:id="@+id/otherOptions"
                             android:layout_width="match_parent"
-                            android:layout_height="60dp"
-                            android:hint="Parking details"
-                            android:imeOptions="actionNext"
-                            android:inputType="text"
-                            android:maxLines="1"
-                            android:textSize="16sp"
-                            android:visibility="gone" />
-
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/Info"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="20dp">
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/infoAddInputLayout"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="0dp"
-                        android:layout_height="100dp"
-                        android:layout_marginTop="5dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:startIconDrawable="@drawable/ic_baseline_info_24">>
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/textInputInfo"
-                            android:layout_width="match_parent"
-                            android:layout_height="90dp"
-                            android:hint="Additional information"
-                            android:imeOptions="actionNext"
-                            android:inputType="textMultiLine"
-                            android:maxLines="5"
-                            android:scrollbars="vertical"
+                            android:layout_height="wrap_content"
+                            android:text="Guests can bring along"
+                            android:textColor="@color/black"
                             android:textSize="16sp" />
 
-                    </com.google.android.material.textfield.TextInputLayout>
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                        <CheckBox
+                            android:id="@+id/checkBoxPartner"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:buttonTint="@color/gorgeous_purple"
+                            android:text="Partner" />
 
-                <Button
-                    android:id="@+id/submitButton"
-                    android:layout_width="120dp"
-                    android:layout_height="65dp"
-                    android:layout_marginLeft="120dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginRight="120dp"
-                    android:layout_marginBottom="10dp"
-                    android:backgroundTint="@color/purple_500"
-                    android:focusableInTouchMode="true"
-                    android:text="Submit"
-                    android:textColor="@color/white"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/infoAddInputLayout" />
+                        <CheckBox
+                            android:id="@+id/checkBoxFriends"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:buttonTint="@color/gorgeous_purple"
+                            android:text="Friends" />
 
-            </LinearLayout>
+                        <CheckBox
+                            android:id="@+id/checkBoxChildren"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:buttonTint="@color/gorgeous_purple"
+                            android:text="Children" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+                        <CheckBox
+                            android:id="@+id/checkBoxPets"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:buttonTint="@color/gorgeous_purple"
+                            android:text="Pets" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </LinearLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/Parking"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp">
+
+                        <Switch
+                            android:id="@+id/switchParking"
+                            android:layout_width="0dp"
+                            android:layout_height="20dp"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginBottom="3dp"
+                            android:layout_weight="1"
+                            android:fontFamily="sans-serif"
+                            android:text="Parking information"
+                            android:textSize="16sp"
+                            android:theme="@style/CustomSwitch"
+                            app:layout_constraintBottom_toTopOf="@+id/parkingInputLayout"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/parkingInputLayout"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="0dp"
+                            android:layout_height="65dp"
+                            android:layout_marginTop="2dp"
+                            android:visibility="gone"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/switchParking">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/textInputParking"
+                                android:layout_width="match_parent"
+                                android:layout_height="60dp"
+                                android:hint="Parking details"
+                                android:imeOptions="actionNext"
+                                android:inputType="text"
+                                android:maxLines="1"
+                                android:textSize="16sp"
+                                android:visibility="gone" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/Info"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="20dp">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/infoAddInputLayout"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="0dp"
+                            android:layout_height="100dp"
+                            android:layout_marginTop="5dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:startIconDrawable="@drawable/ic_baseline_info_24">>
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/textInputInfo"
+                                android:layout_width="match_parent"
+                                android:layout_height="90dp"
+                                android:hint="Additional information"
+                                android:imeOptions="actionNext"
+                                android:inputType="textMultiLine"
+                                android:maxLines="5"
+                                android:scrollbars="vertical"
+                                android:textSize="16sp" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <Button
+                        android:id="@+id/submitButton"
+                        android:layout_width="120dp"
+                        android:layout_height="65dp"
+                        android:layout_marginLeft="120dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="120dp"
+                        android:layout_marginBottom="10dp"
+                        android:backgroundTint="@color/gorgeous_purple"
+                        android:focusableInTouchMode="true"
+                        android:text="Submit"
+                        android:textColor="@color/white"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/infoAddInputLayout" />
+
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

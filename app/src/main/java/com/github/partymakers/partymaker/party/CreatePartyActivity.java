@@ -12,6 +12,7 @@ import android.widget.TimePicker;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 
 import com.github.partymakers.partymaker.R;
 import com.github.partymakers.partymaker.databinding.ActivityCreatePartyBinding;
@@ -37,7 +38,7 @@ public class CreatePartyActivity extends AppCompatActivity implements View.OnCli
     static private final List<String> tagListFood = Arrays.asList("Polish", "Pizza", "Kebab", "Sushi", "Asian", "Italian", "Burgers", "Mexican", "Vietnamese");
     static private final List<String> tagListDrinks = Arrays.asList("Soda", "Light beer", "Craft beer", "Cocktail", "Juice", "Soft drinks", "Vodka", "Whiskey", "Martini", "Shots", "Wine", "Tea", "Coffee");
 
-    private ActivityCreatePartyBinding viewBinding;
+    private ActivityCreatePartyBinding dataBinding;
     private FirebaseFirestore firestore;
     private CollectionReference partiesRepo;
     private PartyEntity party = new PartyEntity();
@@ -46,51 +47,52 @@ public class CreatePartyActivity extends AppCompatActivity implements View.OnCli
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        viewBinding = ActivityCreatePartyBinding.inflate(getLayoutInflater());
-        View view = viewBinding.getRoot();
-        setContentView(view);
+
+        dataBinding = DataBindingUtil.setContentView(this, R.layout.activity_create_party);
+        setContentView(dataBinding.getRoot());
 
         firestore = FirebaseFirestore.getInstance();
         partiesRepo = firestore.collection("parties");
 
-        setTag(tagListFood, party.getFood(), viewBinding.foodChipGroup);
-        setTag(tagListDrinks, party.getDrinks(), viewBinding.drinksChipGroup);
+        setTag(tagListFood, party.getFood(), dataBinding.foodChipGroup);
+        setTag(tagListDrinks, party.getDrinks(), dataBinding.drinksChipGroup);
 
-        viewBinding.textPartyName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+
+        dataBinding.textPartyName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                party.setName(viewBinding.textPartyName.getText().toString());
+                party.setName(dataBinding.textPartyName.getText().toString());
             }
         });
-        viewBinding.textPartyDescription.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        dataBinding.textPartyDescription.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                party.setDescription(viewBinding.textPartyDescription.getText().toString());
+                party.setDescription(dataBinding.textPartyDescription.getText().toString());
             }
         });
-        viewBinding.textDatePicked.setOnClickListener(this);
-        viewBinding.textTimePicked.setOnClickListener(this);
-        viewBinding.textLocationPicked.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        dataBinding.textDatePicked.setOnClickListener(this);
+        dataBinding.textTimePicked.setOnClickListener(this);
+        dataBinding.textLocationPicked.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                party.setLocation(viewBinding.textLocationPicked.getText().toString());
+                party.setLocation(dataBinding.textLocationPicked.getText().toString());
             }
         });
-        viewBinding.textInputTheme.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        dataBinding.textInputTheme.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                party.setTheme(viewBinding.textInputTheme.getText().toString());
+                party.setTheme(dataBinding.textInputTheme.getText().toString());
             }
         });
-        viewBinding.textInputDressCode.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        dataBinding.textInputDressCode.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                party.setDressCode(viewBinding.textInputDressCode.getText().toString());
+                party.setDressCode(dataBinding.textInputDressCode.getText().toString());
             }
         });
-        viewBinding.foodChipButton.setOnClickListener(this);
-        viewBinding.drinksChipButton.setOnClickListener(this);
-        viewBinding.textInputFee.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        dataBinding.foodChipButton.setOnClickListener(this);
+        dataBinding.drinksChipButton.setOnClickListener(this);
+        dataBinding.textInputFee.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if (!hasFocus) {
@@ -98,171 +100,171 @@ public class CreatePartyActivity extends AppCompatActivity implements View.OnCli
                 }
             }
         });
-        viewBinding.checkBoxPartner.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        dataBinding.checkBoxPartner.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 party.setAllowsPartner(isChecked);
             }
         });
 
-        viewBinding.checkBoxFriends.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        dataBinding.checkBoxFriends.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 party.setAllowsFriends(isChecked);
             }
         });
-        viewBinding.checkBoxChildren.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        dataBinding.checkBoxChildren.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 party.setAllowsChildren(isChecked);
             }
         });
-        viewBinding.checkBoxPets.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        dataBinding.checkBoxPets.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 party.setAllowsPets(isChecked);
             }
         });
-        viewBinding.textInputParking.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        dataBinding.textInputParking.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                party.setParkingDetails(viewBinding.textInputParking.getText().toString());
+                party.setParkingDetails(dataBinding.textInputParking.getText().toString());
             }
         });
-        viewBinding.textInputInfo.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        dataBinding.textInputInfo.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                party.setAdditionalInformation(viewBinding.textInputInfo.getText().toString());
+                party.setAdditionalInformation(dataBinding.textInputInfo.getText().toString());
             }
         });
-        viewBinding.submitButton.setOnClickListener(this);
+        dataBinding.submitButton.setOnClickListener(this);
 
-        viewBinding.switchDressCode.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        dataBinding.switchDressCode.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     // If the switch button is on
-                    viewBinding.dressCodeInputLayout.setVisibility(View.VISIBLE);
-                    viewBinding.textInputDressCode.setVisibility(View.VISIBLE);
-                    party.setDressCode(viewBinding.textInputDressCode.getText().toString());
+                    dataBinding.dressCodeInputLayout.setVisibility(View.VISIBLE);
+                    dataBinding.textInputDressCode.setVisibility(View.VISIBLE);
+                    party.setDressCode(dataBinding.textInputDressCode.getText().toString());
                 } else {
                     // If the switch button is off
-                    viewBinding.dressCodeInputLayout.setVisibility(View.GONE);
-                    viewBinding.textInputDressCode.setVisibility(View.GONE);
+                    dataBinding.dressCodeInputLayout.setVisibility(View.GONE);
+                    dataBinding.textInputDressCode.setVisibility(View.GONE);
                     party.setDressCode(null);
                 }
             }
 
         });
 
-        viewBinding.switchTheme.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        dataBinding.switchTheme.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     // If the switch button is on
-                    viewBinding.themeInputLayout.setVisibility(View.VISIBLE);
-                    viewBinding.textInputTheme.setVisibility(View.VISIBLE);
-                    party.setTheme(viewBinding.textInputTheme.getText().toString());
+                    dataBinding.themeInputLayout.setVisibility(View.VISIBLE);
+                    dataBinding.textInputTheme.setVisibility(View.VISIBLE);
+                    party.setTheme(dataBinding.textInputTheme.getText().toString());
                 } else {
                     // If the switch button is off
-                    viewBinding.themeInputLayout.setVisibility(View.GONE);
-                    viewBinding.textInputTheme.setVisibility(View.GONE);
+                    dataBinding.themeInputLayout.setVisibility(View.GONE);
+                    dataBinding.textInputTheme.setVisibility(View.GONE);
                     party.setTheme(null);
                 }
             }
 
         });
 
-        viewBinding.switchFood.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        dataBinding.switchFood.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     // If the switch button is on
-                    viewBinding.foodChipGroup.setVisibility(View.VISIBLE);
-                    viewBinding.foodInputLayout.setVisibility(View.VISIBLE);
-                    viewBinding.textInputFood.setVisibility(View.VISIBLE);
-                    viewBinding.foodChipButton.setVisibility(View.VISIBLE);
-                    viewBinding.foodChipInputLayout.setVisibility(View.VISIBLE);
-                    for (int i = 0; i < viewBinding.foodChipGroup.getChildCount(); i++) {
-                        Chip chip = (Chip) viewBinding.foodChipGroup.getChildAt(i);
+                    dataBinding.foodChipGroup.setVisibility(View.VISIBLE);
+                    dataBinding.foodInputLayout.setVisibility(View.VISIBLE);
+                    dataBinding.textInputFood.setVisibility(View.VISIBLE);
+                    dataBinding.foodChipButton.setVisibility(View.VISIBLE);
+                    dataBinding.foodChipInputLayout.setVisibility(View.VISIBLE);
+                    for (int i = 0; i < dataBinding.foodChipGroup.getChildCount(); i++) {
+                        Chip chip = (Chip) dataBinding.foodChipGroup.getChildAt(i);
                         if (chip.isChecked()) {
                             party.getFood().add(chip.getText().toString());
                         }
                     }
                 } else {
                     // If the switch button is off
-                    viewBinding.foodChipGroup.setVisibility(View.GONE);
-                    viewBinding.foodInputLayout.setVisibility(View.GONE);
-                    viewBinding.textInputFood.setVisibility(View.GONE);
-                    viewBinding.foodChipButton.setVisibility(View.GONE);
-                    viewBinding.foodChipInputLayout.setVisibility(View.GONE);
+                    dataBinding.foodChipGroup.setVisibility(View.GONE);
+                    dataBinding.foodInputLayout.setVisibility(View.GONE);
+                    dataBinding.textInputFood.setVisibility(View.GONE);
+                    dataBinding.foodChipButton.setVisibility(View.GONE);
+                    dataBinding.foodChipInputLayout.setVisibility(View.GONE);
                     party.getFood().clear();
                 }
             }
 
         });
 
-        viewBinding.switchDrinks.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        dataBinding.switchDrinks.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     // If the switch button is on
-                    viewBinding.drinksChipGroup.setVisibility(View.VISIBLE);
-                    viewBinding.drinksInputLayout.setVisibility(View.VISIBLE);
-                    viewBinding.textInputDrinks.setVisibility(View.VISIBLE);
-                    viewBinding.drinksChipButton.setVisibility(View.VISIBLE);
-                    viewBinding.drinksChipInputLayout.setVisibility(View.VISIBLE);
-                    for (int i = 0; i < viewBinding.drinksChipGroup.getChildCount(); i++) {
-                        Chip chip = (Chip) viewBinding.drinksChipGroup.getChildAt(i);
+                    dataBinding.drinksChipGroup.setVisibility(View.VISIBLE);
+                    dataBinding.drinksInputLayout.setVisibility(View.VISIBLE);
+                    dataBinding.textInputDrinks.setVisibility(View.VISIBLE);
+                    dataBinding.drinksChipButton.setVisibility(View.VISIBLE);
+                    dataBinding.drinksChipInputLayout.setVisibility(View.VISIBLE);
+                    for (int i = 0; i < dataBinding.drinksChipGroup.getChildCount(); i++) {
+                        Chip chip = (Chip) dataBinding.drinksChipGroup.getChildAt(i);
                         if (chip.isChecked()) {
                             party.getDrinks().add(chip.getText().toString());
                         }
                     }
                 } else {
                     // If the switch button is off
-                    viewBinding.drinksChipGroup.setVisibility(View.GONE);
-                    viewBinding.drinksInputLayout.setVisibility(View.GONE);
-                    viewBinding.textInputDrinks.setVisibility(View.GONE);
-                    viewBinding.drinksChipButton.setVisibility(View.GONE);
-                    viewBinding.drinksChipInputLayout.setVisibility(View.GONE);
+                    dataBinding.drinksChipGroup.setVisibility(View.GONE);
+                    dataBinding.drinksInputLayout.setVisibility(View.GONE);
+                    dataBinding.textInputDrinks.setVisibility(View.GONE);
+                    dataBinding.drinksChipButton.setVisibility(View.GONE);
+                    dataBinding.drinksChipInputLayout.setVisibility(View.GONE);
                     party.getDrinks().clear();
                 }
             }
 
         });
 
-        viewBinding.switchFee.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        dataBinding.switchFee.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     // If the switch button is on
-                    viewBinding.feeLinearLayout.setVisibility(View.VISIBLE);
-                    viewBinding.feeInputLayout.setVisibility(View.VISIBLE);
-                    viewBinding.textInputFee.setVisibility(View.VISIBLE);
+                    dataBinding.feeLinearLayout.setVisibility(View.VISIBLE);
+                    dataBinding.feeInputLayout.setVisibility(View.VISIBLE);
+                    dataBinding.textInputFee.setVisibility(View.VISIBLE);
                     parseFee();
                 } else {
                     // If the switch button is off
-                    viewBinding.feeLinearLayout.setVisibility(View.GONE);
-                    viewBinding.feeInputLayout.setVisibility(View.GONE);
-                    viewBinding.textInputFee.setVisibility(View.GONE);
+                    dataBinding.feeLinearLayout.setVisibility(View.GONE);
+                    dataBinding.feeInputLayout.setVisibility(View.GONE);
+                    dataBinding.textInputFee.setVisibility(View.GONE);
                     party.setFee(null);
                 }
             }
 
         });
 
-        viewBinding.switchParking.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        dataBinding.switchParking.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     // If the switch button is on
-                    viewBinding.parkingInputLayout.setVisibility(View.VISIBLE);
-                    viewBinding.textInputParking.setVisibility(View.VISIBLE);
+                    dataBinding.parkingInputLayout.setVisibility(View.VISIBLE);
+                    dataBinding.textInputParking.setVisibility(View.VISIBLE);
                     party.setParkingDetails(buttonView.getText().toString());
                 } else {
                     // If the switch button is off
-                    viewBinding.parkingInputLayout.setVisibility(View.GONE);
-                    viewBinding.textInputParking.setVisibility(View.GONE);
+                    dataBinding.parkingInputLayout.setVisibility(View.GONE);
+                    dataBinding.textInputParking.setVisibility(View.GONE);
                     party.setParkingDetails(null);
                 }
             }
@@ -272,7 +274,7 @@ public class CreatePartyActivity extends AppCompatActivity implements View.OnCli
     }
 
     private void parseFee() {
-        String amountString = viewBinding.textInputFee.getText().toString();
+        String amountString = dataBinding.textInputFee.getText().toString();
         try {
             BigDecimal amount = new BigDecimal(amountString);
             party.setFee(amount);
@@ -288,14 +290,14 @@ public class CreatePartyActivity extends AppCompatActivity implements View.OnCli
     @Override
     public void onClick(View v) {
 
-        if (v == viewBinding.textDatePicked) {
+        if (v == dataBinding.textDatePicked) {
             // Get Current Date
             final Calendar currentDate = Calendar.getInstance();
             int currentYear = currentDate.get(Calendar.YEAR);
             int currentMonth = currentDate.get(Calendar.MONTH);
             int currentDay = currentDate.get(Calendar.DAY_OF_MONTH);
 
-            DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+            DatePickerDialog datePickerDialog = new DatePickerDialog(this, R.style.DialogTheme, new DatePickerDialog.OnDateSetListener() {
                 @Override
                 public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                     Calendar date = Calendar.getInstance();
@@ -306,13 +308,13 @@ public class CreatePartyActivity extends AppCompatActivity implements View.OnCli
                     party.setTimestamp(date.getTimeInMillis());
 
                     String dateText = SimpleDateFormat.getDateInstance(DateFormat.SHORT).format(date.getTime());
-                    viewBinding.textDatePicked.setText(dateText);
+                    dataBinding.textDatePicked.setText(dateText);
 //                    viewBinding.textDatePicked.setText(dayOfMonth + "-" + ((monthOfYear + 1) <= 9 ? "0" + (monthOfYear + 1) : String.valueOf((monthOfYear + 1))) + "-" + year);
                 }
             }, currentYear, currentMonth, currentDay);
             datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis()); //sets today's date as minimum date -> all the past dates are disabled
             datePickerDialog.show();
-        } else if (v == viewBinding.textTimePicked) {
+        } else if (v == dataBinding.textTimePicked) {
             // Get Current Time
             final Calendar calendar = Calendar.getInstance();
             int hour = calendar.get(Calendar.HOUR_OF_DAY);
@@ -320,7 +322,7 @@ public class CreatePartyActivity extends AppCompatActivity implements View.OnCli
 
 
             // Launch Time Picker Dialog
-            new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
+            new TimePickerDialog(this, R.style.DialogTheme, new TimePickerDialog.OnTimeSetListener() {
                 @Override
                 public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                     Calendar time = Calendar.getInstance();
@@ -331,34 +333,34 @@ public class CreatePartyActivity extends AppCompatActivity implements View.OnCli
                     time.set(Calendar.MINUTE, minute);
                     party.setTimestamp(time.getTimeInMillis());
                     String timeText = SimpleDateFormat.getTimeInstance(DateFormat.SHORT).format(time.getTime());
-                    viewBinding.textTimePicked.setText(timeText);
+                    dataBinding.textTimePicked.setText(timeText);
                 }
             }, hour, minute, android.text.format.DateFormat.is24HourFormat(getApplicationContext())).show();
-        } else if (v == viewBinding.foodChipButton) {
-            String foodEntered = viewBinding.textInputFood.getText().toString();
-            if (!foodEntered.trim().isEmpty() && !chipExists(foodEntered, viewBinding.foodChipGroup)) {
+        } else if (v == dataBinding.foodChipButton) {
+            String foodEntered = dataBinding.textInputFood.getText().toString();
+            if (!foodEntered.trim().isEmpty() && !chipExists(foodEntered, dataBinding.foodChipGroup)) {
                 Chip newChip = new Chip(CreatePartyActivity.this);
                 ChipDrawable drawable = ChipDrawable.createFromAttributes(this, null, 0, R.style.Widget_MaterialComponents_Chip_Choice);  //change to CustomChip style in the future
                 newChip.setChipDrawable(drawable);
                 newChip.setText(foodEntered);
                 party.getFood().add(foodEntered);
                 newChip.setChecked(true);
-                viewBinding.foodChipGroup.addView(newChip);
+                dataBinding.foodChipGroup.addView(newChip);
             }
-            viewBinding.textInputFood.setText("");
-        } else if (v == viewBinding.drinksChipButton) {
-            String drinkEntered = viewBinding.textInputDrinks.getText().toString();
-            if (!drinkEntered.trim().isEmpty() && !chipExists(drinkEntered, viewBinding.drinksChipGroup)) {
+            dataBinding.textInputFood.setText("");
+        } else if (v == dataBinding.drinksChipButton) {
+            String drinkEntered = dataBinding.textInputDrinks.getText().toString();
+            if (!drinkEntered.trim().isEmpty() && !chipExists(drinkEntered, dataBinding.drinksChipGroup)) {
                 Chip newChip = new Chip(CreatePartyActivity.this);
                 ChipDrawable drawable = ChipDrawable.createFromAttributes(this, null, 0, R.style.Widget_MaterialComponents_Chip_Choice);  //change to CustomChip style in the future
                 newChip.setChipDrawable(drawable);
                 newChip.setText(drinkEntered);
                 party.getDrinks().add(drinkEntered);
                 newChip.setChecked(true);
-                viewBinding.drinksChipGroup.addView(newChip);
+                dataBinding.drinksChipGroup.addView(newChip);
             }
-            viewBinding.textInputDrinks.setText("");
-        } else if (v == viewBinding.submitButton) {
+            dataBinding.textInputDrinks.setText("");
+        } else if (v == dataBinding.submitButton) {
             partiesRepo.add(party)
                     .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                         @Override
@@ -371,8 +373,8 @@ public class CreatePartyActivity extends AppCompatActivity implements View.OnCli
                         @Override
                         public void onFailure(@NonNull Exception e) {
                             e.printStackTrace();
-                            Log.e(TAG,"Persisting party failed");
-                            Snackbar.make(viewBinding.getRoot(), "Saving failed", Snackbar.LENGTH_SHORT).show();
+                            Log.e(TAG, "Persisting party failed");
+                            Snackbar.make(dataBinding.getRoot(), "Saving failed", Snackbar.LENGTH_SHORT).show();
                         }
                     });
         }

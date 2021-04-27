@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Party Maker</string>
+    <string name="title_activity_main2">MainActivity2</string>
+    <string name="tab_text_1">Party Maker</string>
+    <string name="tab_text_2">Upcoming</string>
+    <string name="tab_text_3">Past</string>
 </resources>
