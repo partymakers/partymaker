@@ -29,13 +29,8 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseUser user;
 
     private ActivityMainBinding dataBinding;
+    private Bundle userInfo = new Bundle();
 
-// TODO: user name&email setter
-
-//    protected void setUserInfoTextViews() {
-//        dataBinding.textViewName.setText(user.getDisplayName());
-//        dataBinding.textViewEmail.setText(user.getEmail());
-//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +49,8 @@ public class MainActivity extends AppCompatActivity {
         if (user == null) {
             createLoginIntent();
         } else {
-            //setUserInfoTextViews();
+            userInfo.putString("name", user.getDisplayName());
+            userInfo.putString("email", user.getEmail());
         }
     }
 
@@ -90,11 +86,12 @@ public class MainActivity extends AppCompatActivity {
         if (resultCode == RESULT_OK) {
             Log.i(TAG, "Login successful");
             user = firebaseAuth.getCurrentUser();
-            //dataBinding.textViewLoginStatus.setText("Login successful");
-            //setUserInfoTextViews();
+            userInfo.putString("name", user.getDisplayName());
+            userInfo.putString("email", user.getEmail());
+            userInfo.putString("status", "Login successful");
         } else if (resultCode == RESULT_CANCELED || response == null) {
             Log.w(TAG, "Login cancelled");
-            //dataBinding.textViewLoginStatus.setText("Login cancelled");
+            userInfo.putString("status", "Login cancelled");
         } else {
             String message = "Login failed";
             if (response != null) {
@@ -102,7 +99,11 @@ public class MainActivity extends AppCompatActivity {
                 message += ". Error code: " + errorCode;
             }
             Log.e(TAG, message);
-            //dataBinding.textViewLoginStatus.setText(message);
+            userInfo.putString("status", message);
         }
+    }
+
+    public Bundle getUserInfo() {
+        return userInfo;
     }
 }
