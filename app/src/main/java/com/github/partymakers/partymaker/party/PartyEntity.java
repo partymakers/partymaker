@@ -8,7 +8,6 @@ import androidx.databinding.Bindable;
 
 import com.google.firebase.firestore.DocumentId;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,7 +39,7 @@ public class PartyEntity extends BaseObservable implements Parcelable {
     private String dressCode;
     private List<String> food = new ArrayList<>();
     private List<String> drinks = new ArrayList<>();
-    private BigDecimal fee;
+    private String fee;
     private boolean allowsPartner;
     private boolean allowsChildren;
     private boolean allowsFriends;
@@ -66,7 +65,7 @@ public class PartyEntity extends BaseObservable implements Parcelable {
         dest.writeString(dressCode);
         dest.writeStringList(food);
         dest.writeStringList(drinks);
-        dest.writeValue(fee);
+        dest.writeString(fee);
         boolean[] allows = {allowsPartner, allowsChildren, allowsFriends, allowsPets};
         dest.writeBooleanArray(allows);
         dest.writeString(parkingDetails);
@@ -88,7 +87,7 @@ public class PartyEntity extends BaseObservable implements Parcelable {
         dressCode = parcel.readString();
         parcel.readStringList(food);
         parcel.readStringList(drinks);
-        fee = (BigDecimal) parcel.readValue(classLoader);
+        fee = parcel.readString();
         boolean[] allows = new boolean[4];
         parcel.readBooleanArray(allows);
         allowsPartner = allows[0];
@@ -194,11 +193,11 @@ public class PartyEntity extends BaseObservable implements Parcelable {
     }
 
     @Bindable
-    public BigDecimal getFee() {
+    public String getFee() {
         return fee;
     }
 
-    public void setFee(BigDecimal fee) {
+    public void setFee(String fee) {
         this.fee = fee;
     }
 
