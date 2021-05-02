@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".party.JoinPartyActivity">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/headerLayout"
+                    android:layout_width="416dp"
+                    android:layout_height="222dp"
+                    android:background="@drawable/join_party"
+                    app:layout_constraintBottom_toTopOf="@id/headerLayout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.6"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0">
+
+                    <TextView
+                        android:id="@+id/textViewHeader"
+                        android:layout_width="399dp"
+                        android:layout_height="39dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="181dp"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginBottom="2dp"
+                        android:text="You've been invited to a party!"
+                        android:textColor="@color/white"
+                        android:textSize="28sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/textViewDetails"
+                    android:layout_width="375dp"
+                    android:layout_height="28dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="Here are the details:"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toTopOf="@id/linearLayoutJoin"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/headerLayout" />
+
+                <LinearLayout
+                    android:id="@+id/linearLayoutJoin"
+                    android:layout_width="375dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewDetails">
+
+                    <TextView
+                        android:id="@+id/textViewJoinOrganizer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Organizer's name" />
+
+                    <TextView
+                        android:id="@+id/textViewJoinName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Party Name" />
+
+                    <TextView
+                        android:id="@+id/textViewJoinDescription"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Party Description" />
+
+                    <TextView
+                        android:id="@+id/textViewJoinDateTime"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Date and time" />
+
+                    <TextView
+                        android:id="@+id/textViewJoinLocation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Location" />
+
+                    <TextView
+                        android:id="@+id/textViewJoinTheme"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Theme" />
+
+                    <TextView
+                        android:id="@+id/textViewJoinDresscode"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Dress code" />
+
+                    <TextView
+                        android:id="@+id/textViewJoinFood"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Food" />
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/switchJoinFood"
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="3dp"
+                        android:layout_weight="1"
+                        android:fontFamily="sans-serif"
+                        android:text="I have dietary restrictions"
+                        android:textSize="16sp"
+                        android:theme="@style/CustomSwitch" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/foodJoinInputLayout"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="65dp"
+                        android:layout_marginTop="2dp"
+                        android:visibility="gone">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/textInputJoinFood"
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:hint="Special, allergies, vegan"
+                            android:inputType="text"
+                            android:maxLines="1"
+                            android:textSize="16sp"
+                            android:visibility="gone" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <TextView
+                        android:id="@+id/textViewJoinDrinks"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Drinks" />
+
+                    <TextView
+                        android:id="@+id/textViewJoinFee"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Entry fee" />
+
+                    <TextView
+                        android:id="@+id/textViewJoinCompany"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Company" />
+
+                    <TextView
+                        android:id="@+id/textViewJoinParking"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Parking information" />
+
+                    <TextView
+                        android:id="@+id/textViewJoinInfo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Additional information" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/infoJoinInputLayout"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="65dp"
+                        android:layout_marginTop="10dp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/infoInputJoinFood"
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:hint="Additional remarks for the host"
+                            android:inputType="text"
+                            android:maxLines="1"
+                            android:textSize="16sp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
