@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 
-import androidx.databinding.Bindable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
@@ -16,7 +15,7 @@ import com.github.partymakers.partymaker.MainActivity;
 import com.github.partymakers.partymaker.R;
 import com.github.partymakers.partymaker.databinding.FragmentDashboardBinding;
 import com.github.partymakers.partymaker.party.CreatePartyActivity;
-import com.github.partymakers.partymaker.party.JoinPartyActivity;
+import com.github.partymakers.partymaker.party.ViewPartyActivity;
 
 
 public class DashboardFragment extends Fragment {
@@ -46,7 +45,7 @@ public class DashboardFragment extends Fragment {
         join.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), JoinPartyActivity.class);
+                Intent intent = new Intent(getActivity(), ViewPartyActivity.class);
                 startActivity(intent);
             }
         });

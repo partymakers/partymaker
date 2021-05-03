@@ -5,12 +5,15 @@
 
     <data>
 
+        <variable
+            name="party"
+            type="com.github.partymakers.partymaker.party.PartyEntity" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".party.JoinPartyActivity">
+        tools:context=".party.ViewPartyActivity">
 
         <ScrollView
             android:layout_width="match_parent"
@@ -45,113 +48,86 @@
                         android:layout_marginTop="181dp"
                         android:layout_marginEnd="5dp"
                         android:layout_marginBottom="2dp"
-                        android:text="You've been invited to a party!"
+                        android:text='@{party.name + " party"}'
                         android:textColor="@color/white"
                         android:textSize="28sp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintStart_toStartOf="parent" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <TextView
                     android:id="@+id/textViewDetails"
                     android:layout_width="375dp"
                     android:layout_height="28dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="20dp"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginStart="19dp"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginEnd="17dp"
+                    android:layout_marginBottom="17dp"
                     android:text="Here are the details:"
                     android:textColor="@color/black"
                     android:textSize="20sp"
-                    app:layout_constraintBottom_toTopOf="@id/linearLayoutJoin"
+                    app:layout_constraintBottom_toTopOf="@+id/linearLayoutViewParty"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/headerLayout" />
 
                 <LinearLayout
-                    android:id="@+id/linearLayoutJoin"
-                    android:layout_width="375dp"
+                    android:id="@+id/linearLayoutViewParty"
+                    android:layout_width="373dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="20dp"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginStart="19dp"
+                    android:layout_marginTop="17dp"
+                    android:layout_marginEnd="19dp"
+                    android:layout_marginBottom="20dp"
                     android:orientation="vertical"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintBottom_toTopOf="@+id/buttonsViewParty"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textViewDetails">
 
                     <TextView
-                        android:id="@+id/textViewJoinOrganizer"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Organizer's name" />
-
-                    <TextView
-                        android:id="@+id/textViewJoinName"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Party Name" />
-
-                    <TextView
                         android:id="@+id/textViewJoinDescription"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Party Description" />
+                        android:text="@{party.description}" />
 
                     <TextView
                         android:id="@+id/textViewJoinDateTime"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Date and time" />
+                        android:layout_height="wrap_content" />
 
                     <TextView
                         android:id="@+id/textViewJoinLocation"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Location" />
+                        android:text="@{party.location}" />
 
                     <TextView
                         android:id="@+id/textViewJoinTheme"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Theme" />
+                        android:text="@{party.theme}" />
 
                     <TextView
                         android:id="@+id/textViewJoinDresscode"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Dress code" />
+                        android:text="@{party.dressCode}" />
 
                     <TextView
                         android:id="@+id/textViewJoinFood"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Food" />
-
-                    <com.google.android.material.switchmaterial.SwitchMaterial
-                        android:id="@+id/switchJoinFood"
-                        android:layout_width="match_parent"
-                        android:layout_height="20dp"
-                        android:layout_marginTop="4dp"
-                        android:layout_marginBottom="3dp"
-                        android:layout_weight="1"
-                        android:fontFamily="sans-serif"
-                        android:text="I have dietary restrictions"
-                        android:textSize="16sp"
-                        android:theme="@style/CustomSwitch" />
+                        android:text="@{party.food.toString()}" />
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/foodJoinInputLayout"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="65dp"
-                        android:layout_marginTop="2dp"
-                        android:visibility="gone">
+                        android:layout_marginTop="2dp">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/textInputJoinFood"
@@ -160,8 +136,7 @@
                             android:hint="Special, allergies, vegan"
                             android:inputType="text"
                             android:maxLines="1"
-                            android:textSize="16sp"
-                            android:visibility="gone" />
+                            android:textSize="16sp" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -169,31 +144,31 @@
                         android:id="@+id/textViewJoinDrinks"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Drinks" />
+                        android:text="@{party.drinks.toString()}" />
 
                     <TextView
                         android:id="@+id/textViewJoinFee"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Entry fee" />
+                        android:text="@{party.fee.toString()}" />
 
                     <TextView
                         android:id="@+id/textViewJoinCompany"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Company" />
+                        android:text='@{"You can bring along: " + (party.allowsPartner == true ?  " partner" : "") + (party.allowsFriends == true ?  " friends" : "") + (party.allowsPets == true ?  " pets" : "")}' />
 
                     <TextView
                         android:id="@+id/textViewJoinParking"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Parking information" />
+                        android:text="@{party.parkingDetails}" />
 
                     <TextView
                         android:id="@+id/textViewJoinInfo"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Additional information" />
+                        android:text="@{party.additionalInformation}" />
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/infoJoinInputLayout"
@@ -212,6 +187,39 @@
                             android:textSize="16sp" />
 
                     </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/buttonsViewParty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="30dp"
+                    android:layout_marginBottom="20dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/linearLayoutViewParty">
+
+                    <Button
+                        android:id="@+id/button3"
+                        android:layout_width="120dp"
+                        android:layout_height="60dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/pastel_purple_light"
+                        android:text="Reject"
+                        android:textColor="@color/gorgeous_purple_darker" />
+
+                    <Button
+                        android:id="@+id/button4"
+                        android:layout_width="120dp"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/gorgeous_purple"
+                        android:text="Accept"
+                        android:textColor="@color/pastel_purple" />
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
