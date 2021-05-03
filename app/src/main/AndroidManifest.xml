@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/logo_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PartyMaker">
-        <activity android:name=".party.JoinPartyActivity"></activity>
+        <activity android:name=".party.ViewPartyActivity" />
         <activity android:name=".party.CreatePartyActivity" />
         <activity android:name=".user.LoginActivity" />
         <activity android:name=".MainActivity">
