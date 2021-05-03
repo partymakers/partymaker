@@ -6,6 +6,7 @@ import android.os.Parcelable;
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
 
+import com.github.partymakers.partymaker.BR;
 import com.google.firebase.firestore.DocumentId;
 
 import java.util.ArrayList;
@@ -145,6 +146,7 @@ public class PartyEntity extends BaseObservable implements Parcelable {
 
     public void setTimestamp(Long timestamp) {
         this.timestamp = timestamp;
+        notifyPropertyChanged(BR.timestamp);
     }
 
     @Bindable
