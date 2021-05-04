@@ -7,32 +7,28 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.github.partymakers.partymaker.R;
+import com.github.partymakers.partymaker.databinding.PartyItemBinding;
 import com.github.partymakers.partymaker.party.PartyEntity;
+import com.github.partymakers.partymaker.party.ViewPartyActivity;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import com.github.partymakers.partymaker.databinding.PartyItemBinding;
-import com.github.partymakers.partymaker.party.ViewPartyActivity;
-
-import static com.github.partymakers.partymaker.BR.party;
 import static com.github.partymakers.partymaker.BR.dateTime;
+import static com.github.partymakers.partymaker.BR.party;
 
 public class UpcomingPartiesRecyclerAdapter extends RecyclerView.Adapter<UpcomingPartiesRecyclerAdapter.ViewHolder> implements UpcomingPartiesCardClickListener {
-    private List<PartyEntity> parties;
+    private List<PartyEntity> parties = new ArrayList<>();
     private Context thiscontext;
     private View view;
-
-    public UpcomingPartiesRecyclerAdapter(List<PartyEntity> myDataset) {
-        this.parties = myDataset;
-        notifyDataSetChanged();
-    }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public PartyItemBinding partyItemBinding;
@@ -50,8 +46,9 @@ public class UpcomingPartiesRecyclerAdapter extends RecyclerView.Adapter<Upcomin
         }
     }
 
+    @NonNull
     @Override
-    public UpcomingPartiesRecyclerAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public UpcomingPartiesRecyclerAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         PartyItemBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.party_item, parent, false);
         thiscontext = parent.getContext();
         return new ViewHolder(binding);
@@ -76,4 +73,8 @@ public class UpcomingPartiesRecyclerAdapter extends RecyclerView.Adapter<Upcomin
         thiscontext.startActivity(intent);
     }
 
+    public void setParties(List<PartyEntity> parties) {
+        this.parties = parties;
+        notifyDataSetChanged();
+    }
 }
