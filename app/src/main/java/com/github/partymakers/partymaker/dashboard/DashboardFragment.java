@@ -1,11 +1,12 @@
 package com.github.partymakers.partymaker.dashboard;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -31,17 +32,26 @@ public class DashboardFragment extends Fragment {
         userViewModel = new ViewModelProvider(requireActivity()).get(UserViewModel.class);
         dataBinding.setViewmodel(userViewModel);
         dataBinding.setFragment(this);
-      
-        Button join = dataBinding.buttonJoin;
-        join.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), ViewPartyActivity.class);
-                startActivity(intent);
-            }
-        });
 
         return dataBinding.getRoot();
+    }
+
+    public void onJoin(View view) {
+        View dialogView = getLayoutInflater().inflate(R.layout.dialog_invite_code, null);
+        new AlertDialog.Builder(requireContext())
+                .setView(dialogView)
+                .setTitle("Enter invite code")
+                .setPositiveButton("Ok", (dialog, which) -> {
+                    EditText editText = dialogView.findViewById(R.id.inviteCode);
+                    if (editText.getText().length() > 0) {
+                        Intent intent = new Intent(getActivity(), ViewPartyActivity.class);
+                        intent.putExtra("partyCode", editText.getText().toString());
+                        startActivity(intent);
+                        dialog.dismiss();
+                    }
+                })
+                .setNegativeButton("Cancel", (dialog, which) -> dialog.cancel())
+                .show();
     }
 
     public void onOrganize(View view) {
