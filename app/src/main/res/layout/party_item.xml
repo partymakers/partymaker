@@ -5,23 +5,20 @@
     <data>
         <variable name="party" type="com.github.partymakers.partymaker.party.PartyEntity" />
         <variable name="dateTime" type="String" />
+        <variable
+            name="itemClickListener"
+            type="com.github.partymakers.partymaker.CustomClickListener" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <androidx.cardview.widget.CardView
+        android:layout_width="413dp"
+        android:layout_height="wrap_content"
+        android:onClick="@{() -> itemClickListener.cardClicked(party)}">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="401dp"
-            android:layout_height="148dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginBottom="5dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayout2"
@@ -46,28 +43,6 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
-
-                <ImageButton
-                    android:id="@+id/imageButtonItemPreview"
-                    android:layout_width="38dp"
-                    android:layout_height="37dp"
-                    android:layout_marginEnd="7dp"
-                    android:backgroundTint="@color/white"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/imageButtonItemEdit"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_baseline_preview_24" />
-
-                <ImageButton
-                    android:id="@+id/imageButtonItemEdit"
-                    android:layout_width="37dp"
-                    android:layout_height="37dp"
-                    android:layout_marginEnd="1dp"
-                    android:backgroundTint="#FFFFFF"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_baseline_edit_24" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -100,7 +75,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textViewItemName" />
+        </LinearLayout>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 </layout>

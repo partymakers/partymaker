@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.github.partymakers.partymaker.R;
 import com.github.partymakers.partymaker.databinding.ActivityViewPartyBinding;
@@ -38,6 +39,9 @@ public class ViewPartyActivity extends AppCompatActivity {
 //            dataBinding.imageButtonViewPartyEdit.setVisibility(View.VISIBLE);
 //            dataBinding.buttonsViewParty.setVisibility(View.GONE);
 //        }
+
+        String id = getIntent().getStringExtra("partyID");
+        Toast.makeText(ViewPartyActivity.this.getApplicationContext(), id, Toast.LENGTH_SHORT).show();
 
         if (party.getTimestamp() != null) {
             String dateTime = SimpleDateFormat.getDateTimeInstance(DateFormat.FULL, 2).format(new Date(party.getTimestamp()));
