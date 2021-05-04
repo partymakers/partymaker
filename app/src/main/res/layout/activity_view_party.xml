@@ -234,7 +234,19 @@
                             android:textSize="16sp" />
 
                     </com.google.android.material.textfield.TextInputLayout>
+
+                    <TextView
+                        android:id="@+id/textViewJoinCode"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text='@{"Access code: " + viewmodel.party.id}'
+                        android:textSize="20sp"
+                        android:layout_marginTop="20dp"
+                        android:textIsSelectable="true"
+                        android:textStyle="bold|italic" />
                 </LinearLayout>
+
+
 
                 <LinearLayout
                     android:id="@+id/buttonsViewParty"
