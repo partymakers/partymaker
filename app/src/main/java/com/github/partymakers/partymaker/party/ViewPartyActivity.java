@@ -18,21 +18,6 @@ public class ViewPartyActivity extends AppCompatActivity {
 
     PartyEntity party = new PartyEntity();
 
-    {
-        party.setName("Dope af");
-        party.setDescription("Long loooooooooong description");
-        party.setTimestamp(new Date().getTime());
-        party.setLocation("location");
-        party.setTheme("theme");
-        party.setDressCode("dress code");
-        party.setFood(Arrays.asList("Pizza", "Kebab", "Saszety"));
-        party.setDrinks(Arrays.asList("Vodka", "Tea", "void juice"));
-        party.setFee("miljon cebulionów");
-        party.setAllowsPartner(true);
-        party.setParkingDetails("just walk, duh");
-        party.setAdditionalInformation("grass is green");
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
