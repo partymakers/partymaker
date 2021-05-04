@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.github.partymakers.partymaker.R;
-import com.github.partymakers.partymaker.UpcomingPartiesRecyclerAdapter;
 import com.github.partymakers.partymaker.databinding.FragmentUpcomingPartiesBinding;
 import com.github.partymakers.partymaker.party.PartyEntity;
 

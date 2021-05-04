@@ -6,7 +6,7 @@
 
         <variable
             name="myAdapter"
-            type="com.github.partymakers.partymaker.UpcomingPartiesRecyclerAdapter" />
+            type="com.github.partymakers.partymaker.dashboard.UpcomingPartiesRecyclerAdapter" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

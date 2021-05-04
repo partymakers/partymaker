@@ -1,4 +1,4 @@
-package com.github.partymakers.partymaker;
+package com.github.partymakers.partymaker.dashboard;
 
 import com.github.partymakers.partymaker.party.PartyEntity;
 

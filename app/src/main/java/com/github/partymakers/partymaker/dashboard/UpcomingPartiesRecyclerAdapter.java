@@ -1,4 +1,4 @@
-package com.github.partymakers.partymaker;
+package com.github.partymakers.partymaker.dashboard;
 
 
 import android.content.Context;
@@ -10,11 +10,11 @@ import android.view.ViewGroup;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.github.partymakers.partymaker.R;
 import com.github.partymakers.partymaker.party.PartyEntity;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
