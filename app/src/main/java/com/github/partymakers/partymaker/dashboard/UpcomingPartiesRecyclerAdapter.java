@@ -57,7 +57,7 @@ public class UpcomingPartiesRecyclerAdapter extends RecyclerView.Adapter<Upcomin
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
         PartyEntity party = parties.get(position);
-        String dateTime = SimpleDateFormat.getDateTimeInstance(DateFormat.FULL, 2).format(new Date(party.getTimestamp()));
+        String dateTime = SimpleDateFormat.getDateTimeInstance(DateFormat.FULL, 3).format(new Date(party.getTimestamp()));
         holder.bind(party, dateTime);
         holder.partyItemBinding.setItemClickListener(this);
     }
