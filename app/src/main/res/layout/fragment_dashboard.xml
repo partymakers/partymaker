@@ -113,6 +113,7 @@
 
                     <Button
                         android:id="@+id/buttonJoin"
+                        android:onClick="@{fragment::onJoin}"
                         android:layout_width="140dp"
                         android:layout_height="75dp"
                         android:layout_marginStart="35dp"
