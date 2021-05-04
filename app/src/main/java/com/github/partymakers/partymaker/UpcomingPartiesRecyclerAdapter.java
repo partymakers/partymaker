@@ -24,8 +24,8 @@ import com.github.partymakers.partymaker.party.ViewPartyActivity;
 import static com.github.partymakers.partymaker.BR.party;
 import static com.github.partymakers.partymaker.BR.dateTime;
 
-public class UpcomingPartiesRecyclerAdapter extends RecyclerView.Adapter<UpcomingPartiesRecyclerAdapter.ViewHolder> implements CustomClickListener {
-    private List<PartyEntity> parties = new ArrayList<>();
+public class UpcomingPartiesRecyclerAdapter extends RecyclerView.Adapter<UpcomingPartiesRecyclerAdapter.ViewHolder> implements UpcomingPartiesCardClickListener {
+    private List<PartyEntity> parties;
     private Context thiscontext;
     private View view;
 
@@ -43,8 +43,8 @@ public class UpcomingPartiesRecyclerAdapter extends RecyclerView.Adapter<Upcomin
             this.partyItemBinding = binding;
         }
 
-        public void bind(Object obj, String date) {
-            partyItemBinding.setVariable(party, obj);
+        public void bind(PartyEntity partyEntity, String date) {
+            partyItemBinding.setVariable(party, partyEntity);
             partyItemBinding.setVariable(dateTime, date);
             partyItemBinding.executePendingBindings();
         }
@@ -70,9 +70,9 @@ public class UpcomingPartiesRecyclerAdapter extends RecyclerView.Adapter<Upcomin
         return parties.size();
     }
 
-    public void cardClicked(PartyEntity p) {
+    public void onCardClicked(PartyEntity partyEntity) {
         Intent intent = new Intent(view.getContext(), ViewPartyActivity.class);
-        intent.putExtra("partyID", p.getId());
+        intent.putExtra("partyCode", partyEntity.getId());
         thiscontext.startActivity(intent);
     }
 

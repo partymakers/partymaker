@@ -7,13 +7,13 @@
         <variable name="dateTime" type="String" />
         <variable
             name="itemClickListener"
-            type="com.github.partymakers.partymaker.CustomClickListener" />
+            type="com.github.partymakers.partymaker.UpcomingPartiesCardClickListener" />
     </data>
 
     <androidx.cardview.widget.CardView
         android:layout_width="413dp"
         android:layout_height="wrap_content"
-        android:onClick="@{() -> itemClickListener.cardClicked(party)}">
+        android:onClick="@{() -> itemClickListener.onCardClicked(party)}">
 
         <LinearLayout
             android:layout_width="match_parent"
