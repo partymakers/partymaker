@@ -11,6 +11,11 @@ import androidx.lifecycle.ViewModelProvider;
 import com.github.partymakers.partymaker.R;
 import com.github.partymakers.partymaker.databinding.ActivityViewPartyBinding;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+
+import java.util.Date;
+
 public class ViewPartyActivity extends AppCompatActivity {
     private ViewPartyViewModel viewModel;
     private ActivityViewPartyBinding dataBinding;
