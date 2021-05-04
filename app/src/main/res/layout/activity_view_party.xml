@@ -4,12 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
-        <variable
-            name="party"
-            type="com.github.partymakers.partymaker.party.PartyEntity" />
-
         <import type="android.view.View" />
+        <variable
+            name="viewmodel"
+            type="com.github.partymakers.partymaker.party.ViewPartyViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -49,11 +47,11 @@
                         android:layout_marginStart="20dp"
                         android:layout_marginEnd="5dp"
                         android:layout_marginBottom="2dp"
-                        android:text='@{party.name + " party"}'
+                        android:text='@{viewmodel.party.name}'
                         android:textColor="@color/white"
                         android:textSize="28sp"
                         android:textStyle="bold"
-                        android:visibility="@{party.name != null ? View.VISIBLE : View.GONE}"
+                        android:visibility="@{viewmodel.party.name != null ? View.VISIBLE : View.GONE}"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent" />
@@ -74,6 +72,8 @@
 
                 <ImageButton
                     android:id="@+id/imageButtonViewPartyEdit"
+                    android:visibility="@{viewmodel.editable ? View.VISIBLE : View.GONE}"
+                    android:onClick="onEdit"
                     android:layout_width="60dp"
                     android:layout_height="50dp"
                     android:layout_marginTop="7dp"
@@ -103,12 +103,14 @@
                         android:id="@+id/textViewPartyDescription"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text='@{"Description: " + party.description}'
+                        android:text='@{"Description: " + viewmodel.party.description}'
                         android:textSize="20dp"
-                        android:visibility="@{party.description != null ? View.VISIBLE : View.GONE}" />
+                        android:visibility="@{viewmodel.party.description != null ? View.VISIBLE : View.GONE}" />
 
                     <TextView
                         android:id="@+id/textViewPartyDateTime"
+                        android:text='@{"When: " + viewmodel.formattedDateTime}'
+                        android:visibility="@{viewmodel.party.timestamp != null ? View.VISIBLE : View.GONE}"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
@@ -119,36 +121,36 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text='@{"Where: " + party.location}'
+                        android:text='@{"Where: " + viewmodel.party.location}'
                         android:textSize="20dp"
-                        android:visibility="@{party.location != null ? View.VISIBLE : View.GONE}" />
+                        android:visibility="@{viewmodel.party.location != null ? View.VISIBLE : View.GONE}" />
 
                     <TextView
                         android:id="@+id/textViewPartyTheme"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text='@{"Theme: " + party.theme}'
+                        android:text='@{"Theme: " + viewmodel.party.theme}'
                         android:textSize="20dp"
-                        android:visibility="@{party.theme != null ? View.VISIBLE : View.GONE}" />
+                        android:visibility="@{viewmodel.party.theme != null ? View.VISIBLE : View.GONE}" />
 
                     <TextView
                         android:id="@+id/textViewPartyDresscode"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text='@{"Dress code: " + party.dressCode}'
+                        android:text='@{"Dress code: " + viewmodel.party.dressCode}'
                         android:textSize="20dp"
-                        android:visibility="@{party.dressCode != null ? View.VISIBLE : View.GONE}" />
+                        android:visibility="@{viewmodel.party.dressCode != null ? View.VISIBLE : View.GONE}" />
 
                     <TextView
                         android:id="@+id/textViewPartyFood"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text='@{"Food: " + party.food.toString().replace("[", "").replace("]", "")}'
+                        android:text='@{"Food: " + viewmodel.party.food.toString().replace("[", "").replace("]", "")}'
                         android:textSize="20dp"
-                        android:visibility="@{party.food != null ? View.VISIBLE : View.GONE}" />
+                        android:visibility="@{viewmodel.party.food != null ? View.VISIBLE : View.GONE}" />
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/foodJoinInputLayout"
@@ -174,45 +176,45 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text='@{"Drinks: " + party.drinks.toString().replace("[", "").replace("]", "")}'
+                        android:text='@{"Drinks: " + viewmodel.party.drinks.toString().replace("[", "").replace("]", "")}'
                         android:textSize="20dp"
-                        android:visibility="@{party.drinks != null ? View.VISIBLE : View.GONE}" />
+                        android:visibility="@{viewmodel.party.drinks != null ? View.VISIBLE : View.GONE}" />
 
                     <TextView
                         android:id="@+id/textViewPartyFee"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text='@{"Entry fee: " + party.fee}'
+                        android:text='@{"Entry fee: " + viewmodel.party.fee}'
                         android:textSize="20dp"
-                        android:visibility="@{party.fee != null ? View.VISIBLE : View.GONE}" />
+                        android:visibility="@{viewmodel.party.fee != null ? View.VISIBLE : View.GONE}" />
 
                     <TextView
                         android:id="@+id/textViewPartyCompany"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text='@{"You can bring along: " + (party.allowsPartner == true ?  " partner" : "") + (party.allowsFriends == true ?  " friends" : "") + (party.allowsPets == true ?  " pets" : "")}'
+                        android:text='@{"You can bring along: " + (viewmodel.party.allowsPartner == true ?  " partner" : "") + (viewmodel.party.allowsFriends == true ?  " friends" : "") + (viewmodel.party.allowsPets == true ?  " pets" : "")}'
                         android:textSize="20dp"
-                        android:visibility="@{((party.allowsPartner != false) || (party.allowsFriends != false) || (party.allowsPets != false))? View.VISIBLE : View.GONE}" />
+                        android:visibility="@{(viewmodel.party.allowsPartner || viewmodel.party.allowsFriends || viewmodel.party.allowsPets) ? View.VISIBLE : View.GONE}" />
 
                     <TextView
                         android:id="@+id/textViewPartyParking"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text='@{"Parking details: " + party.parkingDetails}'
+                        android:text='@{"Parking details: " + viewmodel.party.parkingDetails}'
                         android:textSize="20dp"
-                        android:visibility="@{party.parkingDetails != null ? View.VISIBLE : View.GONE}" />
+                        android:visibility="@{viewmodel.party.parkingDetails != null ? View.VISIBLE : View.GONE}" />
 
                     <TextView
                         android:id="@+id/textViewPartyInfo"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text='@{"Additional information: " + party.additionalInformation}'
+                        android:text='@{"Additional information: " + viewmodel.party.additionalInformation}'
                         android:textSize="20dp"
-                        android:visibility="@{party.additionalInformation != null ? View.VISIBLE : View.GONE}" />
+                        android:visibility="@{viewmodel.party.additionalInformation != null ? View.VISIBLE : View.GONE}" />
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/infoViewPartyInputLayout"
@@ -249,16 +251,19 @@
 
                     <Button
                         android:id="@+id/buttonReject"
+                        android:onClick="onRespond"
                         android:layout_width="120dp"
                         android:layout_height="60dp"
                         android:layout_marginRight="20dp"
                         android:layout_weight="1"
                         android:backgroundTint="@color/pastel_purple_light"
-                        android:text="Reject"
+                        android:text='@{viewmodel.isParticipant ? "Not Going" : "Reject"}'
                         android:textColor="@color/gorgeous_purple_darker" />
 
                     <Button
-                        android:id="@+id/button4"
+                        android:id="@+id/buttonAccept"
+                        android:visibility="@{viewmodel.isParticipant ? View.GONE : View.VISIBLE}"
+                        android:onClick="onRespond"
                         android:layout_width="120dp"
                         android:layout_height="60dp"
                         android:layout_weight="1"

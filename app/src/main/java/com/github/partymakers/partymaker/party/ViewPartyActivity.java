@@ -1,9 +1,12 @@
 package com.github.partymakers.partymaker.party;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
-
-import android.os.Bundle;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.github.partymakers.partymaker.R;
 import com.github.partymakers.partymaker.databinding.ActivityViewPartyBinding;
@@ -14,34 +17,41 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class ViewPartyActivity extends AppCompatActivity {
+    private ViewPartyViewModel viewModel;
     private ActivityViewPartyBinding dataBinding;
-
-    PartyEntity party = new PartyEntity();
+    private String partyCode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        partyCode = getIntent().getStringExtra("partyCode");
+
         dataBinding = DataBindingUtil.setContentView(this, R.layout.activity_view_party);
         setContentView(dataBinding.getRoot());
-        dataBinding.setParty(party);
+        dataBinding.setLifecycleOwner(this);
 
+        viewModel = new ViewModelProvider(this).get(ViewPartyViewModel.class);
+        viewModel.setPartyId(partyCode);
+//        viewModel.getParty(partyCode).observe(this, partyEntity -> {
+//            dataBinding.setParty(partyEntity);
+//        });
+        dataBinding.setViewmodel(viewModel);
+    }
 
-//for the future (add "intent.putExtra("type", "edit");" to DashboardFragment.java - join button onclick)
-//        Bundle bundle = getIntent().getExtras();
-//
-//        if (bundle.getString("type").equals("join")) {
-//            dataBinding.imageButtonViewPartyEdit.setVisibility(View.GONE);
-//            dataBinding.buttonsViewParty.setVisibility(View.VISIBLE);
-//            //dataBinding.foodJoinInputLayout.setVisibility(View.VISIBLE);
-//            //dataBinding.infoViewPartyInputLayout.setVisibility(View.VISIBLE);
-//        } else if (bundle.getString("type").equals("edit")) {
-//            dataBinding.imageButtonViewPartyEdit.setVisibility(View.VISIBLE);
-//            dataBinding.buttonsViewParty.setVisibility(View.GONE);
-//        }
+    public void onEdit(View view) {
+        Intent intent = new Intent(this, CreatePartyActivity.class);
+        intent.putExtra("party", viewModel.getParty().getValue());
+        startActivity(intent);
+    }
 
-        if (party.getTimestamp() != null) {
-            String dateTime = SimpleDateFormat.getDateTimeInstance(DateFormat.FULL, 2).format(new Date(party.getTimestamp()));
-            dataBinding.textViewPartyDateTime.setText("When: " + dateTime);
+    public void onRespond(View view) {
+        if (view == dataBinding.buttonAccept) {
+            viewModel.acceptInvitation();
+        } else if (view == dataBinding.buttonReject) {
+            if (!viewModel.rejectInvitation()) {
+                finish();
+            }
         }
     }
 }
