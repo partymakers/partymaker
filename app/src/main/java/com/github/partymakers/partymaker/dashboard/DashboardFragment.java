@@ -15,8 +15,8 @@ import androidx.lifecycle.ViewModelProvider;
 import com.github.partymakers.partymaker.R;
 import com.github.partymakers.partymaker.databinding.FragmentDashboardBinding;
 import com.github.partymakers.partymaker.party.CreatePartyActivity;
+import com.github.partymakers.partymaker.party.ViewPartyActivity;
 import com.github.partymakers.partymaker.user.UserViewModel;
-
 
 public class DashboardFragment extends Fragment {
     private FragmentDashboardBinding dataBinding;
@@ -30,6 +30,15 @@ public class DashboardFragment extends Fragment {
         userViewModel = new ViewModelProvider(requireActivity()).get(UserViewModel.class);
         dataBinding.setViewmodel(userViewModel);
         dataBinding.setFragment(this);
+      
+        Button join = dataBinding.buttonJoin;
+        join.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), ViewPartyActivity.class);
+                startActivity(intent);
+            }
+        });
 
         return dataBinding.getRoot();
     }
