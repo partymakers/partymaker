@@ -4,8 +4,15 @@
     xmlns:card_view="http://schemas.android.com/tools">
 
     <data>
-        <variable name="party" type="com.github.partymakers.partymaker.party.PartyEntity" />
-        <variable name="dateTime" type="String" />
+
+        <variable
+            name="party"
+            type="com.github.partymakers.partymaker.party.PartyEntity" />
+
+        <variable
+            name="dateTime"
+            type="String" />
+
         <variable
             name="itemClickListener"
             type="com.github.partymakers.partymaker.dashboard.UpcomingPartiesCardClickListener" />
