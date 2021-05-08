@@ -59,17 +59,19 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginRight="20dp"
                     android:orientation="horizontal"
                     android:visibility="@{viewmodel.party.name != null ? View.VISIBLE : View.GONE}">
 
-                    <ImageView
-                        android:layout_width="50dp"
+                    <TextView
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        app:srcCompat="@drawable/baseline_celebration_24" />
+                        android:layout_gravity="center"
+                        android:text='@string/Celebration'
+                        android:textSize="40sp" />
 
                     <TextView
                         android:layout_width="300dp"
@@ -96,7 +98,7 @@
                         android:layout_width="300dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:text='@{viewmodel.isParticipant ? "Here are the details" : "Details"}'
+                        android:text='@{!viewmodel.isOrganiser ? "Here are the details" : "Details"}'
                         android:textColor="@color/black"
                         android:textSize="18sp"
                         android:textStyle="italic"
@@ -137,21 +139,23 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:orientation="horizontal"
                         android:visibility="@{viewmodel.party.timestamp != null ? View.VISIBLE : View.GONE}">
 
-                        <ImageView
-                            android:layout_width="50dp"
-                            android:layout_height="match_parent"
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            app:srcCompat="@drawable/ic_baseline_event_24" />
+                            android:text='@string/DateTime'
+                            android:textSize="30sp" />
 
                         <TextView
                             android:layout_width="300dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
+                            android:layout_marginLeft="10dp"
                             android:layout_marginTop="5dp"
                             android:layout_marginBottom="10dp"
                             android:text='@{viewmodel.formattedDateTime}'
@@ -161,21 +165,23 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:orientation="horizontal"
                         android:visibility="@{viewmodel.party.location != null ? View.VISIBLE : View.GONE}">
 
-                        <ImageView
-                            android:layout_width="50dp"
+                        <TextView
+                            android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:layout_gravity="center"
-                            app:srcCompat="@drawable/ic_baseline_location_on_24" />
+                            android:text='@string/Location'
+                            android:textSize="30sp" />
 
                         <TextView
                             android:layout_width="300dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
+                            android:layout_marginLeft="10dp"
                             android:layout_marginTop="5dp"
                             android:layout_marginBottom="10dp"
                             android:text='@{viewmodel.party.location}'
@@ -188,7 +194,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
                         android:layout_marginBottom="10dp"
-                        android:text='@{"Description"}'
+                        android:text='@string/Description'
                         android:textColor="@color/gorgeous_purple"
                         android:textSize="20sp"
                         android:textStyle="bold|italic"
@@ -210,7 +216,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
-                        android:text='@{"Theme"}'
+                        android:text='@string/Theme'
                         android:textColor="@color/gorgeous_purple"
                         android:textSize="20sp"
                         android:textStyle="bold|italic"
@@ -231,7 +237,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
-                        android:text='@{"Dress code"}'
+                        android:text='@string/Dress_code'
                         android:textColor="@color/gorgeous_purple"
                         android:textSize="20sp"
                         android:textStyle="bold|italic"
@@ -242,7 +248,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="10dp"
-                        android:text='@{"Dress code: " + viewmodel.party.dressCode}'
+                        android:text='@{viewmodel.party.dressCode}'
                         android:textColor="@color/black"
                         android:textSize="20sp"
                         android:visibility="@{viewmodel.party.dressCode != null ? View.VISIBLE : View.GONE}" />
@@ -266,11 +272,12 @@
                         android:orientation="horizontal"
                         android:visibility="@{viewmodel.party.food != null ? View.VISIBLE : View.GONE}">
 
-                        <ImageView
+                        <TextView
                             android:layout_width="50dp"
-                            android:layout_height="50dp"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            app:srcCompat="@drawable/baseline_restaurant_24" />
+                            android:text='@string/Food'
+                            android:textSize="30sp" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -292,11 +299,12 @@
                         android:orientation="horizontal"
                         android:visibility="@{viewmodel.party.drinks != null ? View.VISIBLE : View.GONE}">
 
-                        <ImageView
+                        <TextView
                             android:layout_width="50dp"
-                            android:layout_height="50dp"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            app:srcCompat="@drawable/baseline_liquor_24" />
+                            android:text='@string/Drinks'
+                            android:textSize="30sp" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -313,7 +321,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
-                        android:text='@{"Entry fee"}'
+                        android:text='@string/Entry_fee'
                         android:textColor="@color/gorgeous_purple"
                         android:textSize="20sp"
                         android:textStyle="bold|italic"
@@ -343,7 +351,7 @@
 
                     <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
                         android:orientation="horizontal"
@@ -351,17 +359,18 @@
 
                         <LinearLayout
                             android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
                             android:orientation="vertical"
                             android:visibility="@{viewmodel.party.allowsPartner ? View.VISIBLE : View.GONE}">
 
-                            <ImageView
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-                                app:srcCompat="@drawable/ic_baseline_person_24" />
+                                android:text='@string/Partner'
+                                android:textSize="40sp" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -371,17 +380,18 @@
 
                         <LinearLayout
                             android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
                             android:orientation="vertical"
                             android:visibility="@{viewmodel.party.allowsFriends ? View.VISIBLE : View.GONE}">
 
-                            <ImageView
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-                                app:srcCompat="@drawable/ic_baseline_group_add_24" />
+                                android:text='@string/Friends'
+                                android:textSize="40sp" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -391,17 +401,18 @@
 
                         <LinearLayout
                             android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
                             android:orientation="vertical"
                             android:visibility="@{viewmodel.party.allowsChildren ? View.VISIBLE : View.GONE}">
 
-                            <ImageView
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-                                app:srcCompat="@drawable/ic_baseline_child_care_24" />
+                                android:text='@string/Children'
+                                android:textSize="40sp" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -411,17 +422,18 @@
 
                         <LinearLayout
                             android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
                             android:orientation="vertical"
                             android:visibility="@{viewmodel.party.allowsPets ? View.VISIBLE : View.GONE}">
 
-                            <ImageView
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-                                app:srcCompat="@drawable/ic_baseline_pets_24" />
+                                android:text='@string/Pets'
+                                android:textSize="40sp" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -435,7 +447,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
-                        android:text='@{"Parking details"}'
+                        android:text='@string/Parking_details'
                         android:textColor="@color/gorgeous_purple"
                         android:textSize="20sp"
                         android:textStyle="bold|italic"
@@ -477,7 +489,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
-                        android:text='@{"Access code"}'
+                        android:text='@string/Access_code'
                         android:textColor="@color/gorgeous_purple"
                         android:textSize="20sp"
                         android:textStyle="bold|italic" />
@@ -491,14 +503,14 @@
                         android:textColor="@color/black"
                         android:textIsSelectable="true"
                         android:textSize="20sp"
-                        android:textStyle="bold|italic" />
+                        android:textStyle="italic" />
                 </LinearLayout>
 
 
                 <LinearLayout
                     android:id="@+id/buttonsViewParty"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
                     android:layout_marginEnd="30dp"
                     android:layout_marginBottom="20dp"
