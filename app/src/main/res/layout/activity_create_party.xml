@@ -4,8 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="android.view.View"/>
-        <import type="com.github.partymakers.partymaker.party.CreatePartyActivity"/>
+
+        <import type="android.view.View" />
+
+        <import type="com.github.partymakers.partymaker.party.CreatePartyActivity" />
+
         <variable
             name="party"
             type="com.github.partymakers.partymaker.party.PartyEntity" />
@@ -85,14 +88,14 @@
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/textPartyDescription"
-                            android:text="@={party.description}"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:hint="Description"
                             android:imeOptions="actionNext"
                             android:inputType="textMultiLine"
                             android:maxLines="5"
-                            android:scrollbars="vertical" />
+                            android:scrollbars="vertical"
+                            android:text="@={party.description}" />
                     </com.google.android.material.textfield.TextInputLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -127,12 +130,12 @@
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/textDatePicked"
-                            android:text="@{CreatePartyActivity.timestampToDateString(party.timestamp)}"
-                            android:onClick="onDateTime"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:editable="false"
-                            android:hint="Date" />
+                            android:hint="Date"
+                            android:onClick="onDateTime"
+                            android:text="@{CreatePartyActivity.timestampToDateString(party.timestamp)}" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -153,11 +156,11 @@
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/textTimePicked"
-                            android:text="@{CreatePartyActivity.timestampToTimeString(party.timestamp)}"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:editable="false"
-                            android:hint="Time" />
+                            android:hint="Time"
+                            android:text="@{CreatePartyActivity.timestampToTimeString(party.timestamp)}" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -189,10 +192,10 @@
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/textLocationPicked"
-                            android:text="@={party.location}"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:hint="Location" />
+                            android:hint="Location"
+                            android:text="@={party.location}" />
                     </com.google.android.material.textfield.TextInputLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -244,7 +247,6 @@
 
                             <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/textInputTheme"
-                                android:text="@={party.theme}"
                                 android:layout_width="match_parent"
                                 android:layout_height="60dp"
                                 android:hint="Party theme"
@@ -252,6 +254,7 @@
                                 android:inputType="text"
                                 android:maxLines="1"
                                 android:nextFocusDown="@+id/dressCodeInputLayout"
+                                android:text="@={party.theme}"
                                 android:textSize="16sp" />
 
                         </com.google.android.material.textfield.TextInputLayout>
@@ -292,7 +295,6 @@
 
                             <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/textInputDressCode"
-                                android:text="@={party.dressCode}"
                                 android:layout_width="match_parent"
                                 android:layout_height="60dp"
                                 android:hint="Costume requirements"
@@ -300,6 +302,7 @@
                                 android:inputType="text"
                                 android:maxLines="1"
                                 android:nextFocusDown="@+id/foodChipInputLayout"
+                                android:text="@={party.dressCode}"
                                 android:textSize="16sp" />
 
                         </com.google.android.material.textfield.TextInputLayout>
@@ -363,10 +366,10 @@
 
                             <ImageButton
                                 android:id="@+id/foodChipButton"
-                                android:onClick="onAddChip"
                                 android:layout_width="50dp"
                                 android:layout_height="match_parent"
                                 android:background="@color/fui_transparent"
+                                android:onClick="onAddChip"
                                 app:srcCompat="@drawable/ic_baseline_add_circle_24" />
                         </LinearLayout>
 
@@ -441,11 +444,11 @@
 
                             <ImageButton
                                 android:id="@+id/drinksChipButton"
-                                android:onClick="onAddChip"
                                 android:layout_width="50dp"
                                 android:layout_height="match_parent"
-                                app:srcCompat="@drawable/ic_baseline_add_circle_24"
-                                android:background="@color/fui_transparent"/>
+                                android:background="@color/fui_transparent"
+                                android:onClick="onAddChip"
+                                app:srcCompat="@drawable/ic_baseline_add_circle_24" />
                         </LinearLayout>
 
                         <com.google.android.material.chip.ChipGroup
@@ -506,17 +509,17 @@
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toBottomOf="@+id/switchFee"
                                 app:startIconDrawable="@drawable/ic_baseline_monetization_on_24"
-                                app:startIconTint="?attr/colorSecondaryVariant" >
+                                app:startIconTint="?attr/colorSecondaryVariant">
 
                                 <com.google.android.material.textfield.TextInputEditText
                                     android:id="@+id/textInputFee"
-                                    android:text="@={party.fee}"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:hint="Entry fee"
                                     android:imeOptions="actionNext"
                                     android:inputType="numberDecimal"
                                     android:maxLines="1"
+                                    android:text="@={party.fee}"
                                     android:textSize="16sp" />
 
                             </com.google.android.material.textfield.TextInputLayout>
@@ -546,38 +549,38 @@
 
                         <CheckBox
                             android:id="@+id/checkBoxPartner"
-                            android:checked="@={party.allowsPartner}"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="20dp"
                             android:buttonTint="@color/gorgeous_purple"
+                            android:checked="@={party.allowsPartner}"
                             android:text="Partner" />
 
                         <CheckBox
                             android:id="@+id/checkBoxFriends"
-                            android:checked="@={party.allowsFriends}"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="20dp"
                             android:buttonTint="@color/gorgeous_purple"
+                            android:checked="@={party.allowsFriends}"
                             android:text="Friends" />
 
                         <CheckBox
                             android:id="@+id/checkBoxChildren"
-                            android:checked="@={party.allowsChildren}"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="20dp"
                             android:buttonTint="@color/gorgeous_purple"
+                            android:checked="@={party.allowsChildren}"
                             android:text="Children" />
 
                         <CheckBox
                             android:id="@+id/checkBoxPets"
-                            android:checked="@={party.allowsPets}"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="20dp"
                             android:buttonTint="@color/gorgeous_purple"
+                            android:checked="@={party.allowsPets}"
                             android:text="Pets" />
 
 
@@ -617,13 +620,13 @@
 
                             <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/textInputParking"
-                                android:text="@={party.parkingDetails}"
                                 android:layout_width="match_parent"
                                 android:layout_height="60dp"
                                 android:hint="Parking details"
                                 android:imeOptions="actionNext"
                                 android:inputType="text"
                                 android:maxLines="1"
+                                android:text="@={party.parkingDetails}"
                                 android:textSize="16sp" />
 
                         </com.google.android.material.textfield.TextInputLayout>
@@ -647,11 +650,10 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
                             app:startIconDrawable="@drawable/ic_baseline_info_24"
-                            app:startIconTint="?attr/colorSecondaryVariant" >
+                            app:startIconTint="?attr/colorSecondaryVariant">
 
                             <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/textInputInfo"
-                                android:text="@={party.additionalInformation}"
                                 android:layout_width="match_parent"
                                 android:layout_height="90dp"
                                 android:hint="Additional information"
@@ -659,6 +661,7 @@
                                 android:inputType="textMultiLine"
                                 android:maxLines="5"
                                 android:scrollbars="vertical"
+                                android:text="@={party.additionalInformation}"
                                 android:textSize="16sp" />
 
                         </com.google.android.material.textfield.TextInputLayout>
@@ -666,13 +669,13 @@
 
                     <Button
                         android:id="@+id/submitButton"
-                        android:onClick="onSubmit"
                         android:layout_width="120dp"
                         android:layout_height="65dp"
                         android:layout_marginLeft="120dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginRight="120dp"
                         android:layout_marginBottom="10dp"
+                        android:onClick="onSubmit"
                         android:text="Submit"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
