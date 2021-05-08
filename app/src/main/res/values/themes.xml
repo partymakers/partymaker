@@ -6,20 +6,15 @@
         <item name="colorPrimaryVariant">@color/gorgeous_purple_darker</item>
         <item name="colorOnPrimary">@color/black</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/gorgeous_purple</item>
-        <item name="colorSecondaryVariant">@color/gorgeous_purple_darker</item>
-        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorSecondary">@color/pastel_aquamarine_darker</item>
+        <item name="colorSecondaryVariant">@color/pastel_aquamarine</item>
+        <item name="colorOnSecondary">#402A50</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:alertDialogTheme">@style/DialogTheme</item>
-    </style>
-
-
-    <style name="CustomSwitch" parent="Theme.PartyMaker">
-        <item name="android:colorControlActivated">@color/gorgeous_purple</item>
-        <item name="android:colorForeground">@color/dark_pink</item>
+        <item name="materialButtonStyle">@style/customButtonStyle</item>
     </style>
 
     <style name="CustomChipStyle" parent="Widget.MaterialComponents.Chip.Choice">
@@ -29,6 +24,11 @@
     <style name="Theme.PartyMaker.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="customButtonStyle" parent="Widget.AppCompat.Button.Colored">
+        <item name="colorButtonNormal">?attr/colorSecondary</item>
+        <item name="android:textColor">?attr/colorOnSecondary</item>
     </style>
 
     <style name="Theme.PartyMaker.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

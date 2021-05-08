@@ -49,6 +49,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="70dp"
                         android:layout_marginBottom="2dp"
+                        app:boxStrokeColor="@color/fui_bgEmail"
                         app:errorEnabled="true"
                         app:layout_constraintBottom_toTopOf="@+id/PartyDescription"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -57,7 +58,6 @@
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/textPartyName"
-                            android:text="@={party.name}"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:hint="Give your party a catchy name"
@@ -65,6 +65,7 @@
                             android:inputType="text"
                             android:maxLines="1"
                             android:nextFocusDown="@+id/textPartyDescription"
+                            android:text="@={party.name}"
                             android:textSize="20sp" />
 
                         <requestFocus />
@@ -122,7 +123,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:startIconDrawable="@drawable/ic_baseline_date_range_24"
-                        app:startIconTint="@color/gorgeous_purple">
+                        app:startIconTint="?attr/colorSecondaryVariant">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/textDatePicked"
@@ -148,7 +149,7 @@
                         app:layout_constraintStart_toEndOf="@+id/layoutDatePicker"
                         app:layout_constraintTop_toTopOf="parent"
                         app:startIconDrawable="@drawable/baseline_schedule_black_18"
-                        app:startIconTint="@color/gorgeous_purple">
+                        app:startIconTint="?attr/colorSecondaryVariant">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/textTimePicked"
@@ -184,7 +185,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:startIconDrawable="@android:drawable/ic_dialog_map"
-                        app:startIconTint="@color/gorgeous_purple">
+                        app:startIconTint="?attr/colorSecondaryVariant">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/textLocationPicked"
@@ -225,7 +226,6 @@
                             android:fontFamily="sans-serif"
                             android:text="Theme"
                             android:textSize="16sp"
-                            android:theme="@style/CustomSwitch"
                             app:layout_constraintBottom_toTopOf="@+id/themeInputLayout"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
@@ -323,7 +323,6 @@
                             android:fontFamily="sans-serif"
                             android:text="Food"
                             android:textSize="16sp"
-                            android:theme="@style/CustomSwitch"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -367,13 +366,12 @@
                                 android:onClick="onAddChip"
                                 android:layout_width="50dp"
                                 android:layout_height="match_parent"
-                                android:backgroundTint="@color/pastel_purple_light"
+                                android:background="@color/fui_transparent"
                                 app:srcCompat="@drawable/ic_baseline_add_circle_24" />
                         </LinearLayout>
 
                         <com.google.android.material.chip.ChipGroup
                             android:id="@+id/foodChipGroup"
-                            style="@style/Widget.MaterialComponents.Chip.Choice"
                             android:layout_width="350dp"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
@@ -403,7 +401,6 @@
                             android:fontFamily="sans-serif"
                             android:text="Beverages"
                             android:textSize="16sp"
-                            android:theme="@style/CustomSwitch"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -447,8 +444,8 @@
                                 android:onClick="onAddChip"
                                 android:layout_width="50dp"
                                 android:layout_height="match_parent"
-                                android:backgroundTint="@color/pastel_purple_light"
-                                app:srcCompat="@drawable/ic_baseline_add_circle_24" />
+                                app:srcCompat="@drawable/ic_baseline_add_circle_24"
+                                android:background="@color/fui_transparent"/>
                         </LinearLayout>
 
                         <com.google.android.material.chip.ChipGroup
@@ -482,7 +479,6 @@
                             android:fontFamily="sans-serif"
                             android:text="Charge an entry fee"
                             android:textSize="16sp"
-                            android:theme="@style/CustomSwitch"
                             app:layout_constraintBottom_toTopOf="@+id/feeLinearLayout"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
@@ -510,7 +506,7 @@
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toBottomOf="@+id/switchFee"
                                 app:startIconDrawable="@drawable/ic_baseline_monetization_on_24"
-                                app:startIconTint="@color/gorgeous_purple">
+                                app:startIconTint="?attr/colorSecondaryVariant" >
 
                                 <com.google.android.material.textfield.TextInputEditText
                                     android:id="@+id/textInputFee"
@@ -603,7 +599,6 @@
                             android:fontFamily="sans-serif"
                             android:text="Parking information"
                             android:textSize="16sp"
-                            android:theme="@style/CustomSwitch"
                             app:layout_constraintBottom_toTopOf="@+id/parkingInputLayout"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
@@ -652,7 +647,7 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
                             app:startIconDrawable="@drawable/ic_baseline_info_24"
-                            app:startIconTint="@color/gorgeous_purple">
+                            app:startIconTint="?attr/colorSecondaryVariant" >
 
                             <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/textInputInfo"
@@ -678,9 +673,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginRight="120dp"
                         android:layout_marginBottom="10dp"
-                        android:backgroundTint="@color/gorgeous_purple"
                         android:text="Submit"
-                        android:textColor="@color/white"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"

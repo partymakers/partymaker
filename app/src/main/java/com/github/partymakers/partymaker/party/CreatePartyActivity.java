@@ -183,7 +183,7 @@ public class CreatePartyActivity extends AppCompatActivity {
     private void addChipView(ChipGroup chipGroup, List<String> selectedNames, String name) {
         Chip chip = new Chip(this);
 
-        ChipDrawable drawable = ChipDrawable.createFromAttributes(this, null, 0, R.style.Widget_MaterialComponents_Chip_Choice);  //change to CustomChip style in the future
+        ChipDrawable drawable = ChipDrawable.createFromAttributes(this, null, 0, R.style.CustomChipStyle);  //change to CustomChip style in the future
         chip.setChipDrawable(drawable);
         int paddingDp = (int) TypedValue.applyDimension(
                 TypedValue.COMPLEX_UNIT_DIP, 10,

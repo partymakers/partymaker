@@ -15,7 +15,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/main_backgr2"
+        android:background="@drawable/main_backgr_opaque"
         tools:visibility="visible">
 
         <ScrollView
@@ -35,8 +35,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/Header"
                     android:layout_width="0dp"
-                    android:layout_height="100dp"
-                    android:background="@color/gorgeous_purple"
+                    android:layout_height="150dp"
                     app:layout_constraintBottom_toTopOf="@+id/Buttons"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -61,7 +60,7 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:text="@{viewmodel.status}"
-                            android:textColor="@color/white"
+                            android:textColor="?attr/colorPrimaryDark"
                             android:textSize="10sp"
                             android:visibility="visible"
                             tools:visibility="visible" />
@@ -71,23 +70,23 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@{viewmodel.name}"
-                            android:textColor="@color/white"
-                            android:textSize="30sp" />
+                            android:textColor="?attr/colorPrimaryDark"
+                            android:textSize="50sp" />
 
                         <TextView
                             android:id="@+id/textViewEmail"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@{viewmodel.email}"
-                            android:textColor="@color/white"
-                            android:textSize="16sp" />
+                            android:textColor="?attr/colorPrimaryDark"
+                            android:textSize="20sp" />
                     </LinearLayout>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/Buttons"
-                    android:layout_width="350dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="25dp"
                     android:layout_marginTop="10dp"
@@ -100,12 +99,12 @@
 
                     <Button
                         android:id="@+id/buttonOrganize"
-                        android:onClick="@{fragment::onOrganize}"
-                        android:layout_width="140dp"
-                        android:layout_height="75dp"
+                        android:layout_width="160dp"
+                        android:layout_height="80dp"
                         android:layout_marginEnd="35dp"
+                        android:onClick="@{fragment::onOrganize}"
                         android:text="Organize"
-                        android:textColor="@color/pastel_nude"
+                        android:textSize="20sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/buttonJoin"
                         app:layout_constraintStart_toStartOf="parent"
@@ -113,16 +112,16 @@
 
                     <Button
                         android:id="@+id/buttonJoin"
+                        android:layout_width="160dp"
+                        android:layout_height="80dp"
                         android:onClick="@{fragment::onJoin}"
-                        android:layout_width="140dp"
-                        android:layout_height="75dp"
-                        android:layout_marginStart="35dp"
                         android:text="Join"
-                        android:textColor="@color/pastel_nude"
+                        android:textSize="20sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/buttonOrganize"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
