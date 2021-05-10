@@ -35,7 +35,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/Header"
                     android:layout_width="0dp"
-                    android:layout_height="150dp"
+                    android:layout_height="wrap_content"
                     app:layout_constraintBottom_toTopOf="@+id/Buttons"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
