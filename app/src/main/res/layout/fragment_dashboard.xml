@@ -71,7 +71,7 @@
                             android:layout_height="wrap_content"
                             android:text="@{viewmodel.name}"
                             android:textColor="?attr/colorPrimaryDark"
-                            android:textSize="50sp" />
+                            android:textSize="46sp" />
 
                         <TextView
                             android:id="@+id/textViewEmail"

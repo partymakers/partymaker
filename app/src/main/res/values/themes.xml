@@ -15,7 +15,6 @@
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:alertDialogTheme">@style/DialogTheme</item>
         <item name="materialButtonStyle">@style/customButtonStyle</item>
-        <item name="fontFamily">@font/indie_flower</item>
     </style>
 
 
