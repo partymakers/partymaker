@@ -24,6 +24,8 @@ public class ViewPartyViewModel extends ViewModel {
             partyEntity -> partyEntity.getOrganizersIds().contains(FirebaseAuth.getInstance().getUid()));
     private final LiveData<Boolean> isParticipant = Transformations.map(party,
             partyEntity -> partyEntity.getParticipantsIds().contains(FirebaseAuth.getInstance().getUid()));
+    private final LiveData<Boolean> isOrganiser = Transformations.map(party,
+            partyEntity -> partyEntity.getOrganizersIds().contains(FirebaseAuth.getInstance().getUid()));
 
     public void setPartyId(String partyId) {
         if (party.getValue() != null && party.getValue().getId().equals(partyId)) {
@@ -53,6 +55,10 @@ public class ViewPartyViewModel extends ViewModel {
 
     public LiveData<Boolean> getIsParticipant() {
         return isParticipant;
+    }
+
+    public LiveData<Boolean> getIsOrganiser() {
+        return isOrganiser;
     }
 
     public void acceptInvitation() {

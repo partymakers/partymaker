@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <import type="android.view.View" />
+
         <variable
             name="viewmodel"
             type="com.github.partymakers.partymaker.party.ViewPartyViewModel" />
@@ -24,9 +26,10 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/headerLayout"
@@ -35,19 +38,16 @@
                     android:background="@drawable/join_party"
                     app:layout_constraintBottom_toTopOf="@id/headerLayout"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.6"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0">
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <TextView
                         android:id="@+id/textViewHeader"
                         android:layout_width="wrap_content"
-                        android:layout_height="39dp"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginEnd="5dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginBottom="2dp"
-                        android:text='@{viewmodel.party.name}'
+                        android:gravity="center"
+                        android:text='@{!viewmodel.isOrganiser ? "You have been invited to" : "My party"}'
                         android:textColor="@color/white"
                         android:textSize="28sp"
                         android:textStyle="bold"
@@ -57,41 +57,78 @@
                         app:layout_constraintStart_toStartOf="parent" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <TextView
-                    android:id="@+id/textViewDetails"
-                    android:layout_width="266dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="19dp"
-                    android:layout_marginTop="16dp"
-                    android:text="Here are the details:"
-                    android:textColor="@color/black"
-                    android:textSize="25sp"
-                    app:layout_constraintBottom_toTopOf="@+id/linearLayoutViewParty"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/headerLayout" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="20dp"
+                    android:orientation="horizontal"
+                    android:visibility="@{viewmodel.party.name != null ? View.VISIBLE : View.GONE}">
 
-                <ImageButton
-                    android:id="@+id/imageButtonViewPartyEdit"
-                    android:visibility="@{viewmodel.editable ? View.VISIBLE : View.GONE}"
-                    android:onClick="onEdit"
-                    android:layout_width="60dp"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="7dp"
-                    android:layout_marginEnd="26dp"
-                    android:layout_marginBottom="26dp"
-                    android:backgroundTint="@color/white"
-                    app:layout_constraintBottom_toTopOf="@+id/linearLayoutViewParty"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/headerLayout"
-                    app:srcCompat="@drawable/ic_baseline_edit_24" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:text='@string/Celebration'
+                        android:textSize="40sp" />
+
+                    <TextView
+                        android:layout_width="300dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="10dp"
+                        android:text='@{viewmodel.party.name}'
+                        android:textColor="@color/gorgeous_purple"
+                        android:textSize="26sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="350dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="30dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textViewDetails"
+                        android:layout_width="300dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text='@{!viewmodel.isOrganiser ? "Here are the details" : "Details"}'
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="italic"
+                        app:layout_constraintBottom_toTopOf="@+id/linearLayoutViewParty"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/headerLayout" />
+
+                    <ImageButton
+                        android:id="@+id/imageButtonViewPartyEdit"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="26dp"
+                        android:backgroundTint="@color/white"
+                        android:onClick="onEdit"
+                        android:visibility="@{viewmodel.editable ? View.VISIBLE : View.GONE}"
+                        app:layout_constraintBottom_toTopOf="@+id/linearLayoutViewParty"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/headerLayout"
+                        app:srcCompat="@drawable/ic_baseline_edit_24" />
+
+                </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/linearLayoutViewParty"
-                    android:layout_width="373dp"
+                    android:layout_width="350dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="19dp"
+                    android:layout_marginStart="30dp"
                     android:layout_marginTop="17dp"
-                    android:layout_marginEnd="19dp"
+                    android:layout_marginEnd="30dp"
                     android:layout_marginBottom="20dp"
                     android:orientation="vertical"
                     app:layout_constraintBottom_toTopOf="@+id/buttonsViewParty"
@@ -99,163 +136,386 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textViewDetails">
 
-                    <TextView
-                        android:id="@+id/textViewPartyDescription"
+
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text='@{"Description: " + viewmodel.party.description}'
-                        android:textSize="20dp"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal"
+                        android:visibility="@{viewmodel.party.timestamp != null ? View.VISIBLE : View.GONE}">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text='@string/DateTime'
+                            android:textSize="30sp" />
+
+                        <TextView
+                            android:layout_width="300dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="10dp"
+                            android:text='@{viewmodel.formattedDateTime}'
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal"
+                        android:visibility="@{viewmodel.party.location != null ? View.VISIBLE : View.GONE}">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:text='@string/Location'
+                            android:textSize="30sp" />
+
+                        <TextView
+                            android:layout_width="300dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="10dp"
+                            android:text='@{viewmodel.party.location}'
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="10dp"
+                        android:text='@string/Description'
+                        android:textColor="@color/gorgeous_purple"
+                        android:textSize="20sp"
+                        android:textStyle="bold|italic"
                         android:visibility="@{viewmodel.party.description != null ? View.VISIBLE : View.GONE}" />
 
                     <TextView
-                        android:id="@+id/textViewPartyDateTime"
-                        android:text='@{"When: " + viewmodel.formattedDateTime}'
-                        android:visibility="@{viewmodel.party.timestamp != null ? View.VISIBLE : View.GONE}"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:textSize="20dp" />
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="10dp"
+                        android:text='@{viewmodel.party.description}'
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        android:visibility="@{viewmodel.party.description != null ? View.VISIBLE : View.GONE}" />
+
 
                     <TextView
-                        android:id="@+id/textViewPartyLocation"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text='@{"Where: " + viewmodel.party.location}'
-                        android:textSize="20dp"
-                        android:visibility="@{viewmodel.party.location != null ? View.VISIBLE : View.GONE}" />
-
-                    <TextView
-                        android:id="@+id/textViewPartyTheme"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text='@{"Theme: " + viewmodel.party.theme}'
-                        android:textSize="20dp"
+                        android:layout_marginBottom="10dp"
+                        android:text='@string/Theme'
+                        android:textColor="@color/gorgeous_purple"
+                        android:textSize="20sp"
+                        android:textStyle="bold|italic"
                         android:visibility="@{viewmodel.party.theme != null ? View.VISIBLE : View.GONE}" />
 
                     <TextView
-                        android:id="@+id/textViewPartyDresscode"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="10dp"
+                        android:text='@{viewmodel.party.theme}'
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        android:visibility="@{viewmodel.party.theme != null ? View.VISIBLE : View.GONE}" />
+
+                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text='@{"Dress code: " + viewmodel.party.dressCode}'
-                        android:textSize="20dp"
+                        android:layout_marginBottom="10dp"
+                        android:text='@string/Dress_code'
+                        android:textColor="@color/gorgeous_purple"
+                        android:textSize="20sp"
+                        android:textStyle="bold|italic"
                         android:visibility="@{viewmodel.party.dressCode != null ? View.VISIBLE : View.GONE}" />
 
                     <TextView
-                        android:id="@+id/textViewPartyFood"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text='@{"Food: " + viewmodel.party.food.toString().replace("[", "").replace("]", "")}'
-                        android:textSize="20dp"
-                        android:visibility="@{viewmodel.party.food != null ? View.VISIBLE : View.GONE}" />
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/foodJoinInputLayout"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="65dp"
-                        android:layout_marginTop="10dp"
-                        android:visibility="gone">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/textInputJoinFood"
-                            android:layout_width="match_parent"
-                            android:layout_height="60dp"
-                            android:hint="Dietary restrictions, allergies, vegan"
-                            android:inputType="text"
-                            android:maxLines="3"
-                            android:textSize="18sp" />
-
-                    </com.google.android.material.textfield.TextInputLayout>
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="10dp"
+                        android:text='@{viewmodel.party.dressCode}'
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        android:visibility="@{viewmodel.party.dressCode != null ? View.VISIBLE : View.GONE}" />
 
                     <TextView
-                        android:id="@+id/textViewPartyDrinks"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text='@{"Drinks: " + viewmodel.party.drinks.toString().replace("[", "").replace("]", "")}'
-                        android:textSize="20dp"
-                        android:visibility="@{viewmodel.party.drinks != null ? View.VISIBLE : View.GONE}" />
+                        android:layout_marginBottom="10dp"
+                        android:text='@{"Servings"}'
+                        android:textColor="@color/gorgeous_purple"
+                        android:textSize="20sp"
+                        android:textStyle="bold|italic"
+                        android:visibility="@{(viewmodel.party.food != null || viewmodel.party.drinks != null) ? View.VISIBLE : View.GONE}" />
+
+                    <LinearLayout
+                        android:layout_width="350dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="horizontal"
+                        android:visibility="@{viewmodel.party.food != null ? View.VISIBLE : View.GONE}">
+
+                        <TextView
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text='@string/Food'
+                            android:textSize="30sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="10dp"
+                            android:text='@{viewmodel.party.food.toString().replace("[", "").replace("]", "")}'
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="350dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="horizontal"
+                        android:visibility="@{viewmodel.party.drinks != null ? View.VISIBLE : View.GONE}">
+
+                        <TextView
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text='@string/Drinks'
+                            android:textSize="30sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="10dp"
+                            android:text='@{viewmodel.party.drinks.toString().replace("[", "").replace("]", "")}'
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+                    </LinearLayout>
 
                     <TextView
-                        android:id="@+id/textViewPartyFee"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text='@{"Entry fee: " + viewmodel.party.fee}'
-                        android:textSize="20dp"
+                        android:layout_marginBottom="10dp"
+                        android:text='@string/Entry_fee'
+                        android:textColor="@color/gorgeous_purple"
+                        android:textSize="20sp"
+                        android:textStyle="bold|italic"
                         android:visibility="@{viewmodel.party.fee != null ? View.VISIBLE : View.GONE}" />
 
                     <TextView
-                        android:id="@+id/textViewPartyCompany"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text='@{"You can bring along: " + (viewmodel.party.allowsPartner == true ?  " partner" : "") + (viewmodel.party.allowsFriends == true ?  " friends" : "") + (viewmodel.party.allowsPets == true ?  " pets" : "")}'
-                        android:textSize="20dp"
-                        android:visibility="@{(viewmodel.party.allowsPartner || viewmodel.party.allowsFriends || viewmodel.party.allowsPets) ? View.VISIBLE : View.GONE}" />
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="10dp"
+                        android:text='@{viewmodel.party.fee}'
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        android:visibility="@{viewmodel.party.fee != null ? View.VISIBLE : View.GONE}" />
 
                     <TextView
-                        android:id="@+id/textViewPartyParking"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text='@{"Parking details: " + viewmodel.party.parkingDetails}'
-                        android:textSize="20dp"
+                        android:layout_marginBottom="10dp"
+                        android:text='@{"You can bring along"}'
+                        android:textColor="@color/gorgeous_purple"
+                        android:textSize="20sp"
+                        android:textStyle="bold|italic"
+                        android:visibility="@{(viewmodel.party.allowsPartner || viewmodel.party.allowsFriends || viewmodel.party.allowsPets) ? View.VISIBLE : View.GONE}" />
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="horizontal"
+                        android:visibility="@{(viewmodel.party.allowsPartner || viewmodel.party.allowsFriends || viewmodel.party.allowsPets) ? View.VISIBLE : View.GONE}">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:orientation="vertical"
+                            android:visibility="@{viewmodel.party.allowsPartner ? View.VISIBLE : View.GONE}">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text='@string/Partner'
+                                android:textSize="40sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text='@{"Partner"}' />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:orientation="vertical"
+                            android:visibility="@{viewmodel.party.allowsFriends ? View.VISIBLE : View.GONE}">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text='@string/Friends'
+                                android:textSize="40sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text='@{"Friends"}' />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:orientation="vertical"
+                            android:visibility="@{viewmodel.party.allowsChildren ? View.VISIBLE : View.GONE}">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text='@string/Children'
+                                android:textSize="40sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text='@{"Children"}' />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:orientation="vertical"
+                            android:visibility="@{viewmodel.party.allowsPets ? View.VISIBLE : View.GONE}">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text='@string/Pets'
+                                android:textSize="40sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text='@{"Pets"}' />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:text='@string/Parking_details'
+                        android:textColor="@color/gorgeous_purple"
+                        android:textSize="20sp"
+                        android:textStyle="bold|italic"
                         android:visibility="@{viewmodel.party.parkingDetails != null ? View.VISIBLE : View.GONE}" />
 
                     <TextView
-                        android:id="@+id/textViewPartyInfo"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text='@{"Additional information: " + viewmodel.party.additionalInformation}'
-                        android:textSize="20dp"
-                        android:visibility="@{viewmodel.party.additionalInformation != null ? View.VISIBLE : View.GONE}" />
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/infoViewPartyInputLayout"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="65dp"
-                        android:layout_marginTop="10dp"
-                        android:visibility="gone">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/infoInputViewPartyFood"
-                            android:layout_width="match_parent"
-                            android:layout_height="60dp"
-                            android:hint="Additional remarks for the host"
-                            android:inputType="text"
-                            android:maxLines="1"
-                            android:textSize="16sp" />
-
-                    </com.google.android.material.textfield.TextInputLayout>
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="10dp"
+                        android:text='@{viewmodel.party.parkingDetails}'
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        android:visibility="@{viewmodel.party.parkingDetails != null ? View.VISIBLE : View.GONE}" />
 
                     <TextView
-                        android:id="@+id/textViewJoinCode"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text='@{"Access code: " + viewmodel.party.id}'
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:text='@{"Additional information"}'
+                        android:textColor="@color/gorgeous_purple"
                         android:textSize="20sp"
-                        android:layout_marginTop="20dp"
-                        android:textIsSelectable="true"
-                        android:textStyle="bold|italic" />
-                </LinearLayout>
+                        android:textStyle="bold|italic"
+                        android:visibility="@{viewmodel.party.additionalInformation != null ? View.VISIBLE : View.GONE}" />
 
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="10dp"
+                        android:text='@{viewmodel.party.additionalInformation}'
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        android:visibility="@{viewmodel.party.additionalInformation != null ? View.VISIBLE : View.GONE}" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:text='@string/Access_code'
+                        android:textColor="@color/gorgeous_purple"
+                        android:textSize="20sp"
+                        android:textStyle="bold|italic" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="10dp"
+                        android:text='@{viewmodel.party.id}'
+                        android:textColor="@color/black"
+                        android:textIsSelectable="true"
+                        android:textSize="20sp"
+                        android:textStyle="italic" />
+                </LinearLayout>
 
 
                 <LinearLayout
                     android:id="@+id/buttonsViewParty"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
                     android:layout_marginEnd="30dp"
                     android:layout_marginBottom="20dp"
                     android:orientation="horizontal"
+                    android:visibility="@{viewmodel.isParticipant ? View.GONE : View.VISIBLE}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -263,28 +523,31 @@
 
                     <Button
                         android:id="@+id/buttonReject"
-                        android:onClick="onRespond"
                         android:layout_width="120dp"
                         android:layout_height="60dp"
                         android:layout_marginRight="20dp"
                         android:layout_weight="1"
                         android:backgroundTint="@color/pastel_purple_light"
+                        android:onClick="onRespond"
                         android:text='@{viewmodel.isParticipant ? "Not Going" : "Reject"}'
                         android:textColor="@color/gorgeous_purple_darker" />
 
                     <Button
                         android:id="@+id/buttonAccept"
-                        android:visibility="@{viewmodel.isParticipant ? View.GONE : View.VISIBLE}"
-                        android:onClick="onRespond"
                         android:layout_width="120dp"
                         android:layout_height="60dp"
                         android:layout_weight="1"
                         android:backgroundTint="@color/gorgeous_purple"
+                        android:onClick="onRespond"
                         android:text="Accept"
                         android:textColor="@color/pastel_purple" />
+
                 </LinearLayout>
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
+
+
         </ScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
