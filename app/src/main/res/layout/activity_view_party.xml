@@ -484,26 +484,6 @@
                         android:textSize="20sp"
                         android:visibility="@{viewmodel.party.additionalInformation != null ? View.VISIBLE : View.GONE}" />
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
-                        android:text='@string/Access_code'
-                        android:textColor="@color/gorgeous_purple"
-                        android:textSize="20sp"
-                        android:textStyle="bold|italic" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="10dp"
-                        android:text='@{viewmodel.party.id}'
-                        android:textColor="@color/black"
-                        android:textIsSelectable="true"
-                        android:textSize="20sp"
-                        android:textStyle="italic" />
                 </LinearLayout>
 
 
