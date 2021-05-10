@@ -11,11 +11,6 @@ import androidx.lifecycle.ViewModelProvider;
 import com.github.partymakers.partymaker.R;
 import com.github.partymakers.partymaker.databinding.ActivityViewPartyBinding;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-
-import java.util.Date;
-
 public class ViewPartyActivity extends AppCompatActivity {
     private ViewPartyViewModel viewModel;
     private ActivityViewPartyBinding dataBinding;
@@ -37,6 +32,15 @@ public class ViewPartyActivity extends AppCompatActivity {
 //            dataBinding.setParty(partyEntity);
 //        });
         dataBinding.setViewmodel(viewModel);
+    }
+
+    public void onShare(View view) {
+        Intent sendIntent = new Intent()
+                .setAction(Intent.ACTION_SEND)
+                .putExtra(Intent.EXTRA_TEXT, viewModel.getPartyId())
+                .setType("text/plain");
+        Intent shareIntent = Intent.createChooser(sendIntent,null);
+        startActivity(shareIntent);
     }
 
     public void onEdit(View view) {
