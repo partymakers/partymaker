@@ -484,26 +484,6 @@
                         android:textSize="20sp"
                         android:visibility="@{viewmodel.party.additionalInformation != null ? View.VISIBLE : View.GONE}" />
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
-                        android:text='@string/Access_code'
-                        android:textColor="@color/gorgeous_purple"
-                        android:textSize="20sp"
-                        android:textStyle="bold|italic" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="10dp"
-                        android:text='@{viewmodel.party.id}'
-                        android:textColor="@color/black"
-                        android:textIsSelectable="true"
-                        android:textSize="20sp"
-                        android:textStyle="italic" />
                 </LinearLayout>
 
 
@@ -549,6 +529,18 @@
 
 
         </ScrollView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingButtonShare"
+            android:onClick="onShare"
+            android:visibility="@{viewmodel.isParticipant ? View.VISIBLE : View.GONE}"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:src="@drawable/ic_baseline_share_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

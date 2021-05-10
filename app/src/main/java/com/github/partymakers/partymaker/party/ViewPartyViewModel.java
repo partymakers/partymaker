@@ -13,6 +13,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 public class ViewPartyViewModel extends ViewModel {
     private DocumentReference documentReference;
@@ -59,6 +60,10 @@ public class ViewPartyViewModel extends ViewModel {
 
     public LiveData<Boolean> getIsOrganiser() {
         return isOrganiser;
+    }
+
+    public String getPartyId() {
+        return Objects.requireNonNull(party.getValue(), "Party is null").getId();
     }
 
     public void acceptInvitation() {
