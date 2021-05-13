@@ -26,11 +26,9 @@ public class ViewPartyActivity extends AppCompatActivity {
         setContentView(dataBinding.getRoot());
         dataBinding.setLifecycleOwner(this);
 
-        viewModel = new ViewModelProvider(this).get(ViewPartyViewModel.class);
-        viewModel.setPartyId(partyCode);
-//        viewModel.getParty(partyCode).observe(this, partyEntity -> {
-//            dataBinding.setParty(partyEntity);
-//        });
+        viewModel = new ViewModelProvider(this, new ViewPartyViewModel.Factory(partyCode))
+                .get(ViewPartyViewModel.class);
+
         dataBinding.setViewmodel(viewModel);
     }
 

@@ -1,11 +1,17 @@
 package com.github.partymakers.partymaker.party;
 
+import android.net.Uri;
+
+import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Transformations;
 import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.dynamiclinks.DynamicLink;
+import com.google.firebase.dynamiclinks.FirebaseDynamicLinks;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -16,22 +22,40 @@ import java.util.List;
 import java.util.Objects;
 
 public class ViewPartyViewModel extends ViewModel {
-    private DocumentReference documentReference;
+
+    public static class Factory implements ViewModelProvider.Factory {
+        private final String partyId;
+
+        public Factory(String partyId) {
+            this.partyId = partyId;
+        }
+
+        @SuppressWarnings("unchecked")
+        @NonNull
+        @Override
+        public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
+            return (T) new ViewPartyViewModel(partyId);
+        }
+    }
+
+    private final DocumentReference documentReference;
 
     private final MutableLiveData<PartyEntity> party = new MutableLiveData<>();
-    private final LiveData<String> formattedDateTime = Transformations.map(party,
-            partyEntity -> SimpleDateFormat.getDateTimeInstance(DateFormat.FULL, DateFormat.SHORT).format(new Date(partyEntity.getTimestamp())));
-    private final LiveData<Boolean> editable = Transformations.map(party,
-            partyEntity -> partyEntity.getOrganizersIds().contains(FirebaseAuth.getInstance().getUid()));
-    private final LiveData<Boolean> isParticipant = Transformations.map(party,
-            partyEntity -> partyEntity.getParticipantsIds().contains(FirebaseAuth.getInstance().getUid()));
-    private final LiveData<Boolean> isOrganiser = Transformations.map(party,
-            partyEntity -> partyEntity.getOrganizersIds().contains(FirebaseAuth.getInstance().getUid()));
+    private final LiveData<String> formattedDateTime;
+    private final LiveData<Boolean> editable;
+    private final LiveData<Boolean> isParticipant;
+    private final LiveData<Boolean> isOrganiser;
 
-    public void setPartyId(String partyId) {
-        if (party.getValue() != null && party.getValue().getId().equals(partyId)) {
-            return;
-        }
+    public ViewPartyViewModel(String partyId) {
+        formattedDateTime = Transformations.map(party,
+                partyEntity -> SimpleDateFormat.getDateTimeInstance(DateFormat.FULL, DateFormat.SHORT).format(new Date(partyEntity.getTimestamp())));
+        editable = Transformations.map(party,
+                partyEntity -> partyEntity.getOrganizersIds().contains(FirebaseAuth.getInstance().getUid()));
+        isParticipant = Transformations.map(party,
+                partyEntity -> partyEntity.getParticipantsIds().contains(FirebaseAuth.getInstance().getUid()));
+        isOrganiser = Transformations.map(party,
+                partyEntity -> partyEntity.getOrganizersIds().contains(FirebaseAuth.getInstance().getUid()));
+
         documentReference = FirebaseFirestore.getInstance().collection("parties").document(partyId);
         documentReference.addSnapshotListener((value, error) -> {
             if (value != null) {
@@ -40,6 +64,54 @@ public class ViewPartyViewModel extends ViewModel {
                 error.printStackTrace();
             }
         });
+    }
+
+    public void acceptInvitation() {
+        List<String> participantsIds = getPartySafe().getParticipantsIds();
+        String userId = FirebaseAuth.getInstance().getUid();
+        if (!participantsIds.contains(userId)) {
+            participantsIds.add(userId);
+        }
+        documentReference.update("participantsIds", participantsIds);
+    }
+
+    /**
+     * @return true if user was deleted from participants, false otherwise
+     */
+    public boolean rejectInvitation() {
+        List<String> participantsIds = getPartySafe().getParticipantsIds();
+        boolean isRemoved = participantsIds.remove(FirebaseAuth.getInstance().getUid());
+        if (isRemoved) {
+            documentReference.update("participantsIds", participantsIds);
+        }
+        return isRemoved;
+    }
+
+    public Uri getDynamicLink() {
+        return FirebaseDynamicLinks.getInstance().createDynamicLink()
+                .setDomainUriPrefix("https://partymaker.club/link/")
+                .setLink(Uri.parse("https://partymaker.club/event/" + getPartyId()))
+                .setSocialMetaTagParameters(
+                        new DynamicLink.SocialMetaTagParameters.Builder()
+                                .setTitle(getPartyName())
+                                .setDescription(getPartyDescription())
+                                .build())
+                .setAndroidParameters(
+                        new DynamicLink.AndroidParameters.Builder().build())
+                .buildDynamicLink()
+                .getUri();
+    }
+
+    public String getPartyId() {
+        return getPartySafe().getId();
+    }
+
+    public String getPartyName() {
+        return getPartySafe().getName();
+    }
+
+    public String getPartyDescription() {
+        return getPartySafe().getDescription();
     }
 
     public LiveData<PartyEntity> getParty() {
@@ -62,29 +134,8 @@ public class ViewPartyViewModel extends ViewModel {
         return isOrganiser;
     }
 
-    public String getPartyId() {
-        return Objects.requireNonNull(party.getValue(), "Party is null").getId();
-    }
-
-    public void acceptInvitation() {
-        if (party.getValue() == null) {
-            return;
-        }
-        List<String> participantsIds = party.getValue().getParticipantsIds();
-            String userId = FirebaseAuth.getInstance().getUid();
-        if (!participantsIds.contains(userId)) {
-            participantsIds.add(userId);
-        }
-        documentReference.update("participantsIds", participantsIds);
-    }
-
-//    return true if user was deleted from participants
-    public boolean rejectInvitation() {
-        List<String> participantsIds = party.getValue().getParticipantsIds();
-        boolean removed = participantsIds.remove(FirebaseAuth.getInstance().getUid());
-        if (removed) {
-            documentReference.update("participantsIds", participantsIds);
-        }
-        return removed;
+    @NonNull
+    private PartyEntity getPartySafe() {
+        return Objects.requireNonNull(party.getValue(), "Party is null");
     }
 }
