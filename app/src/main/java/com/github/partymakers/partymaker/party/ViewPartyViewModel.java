@@ -89,7 +89,7 @@ public class ViewPartyViewModel extends ViewModel {
 
     public Uri getDynamicLink() {
         return FirebaseDynamicLinks.getInstance().createDynamicLink()
-                .setDomainUriPrefix("https://partymaker.club/link/")
+                .setDomainUriPrefix("https://partymaker.club/links/")
                 .setLink(Uri.parse("https://partymaker.club/event/" + getPartyId()))
                 .setSocialMetaTagParameters(
                         new DynamicLink.SocialMetaTagParameters.Builder()
