@@ -7,6 +7,51 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:41797456050:android:6c5ffa063320b328b4b9ab",
+        "android_client_info": {
+          "package_name": "club.partymaker.partymaker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "41797456050-rngkuk5hhh3c1be7ehj6m5k7naedlu72.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "club.partymaker.partymaker",
+            "certificate_hash": "c25f2ed34fa30d07a200708d40e6e920962ce75d"
+          }
+        },
+        {
+          "client_id": "41797456050-tspnsfujp6t63u9ed1dfc7vukhiqg7jk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "club.partymaker.partymaker",
+            "certificate_hash": "39fda9d17a4657ba4341631e2642775a876b0ee3"
+          }
+        },
+        {
+          "client_id": "41797456050-3p94uobnf6d5v1303hh76h2kksph29us.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCixZeT4Oy54O3JFlyvXSl4y8d-iUcErqQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "41797456050-3p94uobnf6d5v1303hh76h2kksph29us.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:41797456050:android:70d4d8a335596153b4b9ab",
         "android_client_info": {
           "package_name": "com.github.partymakers.partymaker"
