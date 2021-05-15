@@ -6,40 +6,52 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.github.partymakers.partymaker.R;
 import com.github.partymakers.partymaker.databinding.ActivityViewPartyBinding;
+import com.google.firebase.dynamiclinks.FirebaseDynamicLinks;
 
 public class ViewPartyActivity extends AppCompatActivity {
     private ViewPartyViewModel viewModel;
     private ActivityViewPartyBinding dataBinding;
-    private String partyCode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        partyCode = getIntent().getStringExtra("partyCode");
-
         dataBinding = DataBindingUtil.setContentView(this, R.layout.activity_view_party);
         setContentView(dataBinding.getRoot());
         dataBinding.setLifecycleOwner(this);
 
-        viewModel = new ViewModelProvider(this).get(ViewPartyViewModel.class);
-        viewModel.setPartyId(partyCode);
-//        viewModel.getParty(partyCode).observe(this, partyEntity -> {
-//            dataBinding.setParty(partyEntity);
-//        });
-        dataBinding.setViewmodel(viewModel);
+        MutableLiveData<String> partyId = new MutableLiveData<>();
+        partyId.observe(this, id -> {
+            viewModel = new ViewModelProvider(ViewPartyActivity.this, new ViewPartyViewModel.Factory(id)).get(ViewPartyViewModel.class);
+            dataBinding.setViewmodel(viewModel);
+        });
+
+        if (getIntent().hasExtra("partyCode")) {
+            partyId.setValue(getIntent().getStringExtra("partyCode"));
+        } else {
+            FirebaseDynamicLinks.getInstance().getDynamicLink(getIntent())
+                    .addOnSuccessListener(this, pendingData -> {
+                        if (pendingData != null && pendingData.getLink() != null) {
+                            String id = pendingData.getLink().getLastPathSegment();
+                            partyId.setValue(id);
+                        } else {
+                            finish();
+                        }
+                    })
+                    .addOnFailureListener(this, e -> finish());
+        }
     }
 
     public void onShare(View view) {
         Intent sendIntent = new Intent()
                 .setAction(Intent.ACTION_SEND)
-                .putExtra(Intent.EXTRA_TEXT, viewModel.getPartyId())
+                .putExtra(Intent.EXTRA_TEXT, String.format("%s:\n%s", viewModel.getPartyName(), viewModel.getDynamicLink()))
                 .setType("text/plain");
-        Intent shareIntent = Intent.createChooser(sendIntent,null);
+        Intent shareIntent = Intent.createChooser(sendIntent, null);
         startActivity(shareIntent);
     }
 
