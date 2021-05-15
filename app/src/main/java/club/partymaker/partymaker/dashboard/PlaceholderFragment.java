@@ -1,4 +1,4 @@
-package com.github.partymakers.partymaker.dashboard;
+package club.partymaker.partymaker.dashboard;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.github.partymakers.partymaker.databinding.FragmentMainBinding;
+import club.partymaker.partymaker.databinding.FragmentMainBinding;
 
 /**
  * A placeholder fragment containing a simple view.

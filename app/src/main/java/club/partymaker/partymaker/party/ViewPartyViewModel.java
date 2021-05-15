@@ -1,4 +1,4 @@
-package com.github.partymakers.partymaker.party;
+package club.partymaker.partymaker.party;
 
 import android.net.Uri;
 

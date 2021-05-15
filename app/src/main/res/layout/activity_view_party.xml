@@ -9,7 +9,7 @@
 
         <variable
             name="viewmodel"
-            type="com.github.partymakers.partymaker.party.ViewPartyViewModel" />
+            type="club.partymaker.partymaker.party.ViewPartyViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

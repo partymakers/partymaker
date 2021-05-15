@@ -6,10 +6,10 @@
     <data>
         <variable
             name="fragment"
-            type="com.github.partymakers.partymaker.dashboard.DashboardFragment" />
+            type="club.partymaker.partymaker.dashboard.DashboardFragment" />
         <variable
             name="viewmodel"
-            type="com.github.partymakers.partymaker.user.UserViewModel" />
+            type="club.partymaker.partymaker.user.UserViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

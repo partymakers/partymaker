@@ -1,4 +1,4 @@
-package com.github.partymakers.partymaker.party;
+package club.partymaker.partymaker.party;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -6,7 +6,7 @@ import android.os.Parcelable;
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
 
-import com.github.partymakers.partymaker.BR;
+import club.partymaker.partymaker.BR;
 import com.google.firebase.firestore.DocumentId;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package com.github.partymakers.partymaker.party;
+package club.partymaker.partymaker.party;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,8 +9,8 @@ import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.github.partymakers.partymaker.R;
-import com.github.partymakers.partymaker.databinding.ActivityViewPartyBinding;
+import club.partymaker.partymaker.R;
+import club.partymaker.partymaker.databinding.ActivityViewPartyBinding;
 import com.google.firebase.dynamiclinks.FirebaseDynamicLinks;
 
 public class ViewPartyActivity extends AppCompatActivity {
