@@ -1,4 +1,4 @@
-package com.github.partymakers.partymaker.dashboard;
+package club.partymaker.partymaker.dashboard;
 
 
 import android.content.Context;
@@ -11,10 +11,10 @@ import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.github.partymakers.partymaker.R;
-import com.github.partymakers.partymaker.databinding.PartyItemBinding;
-import com.github.partymakers.partymaker.party.PartyEntity;
-import com.github.partymakers.partymaker.party.ViewPartyActivity;
+import club.partymaker.partymaker.R;
+import club.partymaker.partymaker.databinding.PartyItemBinding;
+import club.partymaker.partymaker.party.PartyEntity;
+import club.partymaker.partymaker.party.ViewPartyActivity;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -22,8 +22,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import static com.github.partymakers.partymaker.BR.dateTime;
-import static com.github.partymakers.partymaker.BR.party;
+import static club.partymaker.partymaker.BR.dateTime;
+import static club.partymaker.partymaker.BR.party;
 
 public class UpcomingPartiesRecyclerAdapter extends RecyclerView.Adapter<UpcomingPartiesRecyclerAdapter.ViewHolder> implements UpcomingPartiesCardClickListener {
     private List<PartyEntity> parties = new ArrayList<>();

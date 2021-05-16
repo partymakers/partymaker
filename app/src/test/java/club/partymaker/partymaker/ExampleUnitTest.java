@@ -1,4 +1,4 @@
-package com.github.partymakers.partymaker;
+package club.partymaker.partymaker;
 
 import org.junit.Test;
 

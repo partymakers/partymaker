@@ -1,7 +1,7 @@
-package com.github.partymakers.partymaker.user;
+package club.partymaker.partymaker.user;
 
 import androidx.appcompat.app.AppCompatActivity;
-import com.github.partymakers.partymaker.R;
+import club.partymaker.partymaker.R;
 
 import android.os.Bundle;
 import android.view.View;

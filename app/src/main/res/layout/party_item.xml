@@ -7,7 +7,7 @@
 
         <variable
             name="party"
-            type="com.github.partymakers.partymaker.party.PartyEntity" />
+            type="club.partymaker.partymaker.party.PartyEntity" />
 
         <variable
             name="dateTime"
@@ -15,7 +15,7 @@
 
         <variable
             name="itemClickListener"
-            type="com.github.partymakers.partymaker.dashboard.UpcomingPartiesCardClickListener" />
+            type="club.partymaker.partymaker.dashboard.UpcomingPartiesCardClickListener" />
     </data>
 
     <androidx.cardview.widget.CardView

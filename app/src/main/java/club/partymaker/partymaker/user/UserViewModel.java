@@ -1,4 +1,4 @@
-package com.github.partymakers.partymaker.user;
+package club.partymaker.partymaker.user;
 
 import android.util.Log;
 

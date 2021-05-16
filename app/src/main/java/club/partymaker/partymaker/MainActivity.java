@@ -1,4 +1,4 @@
-package com.github.partymakers.partymaker;
+package club.partymaker.partymaker;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,9 +11,9 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.IdpResponse;
-import com.github.partymakers.partymaker.dashboard.SectionsPagerAdapter;
-import com.github.partymakers.partymaker.databinding.ActivityMainBinding;
-import com.github.partymakers.partymaker.user.UserViewModel;
+import club.partymaker.partymaker.dashboard.SectionsPagerAdapter;
+import club.partymaker.partymaker.databinding.ActivityMainBinding;
+import club.partymaker.partymaker.user.UserViewModel;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.Arrays;

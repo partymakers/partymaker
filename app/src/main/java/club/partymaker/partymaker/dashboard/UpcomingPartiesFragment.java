@@ -1,4 +1,4 @@
-package com.github.partymakers.partymaker.dashboard;
+package club.partymaker.partymaker.dashboard;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,8 +12,8 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.github.partymakers.partymaker.R;
-import com.github.partymakers.partymaker.databinding.FragmentUpcomingPartiesBinding;
+import club.partymaker.partymaker.R;
+import club.partymaker.partymaker.databinding.FragmentUpcomingPartiesBinding;
 
 
 public class UpcomingPartiesFragment extends Fragment {

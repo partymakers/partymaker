@@ -1,4 +1,4 @@
-package com.github.partymakers.partymaker.party;
+package club.partymaker.partymaker.party;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
@@ -12,8 +12,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
-import com.github.partymakers.partymaker.R;
-import com.github.partymakers.partymaker.databinding.ActivityCreatePartyBinding;
+import club.partymaker.partymaker.R;
+import club.partymaker.partymaker.databinding.ActivityCreatePartyBinding;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipDrawable;
 import com.google.android.material.chip.ChipGroup;

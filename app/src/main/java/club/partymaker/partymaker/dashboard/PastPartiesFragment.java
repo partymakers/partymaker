@@ -1,4 +1,4 @@
-package com.github.partymakers.partymaker.dashboard;
+package club.partymaker.partymaker.dashboard;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
-import com.github.partymakers.partymaker.R;
+import club.partymaker.partymaker.R;
 
 public class PastPartiesFragment extends Fragment {
 

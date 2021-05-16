@@ -1,10 +1,10 @@
-package com.github.partymakers.partymaker.dashboard;
+package club.partymaker.partymaker.dashboard;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.github.partymakers.partymaker.party.PartyEntity;
+import club.partymaker.partymaker.party.PartyEntity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query.Direction;

@@ -1,4 +1,4 @@
-package com.github.partymakers.partymaker.dashboard;
+package club.partymaker.partymaker.dashboard;
 
 import android.app.AlertDialog;
 import android.content.Intent;
@@ -14,11 +14,11 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.github.partymakers.partymaker.R;
-import com.github.partymakers.partymaker.databinding.FragmentDashboardBinding;
-import com.github.partymakers.partymaker.party.CreatePartyActivity;
-import com.github.partymakers.partymaker.party.ViewPartyActivity;
-import com.github.partymakers.partymaker.user.UserViewModel;
+import club.partymaker.partymaker.R;
+import club.partymaker.partymaker.databinding.FragmentDashboardBinding;
+import club.partymaker.partymaker.party.CreatePartyActivity;
+import club.partymaker.partymaker.party.ViewPartyActivity;
+import club.partymaker.partymaker.user.UserViewModel;
 
 public class DashboardFragment extends Fragment {
     private FragmentDashboardBinding dataBinding;

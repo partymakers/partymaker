@@ -1,4 +1,4 @@
-package com.github.partymakers.partymaker.dashboard;
+package club.partymaker.partymaker.dashboard;
 
 import android.content.Context;
 
@@ -8,10 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.github.partymakers.partymaker.dashboard.DashboardFragment;
-import com.github.partymakers.partymaker.dashboard.PastPartiesFragment;
-import com.github.partymakers.partymaker.dashboard.UpcomingPartiesFragment;
-import com.github.partymakers.partymaker.R;
+import club.partymaker.partymaker.R;
 
 /**
  * A [FragmentPagerAdapter] that returns a fragment corresponding to

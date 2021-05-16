@@ -1,6 +1,6 @@
-package com.github.partymakers.partymaker.dashboard;
+package club.partymaker.partymaker.dashboard;
 
-import com.github.partymakers.partymaker.party.PartyEntity;
+import club.partymaker.partymaker.party.PartyEntity;
 
 @FunctionalInterface
 public interface UpcomingPartiesCardClickListener {
