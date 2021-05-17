@@ -75,7 +75,6 @@ public class CreatePartyActivity extends AppCompatActivity {
     public void onDateTime(View view) {
         if (view == dataBinding.textDatePicked) {
             handleDate();
-            validateDate();
         } else if (view == dataBinding.textTimePicked) {
             handleTime();
         }
