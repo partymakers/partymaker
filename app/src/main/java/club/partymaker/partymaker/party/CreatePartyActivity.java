@@ -236,7 +236,7 @@ public class CreatePartyActivity extends AppCompatActivity {
     private void validateName() {
         if (dataBinding.textPartyName.getText().toString().trim().isEmpty()) {
             dataBinding.textPartyName.setError("Name can't be empty");
-            dataBinding.createScroll.smoothScrollTo(0, 0);
+            dataBinding.CreatePartyScrollView.smoothScrollTo(0, 0);
         } else {
             dataBinding.textPartyName.setError(null);
         }
@@ -245,7 +245,7 @@ public class CreatePartyActivity extends AppCompatActivity {
     private void validateDate() {
         if (dataBinding.textDatePicked.getText().toString().trim().isEmpty()) {
             dataBinding.textDatePicked.setError("Choose date");
-            dataBinding.createScroll.smoothScrollTo(0, 0);
+            dataBinding.CreatePartyScrollView.smoothScrollTo(0, 0);
         } else {
             dataBinding.textDatePicked.setError(null);
         }
