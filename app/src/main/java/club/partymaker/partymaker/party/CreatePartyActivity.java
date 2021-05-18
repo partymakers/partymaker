@@ -157,6 +157,7 @@ public class CreatePartyActivity extends AppCompatActivity {
         );
         datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis());
         datePickerDialog.show();
+        dataBinding.textDatePicked.setError(null);
     }
 
     private void handleTime() {
