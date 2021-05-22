@@ -9,9 +9,10 @@ import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.google.firebase.dynamiclinks.FirebaseDynamicLinks;
+
 import club.partymaker.partymaker.R;
 import club.partymaker.partymaker.databinding.ActivityViewPartyBinding;
-import com.google.firebase.dynamiclinks.FirebaseDynamicLinks;
 
 public class ViewPartyActivity extends AppCompatActivity {
     private ViewPartyViewModel viewModel;
@@ -20,6 +21,7 @@ public class ViewPartyActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        overridePendingTransition(R.layout.fade_in, R.layout.fade_out);
         dataBinding = DataBindingUtil.setContentView(this, R.layout.activity_view_party);
         setContentView(dataBinding.getRoot());
         dataBinding.setLifecycleOwner(this);

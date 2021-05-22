@@ -11,16 +11,16 @@ import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
-import club.partymaker.partymaker.R;
-import club.partymaker.partymaker.databinding.PartyItemBinding;
-import club.partymaker.partymaker.party.PartyEntity;
-import club.partymaker.partymaker.party.ViewPartyActivity;
-
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import club.partymaker.partymaker.R;
+import club.partymaker.partymaker.databinding.PartyItemBinding;
+import club.partymaker.partymaker.party.PartyEntity;
+import club.partymaker.partymaker.party.ViewPartyActivity;
 
 import static club.partymaker.partymaker.BR.dateTime;
 import static club.partymaker.partymaker.BR.party;
