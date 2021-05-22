@@ -491,11 +491,11 @@
                     android:id="@+id/buttonsViewParty"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_marginStart="30dp"
                     android:layout_marginEnd="30dp"
                     android:layout_marginBottom="20dp"
                     android:orientation="horizontal"
-                    android:visibility="@{viewmodel.isParticipant ? View.GONE : View.VISIBLE}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -510,7 +510,8 @@
                         android:backgroundTint="@color/pastel_purple_light"
                         android:onClick="onRespond"
                         android:text='@{viewmodel.isParticipant ? "Not Going" : "Reject"}'
-                        android:textColor="@color/gorgeous_purple_darker" />
+                        android:textColor="@color/gorgeous_purple_darker"
+                        android:visibility="@{!viewmodel.isOrganiser ? View.VISIBLE : View.GONE}" />
 
                     <Button
                         android:id="@+id/buttonAccept"
@@ -520,7 +521,8 @@
                         android:backgroundTint="@color/gorgeous_purple"
                         android:onClick="onRespond"
                         android:text="Accept"
-                        android:textColor="@color/pastel_purple" />
+                        android:textColor="@color/pastel_purple"
+                        android:visibility="@{(!viewmodel.isParticipant &amp;&amp; !viewmodel.isOrganiser )? View.VISIBLE : View.GONE}" />
 
                 </LinearLayout>
 
@@ -532,12 +534,13 @@
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/floatingButtonShare"
-            android:onClick="onShare"
             android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
+            android:onClick="onShare"
             android:src="@drawable/ic_baseline_share_24"
+            android:visibility="@{viewmodel.isParticipant ? View.VISIBLE : View.GONE}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
