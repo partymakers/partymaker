@@ -21,7 +21,7 @@
         tools:context=".party.CreatePartyActivity">
 
         <ScrollView
-            android:id="@+id/back"
+            android:id="@+id/CreatePartyScrollView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="5dp"
@@ -39,7 +39,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/NameDescription"
                     android:layout_width="350dp"
-                    android:layout_height="200dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     app:layout_constraintBottom_toTopOf="@+id/DateTimePicker"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -50,9 +50,12 @@
                         android:id="@+id/PartyName"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
-                        android:layout_height="70dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
                         android:layout_marginBottom="2dp"
                         app:boxStrokeColor="@color/fui_bgEmail"
+                        app:counterEnabled="true"
+                        app:counterMaxLength="80"
                         app:errorEnabled="true"
                         app:layout_constraintBottom_toTopOf="@+id/PartyDescription"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -62,24 +65,25 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/textPartyName"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:hint="Give your party a catchy name"
                             android:imeOptions="actionNext"
-                            android:inputType="text"
-                            android:maxLines="1"
+                            android:inputType="textMultiLine"
+                            android:maxLength="80"
+                            android:maxLines="2"
                             android:nextFocusDown="@+id/textPartyDescription"
                             android:text="@={party.name}"
                             android:textSize="20sp" />
-
-                        <requestFocus />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/PartyDescription"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
-                        android:layout_height="100dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="2dp"
+                        app:counterEnabled="true"
+                        app:counterMaxLength="1000"
                         app:errorEnabled="true"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -89,13 +93,15 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/textPartyDescription"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:hint="Description"
                             android:imeOptions="actionNext"
                             android:inputType="textMultiLine"
+                            android:maxLength="1000"
                             android:maxLines="5"
                             android:scrollbars="vertical"
-                            android:text="@={party.description}" />
+                            android:text="@={party.description}"
+                            android:textSize="16dp" />
                     </com.google.android.material.textfield.TextInputLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -115,7 +121,7 @@
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/layoutDatePicker"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="160dp"
+                        android:layout_width="180dp"
                         android:layout_height="match_parent"
                         android:layout_marginStart="0dp"
                         android:layout_marginEnd="0dp"
@@ -168,8 +174,8 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/LocationPicker"
                     android:layout_width="350dp"
-                    android:layout_height="80dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
                     android:layout_marginBottom="5dp"
                     app:layout_constraintBottom_toTopOf="@+id/Options"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -181,7 +187,9 @@
                         android:id="@+id/layoutLocation"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
+                        app:counterEnabled="true"
+                        app:counterMaxLength="200"
                         app:errorEnabled="true"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -193,8 +201,12 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/textLocationPicked"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:hint="Location"
+                            android:inputType="textMultiLine"
+                            android:maxLength="200"
+                            android:maxLines="3"
+                            android:scrollbars="vertical"
                             android:text="@={party.location}" />
                     </com.google.android.material.textfield.TextInputLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -218,42 +230,29 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp">
 
-
-                        <TextView
-                            android:id="@+id/switchTheme"
-                            android:layout_width="0dp"
-                            android:layout_height="20dp"
-                            android:layout_marginTop="4dp"
-                            android:layout_marginBottom="3dp"
-                            android:layout_weight="1"
-                            android:fontFamily="sans-serif"
-                            android:text="Theme"
-                            android:textSize="16sp"
-                            app:layout_constraintBottom_toTopOf="@+id/themeInputLayout"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/themeInputLayout"
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="0dp"
-                            android:layout_height="65dp"
-                            android:layout_marginTop="2dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            app:counterEnabled="true"
+                            app:counterMaxLength="200"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/switchTheme">
+                            app:layout_constraintStart_toStartOf="parent">
 
                             <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/textInputTheme"
                                 android:layout_width="match_parent"
-                                android:layout_height="60dp"
+                                android:layout_height="wrap_content"
                                 android:hint="Party theme"
                                 android:imeOptions="actionNext"
-                                android:inputType="text"
-                                android:maxLines="1"
+                                android:inputType="textMultiLine"
+                                android:maxLength="200"
+                                android:maxLines="3"
                                 android:nextFocusDown="@+id/dressCodeInputLayout"
+                                android:scrollbars="vertical"
                                 android:text="@={party.theme}"
                                 android:textSize="16sp" />
 
@@ -265,43 +264,33 @@
                         android:id="@+id/DressCode"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginTop="10dp"
                         app:layout_constraintTop_toBottomOf="@+id/Theme">
-
-                        <TextView
-                            android:id="@+id/switchDressCode"
-                            android:layout_width="0dp"
-                            android:layout_height="20dp"
-                            android:layout_marginTop="4dp"
-                            android:layout_marginBottom="3dp"
-                            android:layout_weight="1"
-                            android:text="Dress code"
-                            android:textSize="16sp"
-                            app:layout_constraintBottom_toTopOf="@+id/dressCodeInputLayout"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/dressCodeInputLayout"
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="0dp"
-                            android:layout_height="65dp"
-                            android:layout_marginTop="2dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            app:counterEnabled="true"
+                            app:counterMaxLength="200"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/switchDressCode">
+                            app:layout_constraintTop_toTopOf="parent">
 
                             <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/textInputDressCode"
                                 android:layout_width="match_parent"
-                                android:layout_height="60dp"
+                                android:layout_height="wrap_content"
                                 android:hint="Costume requirements"
                                 android:imeOptions="actionNext"
-                                android:inputType="text"
-                                android:maxLines="1"
+                                android:inputType="textMultiLine"
+                                android:maxLength="200"
+                                android:maxLines="3"
                                 android:nextFocusDown="@+id/foodChipInputLayout"
+                                android:scrollbars="vertical"
                                 android:text="@={party.dressCode}"
                                 android:textSize="16sp" />
 
@@ -313,7 +302,7 @@
                         android:id="@+id/Food"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginTop="10dp"
                         app:layout_constraintTop_toBottomOf="@+id/DressCode">
 
                         <TextView
@@ -357,9 +346,10 @@
                                     android:id="@+id/textInputFood"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:hint="Food servings"
+                                    android:hint="Choose an item or add a new one"
                                     android:imeOptions="actionDone"
                                     android:inputType="textImeMultiLine"
+                                    android:maxLength="30"
                                     android:textSize="16sp" />
 
                             </com.google.android.material.textfield.TextInputLayout>
@@ -391,7 +381,7 @@
                         android:id="@+id/Drinks"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginTop="10dp"
                         app:layout_constraintTop_toBottomOf="@+id/Food">
 
                         <TextView
@@ -435,9 +425,10 @@
                                     android:id="@+id/textInputDrinks"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:hint="drinks servings"
+                                    android:hint="Choose an item or add a new one"
                                     android:imeOptions="actionDone"
                                     android:inputType="textImeMultiLine"
+                                    android:maxLength="30"
                                     android:textSize="16sp" />
 
                             </com.google.android.material.textfield.TextInputLayout>
@@ -469,62 +460,34 @@
                         android:id="@+id/Fee"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginTop="10dp"
                         app:layout_constraintTop_toBottomOf="@+id/Drinks">
 
-                        <TextView
-                            android:id="@+id/switchFee"
-                            android:layout_width="0dp"
-                            android:layout_height="20dp"
-                            android:layout_marginTop="4dp"
-                            android:layout_marginBottom="3dp"
-                            android:layout_weight="1"
-                            android:fontFamily="sans-serif"
-                            android:text="Charge an entry fee"
-                            android:textSize="16sp"
-                            app:layout_constraintBottom_toTopOf="@+id/feeLinearLayout"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <LinearLayout
-                            android:id="@+id/feeLinearLayout"
-                            android:layout_width="350dp"
-                            android:layout_height="65dp"
-                            android:layout_marginTop="5dp"
-                            android:orientation="horizontal"
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/feeInputLayout"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="0dp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/switchFee">
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:startIconDrawable="@drawable/ic_baseline_monetization_on_24"
+                            app:startIconTint="?attr/colorSecondaryVariant">
 
-                            <com.google.android.material.textfield.TextInputLayout
-                                android:id="@+id/feeInputLayout"
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/textInputFee"
                                 android:layout_width="match_parent"
-                                android:layout_height="65dp"
-                                android:layout_marginTop="0dp"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/switchFee"
-                                app:startIconDrawable="@drawable/ic_baseline_monetization_on_24"
-                                app:startIconTint="?attr/colorSecondaryVariant">
+                                android:layout_height="wrap_content"
+                                android:hint="Entry fee"
+                                android:imeOptions="actionNext"
+                                android:inputType="numberDecimal"
+                                android:text="@={party.fee}"
+                                android:textSize="16sp" />
 
-                                <com.google.android.material.textfield.TextInputEditText
-                                    android:id="@+id/textInputFee"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:hint="Entry fee"
-                                    android:imeOptions="actionNext"
-                                    android:inputType="numberDecimal"
-                                    android:maxLines="1"
-                                    android:text="@={party.fee}"
-                                    android:textSize="16sp" />
+                        </com.google.android.material.textfield.TextInputLayout>
 
-                            </com.google.android.material.textfield.TextInputLayout>
-
-                        </LinearLayout>
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -543,6 +506,7 @@
                             android:id="@+id/otherOptions"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
                             android:text="Guests can bring along"
                             android:textColor="@color/black"
                             android:textSize="16sp" />
@@ -552,7 +516,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="20dp"
-                            android:buttonTint="@color/gorgeous_purple"
+                            android:buttonTint="?attr/colorSecondaryVariant"
                             android:checked="@={party.allowsPartner}"
                             android:text="Partner" />
 
@@ -561,7 +525,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="20dp"
-                            android:buttonTint="@color/gorgeous_purple"
+                            android:buttonTint="?attr/colorSecondaryVariant"
                             android:checked="@={party.allowsFriends}"
                             android:text="Friends" />
 
@@ -570,7 +534,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="20dp"
-                            android:buttonTint="@color/gorgeous_purple"
+                            android:buttonTint="?attr/colorSecondaryVariant"
                             android:checked="@={party.allowsChildren}"
                             android:text="Children" />
 
@@ -579,7 +543,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="20dp"
-                            android:buttonTint="@color/gorgeous_purple"
+                            android:buttonTint="?attr/colorSecondaryVariant"
                             android:checked="@={party.allowsPets}"
                             android:text="Pets" />
 
@@ -592,40 +556,29 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp">
 
-                        <TextView
-                            android:id="@+id/switchParking"
-                            android:layout_width="0dp"
-                            android:layout_height="20dp"
-                            android:layout_marginTop="4dp"
-                            android:layout_marginBottom="3dp"
-                            android:layout_weight="1"
-                            android:fontFamily="sans-serif"
-                            android:text="Parking information"
-                            android:textSize="16sp"
-                            app:layout_constraintBottom_toTopOf="@+id/parkingInputLayout"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/parkingInputLayout"
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="0dp"
-                            android:layout_height="65dp"
-                            android:layout_marginTop="2dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            app:counterEnabled="true"
+                            app:counterMaxLength="200"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/switchParking">
+                            app:layout_constraintTop_toTopOf="parent">
 
                             <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/textInputParking"
                                 android:layout_width="match_parent"
-                                android:layout_height="60dp"
+                                android:layout_height="wrap_content"
                                 android:hint="Parking details"
                                 android:imeOptions="actionNext"
-                                android:inputType="text"
-                                android:maxLines="1"
+                                android:inputType="textMultiLine"
+                                android:maxLength="200"
+                                android:maxLines="3"
+                                android:scrollbars="vertical"
                                 android:text="@={party.parkingDetails}"
                                 android:textSize="16sp" />
 
@@ -644,8 +597,10 @@
                             android:id="@+id/infoAddInputLayout"
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="0dp"
-                            android:layout_height="100dp"
+                            android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
+                            app:counterEnabled="true"
+                            app:counterMaxLength="200"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
@@ -655,11 +610,12 @@
                             <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/textInputInfo"
                                 android:layout_width="match_parent"
-                                android:layout_height="90dp"
+                                android:layout_height="wrap_content"
                                 android:hint="Additional information"
                                 android:imeOptions="actionNext"
                                 android:inputType="textMultiLine"
-                                android:maxLines="5"
+                                android:maxLength="200"
+                                android:maxLines="3"
                                 android:scrollbars="vertical"
                                 android:text="@={party.additionalInformation}"
                                 android:textSize="16sp" />

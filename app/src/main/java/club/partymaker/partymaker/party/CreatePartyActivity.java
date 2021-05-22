@@ -12,8 +12,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
-import club.partymaker.partymaker.R;
-import club.partymaker.partymaker.databinding.ActivityCreatePartyBinding;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipDrawable;
 import com.google.android.material.chip.ChipGroup;
@@ -34,6 +32,9 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 import java.util.TreeSet;
+
+import club.partymaker.partymaker.R;
+import club.partymaker.partymaker.databinding.ActivityCreatePartyBinding;
 
 public class CreatePartyActivity extends AppCompatActivity {
     static final private String TAG = CreatePartyActivity.class.getSimpleName();
@@ -63,8 +64,12 @@ public class CreatePartyActivity extends AppCompatActivity {
         setupChips(dataBinding.foodChipGroup, defaultFood, party.getFood());
         setupChips(dataBinding.drinksChipGroup, defaultDrinks, party.getDrinks());
 //        It's impossible to set focus listeners in the layout file
-        dataBinding.textDatePicked.setOnFocusChangeListener((v, hasFocus) -> { if (hasFocus) onDateTime(v); });
-        dataBinding.textTimePicked.setOnFocusChangeListener((v, hasFocus) -> { if (hasFocus) onDateTime(v); });
+        dataBinding.textDatePicked.setOnFocusChangeListener((v, hasFocus) -> {
+            if (hasFocus) onDateTime(v);
+        });
+        dataBinding.textTimePicked.setOnFocusChangeListener((v, hasFocus) -> {
+            if (hasFocus) onDateTime(v);
+        });
     }
 
     public void onDateTime(View view) {
@@ -111,23 +116,25 @@ public class CreatePartyActivity extends AppCompatActivity {
     }
 
     public void onSubmit(View view) {
-        DocumentReference firestoreDocument;
-        if (party.getId() == null || party.getId().isEmpty()) {
-            firestoreDocument = FirebaseFirestore.getInstance().collection("parties").document();
-        } else {
-            firestoreDocument = FirebaseFirestore.getInstance().collection("parties").document(party.getId());
+        if (inputIsValid()) {
+            DocumentReference firestoreDocument;
+            if (party.getId() == null || party.getId().isEmpty()) {
+                firestoreDocument = FirebaseFirestore.getInstance().collection("parties").document();
+            } else {
+                firestoreDocument = FirebaseFirestore.getInstance().collection("parties").document(party.getId());
+            }
+            firestoreDocument.set(party)
+                    .addOnSuccessListener(aVoid -> {
+                        Log.i(TAG, "Party persisted.");
+                        Toast.makeText(CreatePartyActivity.this.getApplicationContext(), "Party created!", Toast.LENGTH_SHORT).show();
+                        CreatePartyActivity.this.finish();
+                    })
+                    .addOnFailureListener(e -> {
+                        e.printStackTrace();
+                        Log.e(TAG, "Persisting party failed");
+                        Snackbar.make(dataBinding.getRoot(), "Saving failed", Snackbar.LENGTH_SHORT).show();
+                    });
         }
-        firestoreDocument.set(party)
-                .addOnSuccessListener(aVoid -> {
-                    Log.i(TAG, "Party persisted.");
-                    Toast.makeText(CreatePartyActivity.this.getApplicationContext(), "Party created!", Toast.LENGTH_SHORT).show();
-                    CreatePartyActivity.this.finish();
-                })
-                .addOnFailureListener(e -> {
-                    e.printStackTrace();
-                    Log.e(TAG, "Persisting party failed");
-                    Snackbar.make(dataBinding.getRoot(), "Saving failed", Snackbar.LENGTH_SHORT).show();
-                });
     }
 
     private void handleDate() {
@@ -150,6 +157,7 @@ public class CreatePartyActivity extends AppCompatActivity {
         );
         datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis());
         datePickerDialog.show();
+        dataBinding.textDatePicked.setError(null);
     }
 
     private void handleTime() {
@@ -214,5 +222,33 @@ public class CreatePartyActivity extends AppCompatActivity {
         HashSet<String> allChips = new HashSet<>(defaultChips);
         allChips.addAll(selectedChips);
         return !allChips.contains(name);
+    }
+
+    private boolean inputIsValid() {
+        validateName();
+        validateDate();
+        if (dataBinding.textPartyName.getError() != null || dataBinding.textDatePicked.getError() != null) {
+            return false;
+        }
+
+        return true;
+    }
+
+    private void validateName() {
+        if (dataBinding.textPartyName.getText().toString().trim().isEmpty()) {
+            dataBinding.textPartyName.setError("Name can't be empty");
+            dataBinding.CreatePartyScrollView.smoothScrollTo(0, 0);
+        } else {
+            dataBinding.textPartyName.setError(null);
+        }
+    }
+
+    private void validateDate() {
+        if (dataBinding.textDatePicked.getText().toString().trim().isEmpty()) {
+            dataBinding.textDatePicked.setError("Choose date");
+            dataBinding.CreatePartyScrollView.smoothScrollTo(0, 0);
+        } else {
+            dataBinding.textDatePicked.setError(null);
+        }
     }
 }
