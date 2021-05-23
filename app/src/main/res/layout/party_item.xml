@@ -15,7 +15,7 @@
 
         <variable
             name="itemClickListener"
-            type="club.partymaker.partymaker.dashboard.UpcomingPartiesCardClickListener" />
+            type="club.partymaker.partymaker.dashboard.PartyListCardClickListener" />
     </data>
 
     <androidx.cardview.widget.CardView

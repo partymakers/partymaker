@@ -30,7 +30,7 @@ public class UpcomingPartiesFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setHasFixedSize(true);
 
-        UpcomingPartiesRecyclerAdapter recyclerAdapter = new UpcomingPartiesRecyclerAdapter();
+        PartyListRecyclerAdapter recyclerAdapter = new PartyListRecyclerAdapter();
         viewModel.getParties().observe(getViewLifecycleOwner(), recyclerAdapter::setParties);
         recyclerView.addItemDecoration(new DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL));
         dataBinding.setMyAdapter(recyclerAdapter);
