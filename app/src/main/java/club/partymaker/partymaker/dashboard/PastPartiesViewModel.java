@@ -6,21 +6,21 @@ import androidx.lifecycle.ViewModel;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query.Direction;
+import com.google.firebase.firestore.Query;
 
 import java.util.List;
 
 import club.partymaker.partymaker.party.PartyEntity;
 
-public class UpcomingPartiesViewModel extends ViewModel {
+public class PastPartiesViewModel extends ViewModel {
     private final MutableLiveData<List<PartyEntity>> parties = new MutableLiveData<>();
     private final String userId = FirebaseAuth.getInstance().getUid();
 
-    public UpcomingPartiesViewModel() {
+    public PastPartiesViewModel() {
         FirebaseFirestore.getInstance().collection("parties")
                 .whereArrayContains("participantsIds", userId)
-                .orderBy("timestamp", Direction.ASCENDING)
-                .whereGreaterThanOrEqualTo("timestamp", System.currentTimeMillis())
+                .orderBy("timestamp", Query.Direction.ASCENDING)
+                .whereLessThan("timestamp", System.currentTimeMillis())
                 .addSnapshotListener((value, error) -> {
                     if (value != null) {
                         parties.setValue(value.toObjects(PartyEntity.class));
