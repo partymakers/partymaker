@@ -1,10 +1,12 @@
-package club.partymaker.partymaker;
+package club.partymaker.partymaker.user;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class UserActivity extends AppCompatActivity {
+import club.partymaker.partymaker.R;
+
+public class UserSettingsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
