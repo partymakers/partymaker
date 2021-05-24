@@ -24,6 +24,6 @@
     <color name="pastel_purple_">#a58faa</color>
     <color name="pastel_aquamarine">#a6d6d6</color>
     <color name="pastel_aquamarine_darker">#FF88CACA</color>
-
+    <color name="button_cancel_inactive">#B3B2B2</color>
     <color name="pastel_green">#ededd0</color>
 </resources>
