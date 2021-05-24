@@ -27,7 +27,4 @@
     <string name="Email">Email</string>
     <string name="Password">Password</string>
 
-    <string name="Hint_Nickname">Enter nickname</string>
-    <string name="Hint_Full_name">Enter full name</string>
-    <string name="Hint_Password">Enter your new password</string>
 </resources>

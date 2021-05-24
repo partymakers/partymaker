@@ -21,6 +21,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
+
                 <ImageView
                     android:id="@+id/imageView"
                     android:layout_width="187dp"
@@ -30,21 +31,10 @@
                     android:layout_marginBottom="40dp"
                     android:contentDescription="@string/Profile_photo"
                     android:foregroundGravity="center"
+                    android:src="@drawable/user"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:srcCompat="@tools:sample/avatars" />
-
-
-                <TextView
-                    android:id="@+id/textViewNickname"
-                    android:layout_width="350dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="@string/Nickname"
-                    android:textColor="?attr/colorPrimary"
-                    android:textSize="24sp"
-                    android:textStyle="bold" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/LayoutNickname"
@@ -53,7 +43,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginBottom="2dp"
-                    android:hint="@string/Hint_Nickname"
+                    android:hint="@string/Nickname"
                     app:boxStrokeColor="@color/fui_bgEmail"
                     app:errorEnabled="true"
                     app:startIconDrawable="@drawable/baseline_insert_emoticon_24">
@@ -69,16 +59,6 @@
                         android:textSize="20sp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <TextView
-                    android:id="@+id/textViewFullName"
-                    android:layout_width="350dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="@string/Full_name"
-                    android:textColor="?attr/colorPrimary"
-                    android:textSize="24sp"
-                    android:textStyle="bold" />
-
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/LayoutFullName"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -86,7 +66,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginBottom="2dp"
-                    android:hint="@string/Hint_Full_name"
+                    android:hint="@string/Full_name"
                     app:boxStrokeColor="@color/fui_bgEmail"
                     app:errorEnabled="true"
                     app:startIconDrawable="@drawable/baseline_person_24">
@@ -99,19 +79,8 @@
                         android:inputType="textMultiLine"
                         android:maxLength="25"
                         android:maxLines="2"
-                        android:text="Full Name"
                         android:textSize="20sp" />
                 </com.google.android.material.textfield.TextInputLayout>
-
-                <TextView
-                    android:id="@+id/Email"
-                    android:layout_width="350dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="@string/Email"
-                    android:textColor="?attr/colorPrimary"
-                    android:textSize="24dp"
-                    android:textStyle="bold" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/LayoutEmail"
@@ -120,6 +89,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginBottom="2dp"
+                    android:hint="@string/Email"
                     app:boxStrokeColor="@color/fui_bgEmail"
                     app:errorEnabled="true"
                     app:startIconDrawable="@drawable/ic_baseline_email_24">
@@ -133,19 +103,8 @@
                         android:maxLength="150"
                         android:maxLines="2"
                         android:nextFocusDown="@+id/textPartyDescription"
-                        android:text="Email"
                         android:textSize="20sp" />
                 </com.google.android.material.textfield.TextInputLayout>
-
-                <TextView
-                    android:id="@+id/Password"
-                    android:layout_width="350dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="@string/Password"
-                    android:textColor="?attr/colorPrimary"
-                    android:textSize="24dp"
-                    android:textStyle="bold" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/LayoutPassword"
@@ -154,7 +113,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginBottom="2dp"
-                    android:hint="@string/Hint_Password"
+                    android:hint="@string/Password"
                     app:boxStrokeColor="@color/fui_bgEmail"
                     app:errorEnabled="true"
                     app:startIconDrawable="@drawable/ic_baseline_vpn_key_24">
@@ -168,7 +127,6 @@
                         android:maxLength="150"
                         android:maxLines="2"
                         android:nextFocusDown="@+id/textPartyDescription"
-                        android:text="email"
                         android:textSize="20sp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
