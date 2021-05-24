@@ -12,7 +12,9 @@ import com.google.firebase.dynamiclinks.FirebaseDynamicLinks;
 
 import club.partymaker.partymaker.R;
 import club.partymaker.partymaker.databinding.ActivityViewPartyBinding;
+import dagger.hilt.android.AndroidEntryPoint;
 
+@AndroidEntryPoint
 public class ViewPartyActivity extends AppCompatActivity {
     private ViewPartyViewModel viewModel;
     private ActivityViewPartyBinding dataBinding;
@@ -46,7 +48,7 @@ public class ViewPartyActivity extends AppCompatActivity {
     public void onShare(View view) {
         Intent sendIntent = new Intent()
                 .setAction(Intent.ACTION_SEND)
-                .putExtra(Intent.EXTRA_TEXT, String.format("%s:\n%s", viewModel.getPartyName(), viewModel.getDynamicLink()))
+                .putExtra(Intent.EXTRA_TEXT, String.format("%s:\n%s", viewModel.getPartyNameValue(), viewModel.createDynamicLink()))
                 .setType("text/plain");
         Intent shareIntent = Intent.createChooser(sendIntent, null);
         startActivity(shareIntent);
