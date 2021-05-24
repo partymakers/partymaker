@@ -21,4 +21,13 @@
     <string name="Parking_details">Parking details &#128663;</string>
     <string name="Access_code">Access code &#128273;</string>
 
+    <string name="Profile_photo">Profile photo</string>
+    <string name="Nickname">Nickname</string>
+    <string name="Full_name">Full Name</string>
+    <string name="Email">Email</string>
+    <string name="Password">Password</string>
+
+    <string name="Hint_Nickname">Enter nickname</string>
+    <string name="Hint_Full_name">Enter full name</string>
+    <string name="Hint_Password">Enter your new password</string>
 </resources>
