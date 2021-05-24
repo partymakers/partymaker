@@ -1,19 +1,17 @@
 package club.partymaker.partymaker.party;
 
 import android.net.Uri;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Transformations;
 import androidx.lifecycle.ViewModel;
-import androidx.lifecycle.ViewModelProvider;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.dynamiclinks.DynamicLink;
 import com.google.firebase.dynamiclinks.FirebaseDynamicLinks;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -21,80 +19,74 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
+import javax.inject.Inject;
+
+import club.partymaker.partymaker.user.UserRepository;
+import dagger.hilt.android.lifecycle.HiltViewModel;
+
+@HiltViewModel
 public class ViewPartyViewModel extends ViewModel {
+    private static final String TAG = ViewPartyViewModel.class.getSimpleName();
 
-    public static class Factory implements ViewModelProvider.Factory {
-        private final String partyId;
-
-        public Factory(String partyId) {
-            this.partyId = partyId;
-        }
-
-        @SuppressWarnings("unchecked")
-        @NonNull
-        @Override
-        public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
-            return (T) new ViewPartyViewModel(partyId);
-        }
-    }
-
-    private final DocumentReference documentReference;
-
-    private final MutableLiveData<PartyEntity> party = new MutableLiveData<>();
+    private final MutableLiveData<String> partyId = new MutableLiveData<>();
+    private final LiveData<PartyEntity> party;
     private final LiveData<String> formattedDateTime;
-    private final LiveData<Boolean> editable;
-    private final LiveData<Boolean> isParticipant;
     private final LiveData<Boolean> isOrganiser;
+    private final LiveData<Boolean> isParticipant;
 
-    public ViewPartyViewModel(String partyId) {
+    private final UserRepository userRepository;
+    private final PartyRepository partyRepository;
+
+    @Inject
+    public ViewPartyViewModel(UserRepository userRepository, PartyRepository partyRepository) {
+        this.userRepository = userRepository;
+        this.partyRepository = partyRepository;
+
+        party = Transformations.switchMap(partyId, partyRepository::findPartyById);
         formattedDateTime = Transformations.map(party,
                 partyEntity -> SimpleDateFormat.getDateTimeInstance(DateFormat.FULL, DateFormat.SHORT).format(new Date(partyEntity.getTimestamp())));
-        editable = Transformations.map(party,
+        isOrganiser = Transformations.map(party,
                 partyEntity -> partyEntity.getOrganizersIds().contains(FirebaseAuth.getInstance().getUid()));
         isParticipant = Transformations.map(party,
                 partyEntity -> partyEntity.getParticipantsIds().contains(FirebaseAuth.getInstance().getUid()));
-        isOrganiser = Transformations.map(party,
-                partyEntity -> partyEntity.getOrganizersIds().contains(FirebaseAuth.getInstance().getUid()));
+    }
 
-        documentReference = FirebaseFirestore.getInstance().collection("parties").document(partyId);
-        documentReference.addSnapshotListener((value, error) -> {
-            if (value != null) {
-                party.setValue(value.toObject(PartyEntity.class));
-            } else if (error != null) {
-                error.printStackTrace();
-            }
-        });
+    public void setPartyId(String partyId) {
+        this.partyId.setValue(partyId);
     }
 
     public void acceptInvitation() {
-        List<String> participantsIds = getPartySafe().getParticipantsIds();
-        String userId = FirebaseAuth.getInstance().getUid();
+        throwIfPartyIdIsNotSet();
+        List<String> participantsIds = getPartyValue().getParticipantsIds();
+        String userId = userRepository.getUserIdValue();
         if (!participantsIds.contains(userId)) {
             participantsIds.add(userId);
         }
-        documentReference.update("participantsIds", participantsIds);
+        partyRepository.updateParticipantsIds(getPartyIdValue(), participantsIds);
     }
 
     /**
      * @return true if user was deleted from participants, false otherwise
      */
     public boolean rejectInvitation() {
-        List<String> participantsIds = getPartySafe().getParticipantsIds();
-        boolean isRemoved = participantsIds.remove(FirebaseAuth.getInstance().getUid());
+        throwIfPartyIdIsNotSet();
+        List<String> participantsIds = getPartyValue().getParticipantsIds();
+        boolean isRemoved = participantsIds.remove(userRepository.getUserIdValue());
         if (isRemoved) {
-            documentReference.update("participantsIds", participantsIds);
+            partyRepository.updateParticipantsIds(getPartyIdValue(), participantsIds);
         }
         return isRemoved;
     }
 
-    public Uri getDynamicLink() {
+    public Uri createDynamicLink() {
+        throwIfPartyIdIsNotSet();
         return FirebaseDynamicLinks.getInstance().createDynamicLink()
                 .setDomainUriPrefix("https://partymaker.club/links/")
-                .setLink(Uri.parse("https://partymaker.club/event/" + getPartyId()))
+                .setLink(Uri.parse("https://partymaker.club/event/" + getPartyIdValue()))
                 .setSocialMetaTagParameters(
                         new DynamicLink.SocialMetaTagParameters.Builder()
-                                .setTitle(getPartyName())
-                                .setDescription(getPartyDescription())
+                                .setTitle(getPartyNameValue())
+                                .setDescription(getPartyDescriptionValue())
                                 .build())
                 .setAndroidParameters(
                         new DynamicLink.AndroidParameters.Builder().build())
@@ -102,16 +94,16 @@ public class ViewPartyViewModel extends ViewModel {
                 .getUri();
     }
 
-    public String getPartyId() {
-        return getPartySafe().getId();
+    public String getPartyIdValue() {
+        return getPartyValue().getId();
     }
 
-    public String getPartyName() {
-        return getPartySafe().getName();
+    public String getPartyNameValue() {
+        return getPartyValue().getName();
     }
 
-    public String getPartyDescription() {
-        return getPartySafe().getDescription();
+    public String getPartyDescriptionValue() {
+        return getPartyValue().getDescription();
     }
 
     public LiveData<PartyEntity> getParty() {
@@ -122,10 +114,6 @@ public class ViewPartyViewModel extends ViewModel {
         return formattedDateTime;
     }
 
-    public LiveData<Boolean> getEditable() {
-        return editable;
-    }
-
     public LiveData<Boolean> getIsParticipant() {
         return isParticipant;
     }
@@ -134,8 +122,16 @@ public class ViewPartyViewModel extends ViewModel {
         return isOrganiser;
     }
 
+    private void throwIfPartyIdIsNotSet() {
+        String message = "Party id has not been set";
+        if (partyId.getValue() == null) {
+            Log.e(TAG, message);
+            throw new IllegalStateException(message);
+        }
+    }
+
     @NonNull
-    private PartyEntity getPartySafe() {
+    private PartyEntity getPartyValue() {
         return Objects.requireNonNull(party.getValue(), "Party is null");
     }
 }

@@ -6,13 +6,15 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModelProvider;
+
+import com.google.firebase.dynamiclinks.FirebaseDynamicLinks;
 
 import club.partymaker.partymaker.R;
 import club.partymaker.partymaker.databinding.ActivityViewPartyBinding;
-import com.google.firebase.dynamiclinks.FirebaseDynamicLinks;
+import dagger.hilt.android.AndroidEntryPoint;
 
+@AndroidEntryPoint
 public class ViewPartyActivity extends AppCompatActivity {
     private ViewPartyViewModel viewModel;
     private ActivityViewPartyBinding dataBinding;
@@ -24,20 +26,17 @@ public class ViewPartyActivity extends AppCompatActivity {
         setContentView(dataBinding.getRoot());
         dataBinding.setLifecycleOwner(this);
 
-        MutableLiveData<String> partyId = new MutableLiveData<>();
-        partyId.observe(this, id -> {
-            viewModel = new ViewModelProvider(ViewPartyActivity.this, new ViewPartyViewModel.Factory(id)).get(ViewPartyViewModel.class);
-            dataBinding.setViewmodel(viewModel);
-        });
+        viewModel = new ViewModelProvider(this).get(ViewPartyViewModel.class);
+        dataBinding.setViewmodel(viewModel);
 
         if (getIntent().hasExtra("partyCode")) {
-            partyId.setValue(getIntent().getStringExtra("partyCode"));
+            viewModel.setPartyId(getIntent().getStringExtra("partyCode"));
         } else {
             FirebaseDynamicLinks.getInstance().getDynamicLink(getIntent())
                     .addOnSuccessListener(this, pendingData -> {
                         if (pendingData != null && pendingData.getLink() != null) {
                             String id = pendingData.getLink().getLastPathSegment();
-                            partyId.setValue(id);
+                            viewModel.setPartyId(id);
                         } else {
                             finish();
                         }
@@ -49,7 +48,7 @@ public class ViewPartyActivity extends AppCompatActivity {
     public void onShare(View view) {
         Intent sendIntent = new Intent()
                 .setAction(Intent.ACTION_SEND)
-                .putExtra(Intent.EXTRA_TEXT, String.format("%s:\n%s", viewModel.getPartyName(), viewModel.getDynamicLink()))
+                .putExtra(Intent.EXTRA_TEXT, String.format("%s:\n%s", viewModel.getPartyNameValue(), viewModel.createDynamicLink()))
                 .setType("text/plain");
         Intent shareIntent = Intent.createChooser(sendIntent, null);
         startActivity(shareIntent);
