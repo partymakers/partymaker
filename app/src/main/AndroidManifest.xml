@@ -10,8 +10,12 @@
         android:roundIcon="@mipmap/logo_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PartyMaker">
-        <activity android:name=".UserActivity"></activity>
-        <activity android:name=".party.ViewPartyActivity">
+        <activity
+            android:name=".UserActivity"
+            android:parentActivityName=".MainActivity"></activity>
+        <activity
+            android:name=".party.ViewPartyActivity"
+            android:parentActivityName=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -23,7 +27,9 @@
                     android:scheme="https" />
             </intent-filter>
         </activity>
-        <activity android:name=".party.CreatePartyActivity" />
+        <activity
+            android:name=".party.CreatePartyActivity"
+            android:parentActivityName=".MainActivity" />
         <activity android:name=".user.LoginActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
