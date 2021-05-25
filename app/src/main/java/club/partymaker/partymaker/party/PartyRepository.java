@@ -73,20 +73,20 @@ public class PartyRepository {
     }
 
     public LiveData<PartyEntity> findPartyById(String partyId) {
-        if (cacheData.containsKey(partyId)) {
-            return Transformations.map(cache, input -> input.get(partyId));
+        if (!cacheData.containsKey(partyId)) {
+            firebaseCollection.document(partyId)
+                    .addSnapshotListener((value, error) -> {
+                        if (value != null) {
+                            PartyEntity party = value.toObject(PartyEntity.class);
+                            cacheData.put(partyId, party);
+                            cache.setValue(cacheData);
+                        } else if (error != null) {
+                            FirebaseFirestoreException.Code errorCode = error.getCode();
+                            Log.e(TAG, String.format("Error while downloading party with id = %s. (%d: %s)", partyId, errorCode.value(), errorCode.toString()));
+                        }
+                    });
         }
-        MutableLiveData<PartyEntity> partyLiveData = new MutableLiveData<>();
-        firebaseCollection.document(partyId)
-                .addSnapshotListener((value, error) -> {
-                    if (value != null) {
-                        partyLiveData.setValue(value.toObject(PartyEntity.class));
-                    } else if (error != null) {
-                        FirebaseFirestoreException.Code errorCode = error.getCode();
-                        Log.e(TAG, String.format("Error while downloading party with id = %s. (%d: %s)", partyId, errorCode.value(), errorCode.toString()));
-                    }
-                });
-        return partyLiveData;
+        return Transformations.map(cache, input -> input.get(partyId));
     }
 
     public LiveData<List<PartyEntity>> findPartiesBefore(long timestampInMillis) {

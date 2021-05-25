@@ -44,12 +44,24 @@ public class ViewPartyViewModel extends ViewModel {
         this.partyRepository = partyRepository;
 
         party = Transformations.switchMap(partyId, partyRepository::findPartyById);
-        formattedDateTime = Transformations.map(party,
-                partyEntity -> SimpleDateFormat.getDateTimeInstance(DateFormat.FULL, DateFormat.SHORT).format(new Date(partyEntity.getTimestamp())));
-        isOrganiser = Transformations.map(party,
-                partyEntity -> partyEntity.getOrganizersIds().contains(FirebaseAuth.getInstance().getUid()));
-        isParticipant = Transformations.map(party,
-                partyEntity -> partyEntity.getParticipantsIds().contains(FirebaseAuth.getInstance().getUid()));
+        formattedDateTime = Transformations.map(party, partyEntity -> {
+                    if (partyEntity == null) {
+                        return null;
+                    }
+                    return SimpleDateFormat.getDateTimeInstance(DateFormat.FULL, DateFormat.SHORT).format(new Date(partyEntity.getTimestamp()));
+                });
+        isOrganiser = Transformations.map(party, partyEntity -> {
+                    if (partyEntity == null) {
+                        return null;
+                    }
+                    return partyEntity.getOrganizersIds().contains(FirebaseAuth.getInstance().getUid());
+                });
+        isParticipant = Transformations.map(party, partyEntity -> {
+                    if (partyEntity == null) {
+                        return null;
+                    }
+                    return partyEntity.getParticipantsIds().contains(FirebaseAuth.getInstance().getUid());
+                });
     }
 
     public void setPartyId(String partyId) {
@@ -104,7 +116,7 @@ public class ViewPartyViewModel extends ViewModel {
     }
 
     public String getPartyIdValue() {
-        return getPartyValue().getId();
+        return partyId.getValue();
     }
 
     public String getPartyNameValue() {

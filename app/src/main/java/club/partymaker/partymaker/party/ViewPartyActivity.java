@@ -22,6 +22,7 @@ public class ViewPartyActivity extends AppCompatActivity {
     private ActivityViewPartyBinding dataBinding;
 
     private final ActivityResultLauncher<Intent> AuthUiLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+        viewModel.setPartyId(viewModel.getPartyIdValue());
 //        TODO: handle AuthUi results
     });
 
