@@ -27,7 +27,7 @@ import static club.partymaker.partymaker.BR.party;
 
 public class PartyListRecyclerAdapter extends RecyclerView.Adapter<PartyListRecyclerAdapter.ViewHolder> implements PartyListCardClickListener {
     private List<PartyEntity> parties = new ArrayList<>();
-    private Context thiscontext;
+    private Context context;
     private View view;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -50,7 +50,7 @@ public class PartyListRecyclerAdapter extends RecyclerView.Adapter<PartyListRecy
     @Override
     public PartyListRecyclerAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         PartyItemBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.party_item, parent, false);
-        thiscontext = parent.getContext();
+        context = parent.getContext();
         return new ViewHolder(binding);
     }
 
@@ -70,7 +70,7 @@ public class PartyListRecyclerAdapter extends RecyclerView.Adapter<PartyListRecy
     public void onCardClicked(PartyEntity partyEntity) {
         Intent intent = new Intent(view.getContext(), ViewPartyActivity.class);
         intent.putExtra("partyCode", partyEntity.getId());
-        thiscontext.startActivity(intent);
+        context.startActivity(intent);
     }
 
     public void setParties(List<PartyEntity> parties) {
