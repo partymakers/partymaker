@@ -24,6 +24,7 @@
 
                 <data
                     android:host="partymaker.club"
+                    android:pathPrefix="/links"
                     android:scheme="https" />
             </intent-filter>
         </activity>
