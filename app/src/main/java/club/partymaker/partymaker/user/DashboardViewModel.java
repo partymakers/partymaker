@@ -11,10 +11,15 @@ import com.firebase.ui.auth.IdpResponse;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import javax.inject.Inject;
+
+import dagger.hilt.android.lifecycle.HiltViewModel;
+
 import static android.app.Activity.RESULT_CANCELED;
 import static android.app.Activity.RESULT_OK;
 
-public class UserViewModel extends ViewModel {
+@HiltViewModel
+public class DashboardViewModel extends ViewModel {
     private final MutableLiveData<FirebaseUser> user = new MutableLiveData<>();
 
     private final LiveData<String> name = Transformations.map(user,
@@ -23,7 +28,8 @@ public class UserViewModel extends ViewModel {
             input -> input != null ? input.getEmail() : null);
     private final MutableLiveData<String> status = new MutableLiveData<>();
 
-    public UserViewModel() {
+    @Inject
+    public DashboardViewModel(UserRepository userRepository) {
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         user.setValue(firebaseAuth.getCurrentUser());
         firebaseAuth.addAuthStateListener(changedAuth -> {

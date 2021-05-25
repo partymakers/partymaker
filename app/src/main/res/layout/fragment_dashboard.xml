@@ -9,7 +9,7 @@
             type="club.partymaker.partymaker.dashboard.DashboardFragment" />
         <variable
             name="viewmodel"
-            type="club.partymaker.partymaker.user.UserViewModel" />
+            type="club.partymaker.partymaker.user.DashboardViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

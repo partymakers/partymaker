@@ -18,7 +18,7 @@ import java.util.List;
 
 import club.partymaker.partymaker.dashboard.SectionsPagerAdapter;
 import club.partymaker.partymaker.databinding.ActivityMainBinding;
-import club.partymaker.partymaker.user.UserViewModel;
+import club.partymaker.partymaker.user.DashboardViewModel;
 import dagger.hilt.android.AndroidEntryPoint;
 
 @AndroidEntryPoint
@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     static final private String TAG = MainActivity.class.getSimpleName();
     static final private int REQUEST_CODE_LOGIN = 1;
 
-    private UserViewModel userViewModel;
+    private DashboardViewModel viewModel;
     private ActivityMainBinding dataBinding;
 
     @Override
@@ -34,8 +34,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         dataBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
-        userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
-        if (!userViewModel.isLoggedIn()) {
+        viewModel = new ViewModelProvider(this).get(DashboardViewModel.class);
+        if (!viewModel.isLoggedIn()) {
             createLoginIntent();
         }
 
@@ -74,6 +74,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void handleLoginResult(int resultCode, Intent intent) {
         IdpResponse response = IdpResponse.fromResultIntent(intent);
-        userViewModel.handleAuthUiResult(resultCode, response, TAG);
+        viewModel.handleAuthUiResult(resultCode, response, TAG);
     }
 }
