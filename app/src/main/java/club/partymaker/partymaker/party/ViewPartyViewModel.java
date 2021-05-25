@@ -1,5 +1,6 @@
 package club.partymaker.partymaker.party;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.util.Log;
 
@@ -92,6 +93,14 @@ public class ViewPartyViewModel extends ViewModel {
                         new DynamicLink.AndroidParameters.Builder().build())
                 .buildDynamicLink()
                 .getUri();
+    }
+
+    public boolean isAuthenticated() {
+        return userRepository.getUserIdValue() != null;
+    }
+
+    public Intent getAuthUiIntent() {
+        return userRepository.getAuthUiIntent();
     }
 
     public String getPartyIdValue() {

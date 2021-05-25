@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
@@ -18,6 +20,10 @@ import dagger.hilt.android.AndroidEntryPoint;
 public class ViewPartyActivity extends AppCompatActivity {
     private ViewPartyViewModel viewModel;
     private ActivityViewPartyBinding dataBinding;
+
+    private final ActivityResultLauncher<Intent> AuthUiLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+//        TODO: handle AuthUi results
+    });
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +42,9 @@ public class ViewPartyActivity extends AppCompatActivity {
                     .addOnSuccessListener(this, pendingData -> {
                         if (pendingData != null && pendingData.getLink() != null) {
                             String id = pendingData.getLink().getLastPathSegment();
+                            if (!viewModel.isAuthenticated()) {
+                                AuthUiLauncher.launch(viewModel.getAuthUiIntent());
+                            }
                             viewModel.setPartyId(id);
                         } else {
                             finish();
