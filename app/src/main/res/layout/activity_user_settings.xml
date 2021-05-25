@@ -67,7 +67,8 @@
                     android:layout_width="350dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Update nickname" />
+                    android:text="Update nickname"
+                    android:onClick="onUpdateNickname"/>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/LayoutEmail"
@@ -99,7 +100,8 @@
                     android:layout_width="350dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Update email" />
+                    android:text="Update email"
+                    android:onClick="onUpdateEmail"/>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/LayoutPasswordOld"
@@ -155,7 +157,8 @@
                     android:layout_width="350dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Update password" />
+                    android:text="Update password"
+                    android:onClick="onUpdatePassword"/>
 
                 <Button
                     android:id="@+id/buttonSync"

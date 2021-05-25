@@ -1,0 +1,119 @@
+diff --git a/app/src/main/java/club/partymaker/partymaker/user/UserRepository.java b/app/src/main/java/club/partymaker/partymaker/user/UserRepository.java
+index d074753..292ff5f 100644
+--- a/app/src/main/java/club/partymaker/partymaker/user/UserRepository.java
++++ b/app/src/main/java/club/partymaker/partymaker/user/UserRepository.java
+@@ -64,6 +64,8 @@ public class UserRepository {
+         return userId.getValue();
+     }
+ 
++    public String getDisplayedName() { return firebaseUser.getValue().getDisplayName();}
++
+     public void updateDisplayedName(String name, OnCompleteListener<Void> onCompleteListener) {
+         FirebaseUser user = firebaseUser.getValue();
+         if (user == null) {
+diff --git a/app/src/main/java/club/partymaker/partymaker/user/UserSettingsActivity.java b/app/src/main/java/club/partymaker/partymaker/user/UserSettingsActivity.java
+index 8233946..32e7e46 100644
+--- a/app/src/main/java/club/partymaker/partymaker/user/UserSettingsActivity.java
++++ b/app/src/main/java/club/partymaker/partymaker/user/UserSettingsActivity.java
+@@ -3,14 +3,29 @@ package club.partymaker.partymaker.user;
+ import android.os.Bundle;
+ 
+ import androidx.appcompat.app.AppCompatActivity;
++import androidx.databinding.DataBindingUtil;
+ 
+ import club.partymaker.partymaker.R;
++import club.partymaker.partymaker.databinding.ActivityUserSettingsBinding;
+ 
+ public class UserSettingsActivity extends AppCompatActivity {
+-
++    private ActivityUserSettingsBinding dataBinding;
++    private UserRepository userRepository;
+     @Override
+     protected void onCreate(Bundle savedInstanceState) {
+         super.onCreate(savedInstanceState);
+-        setContentView(R.layout.activity_user_settings);
++        dataBinding = DataBindingUtil.setContentView(this, R.layout.activity_user_settings);
++        setContentView(dataBinding.getRoot());
++        dataBinding.setLifecycleOwner(this);
++
++    }
++
++
++    public void onUpdateNickname(){
++        if (!dataBinding.nickname.getText().toString().trim().isEmpty()){userRepository.updateDisplayedName(dataBinding.nickname.getText().toString().trim(), v-> {});}
++    }
++
++    public void onUpdatePassword(){
++        if (!dataBinding.passwordOld.getText().toString().trim().isEmpty() && !dataBinding.passwordNew.getText().toString().trim().isEmpty()){userRepository.updatePassword(dataBinding.passwordOld.getText().toString().trim(), dataBinding.passwordNew.getText().toString().trim(), v->{}, v->{});}
+     }
+ }
+diff --git a/app/src/main/java/club/partymaker/partymaker/user/UserSettingsViewModel.java b/app/src/main/java/club/partymaker/partymaker/user/UserSettingsViewModel.java
+index 5a44728..765461d 100644
+--- a/app/src/main/java/club/partymaker/partymaker/user/UserSettingsViewModel.java
++++ b/app/src/main/java/club/partymaker/partymaker/user/UserSettingsViewModel.java
+@@ -9,9 +9,20 @@ import dagger.hilt.android.lifecycle.HiltViewModel;
+ @HiltViewModel
+ public class UserSettingsViewModel extends ViewModel {
+     private final UserRepository userRepository;
+-
+     @Inject
+     public UserSettingsViewModel(UserRepository userRepository) {
+         this.userRepository = userRepository;
+     }
++
++    public void updateDisplayedName(String name){
++        this.userRepository.updateDisplayedName(name, v-> {});
++    }
++
++    public void updatePassword(String oldPassword, String newPassword){
++        this.userRepository.updatePassword(oldPassword, newPassword, v-> {}, v->{});
++    }
++
++    public String getDisplayedName(){
++        return this.userRepository.getDisplayedName();
++    }
+ }
+diff --git a/app/src/main/res/layout/activity_user_settings.xml b/app/src/main/res/layout/activity_user_settings.xml
+index 0f3360c..cd8f320 100644
+--- a/app/src/main/res/layout/activity_user_settings.xml
++++ b/app/src/main/res/layout/activity_user_settings.xml
+@@ -67,7 +67,8 @@
+                     android:layout_width="350dp"
+                     android:layout_height="wrap_content"
+                     android:layout_gravity="center"
+-                    android:text="Update nickname" />
++                    android:text="Update nickname"
++                    android:onClick="onUpdateNickname"/>
+ 
+                 <com.google.android.material.textfield.TextInputLayout
+                     android:id="@+id/LayoutEmail"
+@@ -99,7 +100,8 @@
+                     android:layout_width="350dp"
+                     android:layout_height="wrap_content"
+                     android:layout_gravity="center"
+-                    android:text="Update email" />
++                    android:text="Update email"
++                    android:onClick="onUpdateEmail"/>
+ 
+                 <com.google.android.material.textfield.TextInputLayout
+                     android:id="@+id/LayoutPasswordOld"
+@@ -155,7 +157,8 @@
+                     android:layout_width="350dp"
+                     android:layout_height="wrap_content"
+                     android:layout_gravity="center"
+-                    android:text="Update password" />
++                    android:text="Update password"
++                    android:onClick="onUpdatePassword"/>
+ 
+                 <Button
+                     android:id="@+id/buttonSync"
+@@ -163,7 +166,8 @@
+                     android:layout_height="wrap_content"
+                     android:layout_gravity="center"
+                     android:layout_marginTop="30dp"
+-                    android:text="Sync with Google" />
++                    android:text="Sync with Google"
++                    android:onClick="onSync"/>
+ 
+                 <Button
+                     android:id="@+id/buttonLogout"

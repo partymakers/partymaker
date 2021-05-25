@@ -1,6 +1,8 @@
 package club.partymaker.partymaker.user;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
@@ -24,5 +26,15 @@ public class UserSettingsActivity extends AppCompatActivity {
 
         viewModel = new ViewModelProvider(this).get(UserSettingsViewModel.class);
         dataBinding.setViewmodel(viewModel);
+    }
+
+    public void onUpdateNickname(View view){
+        if (!dataBinding.nickname.getText().toString().trim().isEmpty()){ viewModel.updateDisplayedName(dataBinding.nickname.getText().toString().trim());
+            Toast.makeText(UserSettingsActivity.this.getApplicationContext(), "Nickname updated!", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void onUpdatePassword(View view){
+        if (!dataBinding.passwordOld.getText().toString().trim().isEmpty() && !dataBinding.passwordNew.getText().toString().trim().isEmpty()) {viewModel.updatePassword(dataBinding.passwordOld.getText().toString(), dataBinding.passwordNew.getText().toString());}
     }
 }

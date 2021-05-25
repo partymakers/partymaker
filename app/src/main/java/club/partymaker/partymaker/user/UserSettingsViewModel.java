@@ -14,4 +14,16 @@ public class UserSettingsViewModel extends ViewModel {
     public UserSettingsViewModel(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
+
+    public void updateDisplayedName(String name){
+        this.userRepository.updateDisplayedName(name, v->{});
+    }
+
+    public void updateEmail(String password, String email){
+        this.userRepository.updateEmail(password, email, v->{}, v->{});
+    }
+
+    public void updatePassword(String oldPassword, String newPassword){
+        this.userRepository.updateEmail(oldPassword, newPassword, v->{}, v->{});
+    }
 }
