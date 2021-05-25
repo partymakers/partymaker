@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewmodel"
             type="club.partymaker.partymaker.user.UserSettingsViewModel" />
@@ -61,12 +62,20 @@
                         android:textSize="20sp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <Button
+                    android:id="@+id/buttonUpdateNickname"
+                    android:layout_width="350dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Update nickname" />
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/LayoutEmail"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="350dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:layout_marginTop="30dp"
                     android:layout_marginBottom="2dp"
                     android:hint="@string/Email"
                     app:boxStrokeColor="@color/fui_bgEmail"
@@ -85,20 +94,52 @@
                         android:textSize="20sp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <Button
+                    android:id="@+id/buttonUpdateEmail"
+                    android:layout_width="350dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Update email" />
+
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/LayoutPassword"
+                    android:id="@+id/LayoutPasswordOld"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="350dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:layout_marginTop="30dp"
                     android:layout_marginBottom="2dp"
-                    android:hint="@string/Password"
+                    android:hint="@string/Password_old"
                     app:boxStrokeColor="@color/fui_bgEmail"
                     app:errorEnabled="true"
                     app:startIconDrawable="@drawable/ic_baseline_vpn_key_24">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/password"
+                        android:id="@+id/passwordOld"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionNext"
+                        android:inputType="textMultiLine"
+                        android:maxLength="150"
+                        android:maxLines="2"
+                        android:nextFocusDown="@+id/textPartyDescription"
+                        android:textSize="20sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/LayoutPasswordNew"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="350dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="2dp"
+                    android:hint="@string/Password_new"
+                    app:boxStrokeColor="@color/fui_bgEmail"
+                    app:errorEnabled="true"
+                    app:startIconDrawable="@drawable/ic_baseline_vpn_key_24">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/passwordNew"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:imeOptions="actionNext"
@@ -110,12 +151,19 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <Button
-                    android:id="@+id/buttonEditProfile"
+                    android:id="@+id/buttonUpdatePassword"
+                    android:layout_width="350dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Update password" />
+
+                <Button
+                    android:id="@+id/buttonSync"
                     android:layout_width="350dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="30dp"
-                    android:text="Edit profile" />
+                    android:text="Sync with Google" />
 
                 <Button
                     android:id="@+id/buttonLogout"
@@ -124,6 +172,15 @@
                     android:layout_gravity="center"
                     android:backgroundTint="@color/button_cancel_inactive"
                     android:text="Logout" />
+
+                <Button
+                    android:id="@+id/buttonDeleteAccount"
+                    android:layout_width="350dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:backgroundTint="#E14343"
+                    android:textColor="@color/white"
+                    android:text="Delete account" />
             </LinearLayout>
         </ScrollView>
 

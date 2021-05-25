@@ -25,7 +25,8 @@
     <string name="Nickname">Nickname</string>
     <string name="Full_name">Full Name</string>
     <string name="Email">Email</string>
-    <string name="Password">Password</string>
+    <string name="Password_old">Old password</string>
+    <string name="Password_new">New assword</string>
 
     <string name="profile_settings">Profile</string>
     <string name="profile_settings_description">Profile settings</string>
