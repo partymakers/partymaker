@@ -11,14 +11,17 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.IdpResponse;
-import club.partymaker.partymaker.dashboard.SectionsPagerAdapter;
-import club.partymaker.partymaker.databinding.ActivityMainBinding;
-import club.partymaker.partymaker.user.UserViewModel;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.Arrays;
 import java.util.List;
 
+import club.partymaker.partymaker.dashboard.SectionsPagerAdapter;
+import club.partymaker.partymaker.databinding.ActivityMainBinding;
+import club.partymaker.partymaker.user.UserViewModel;
+import dagger.hilt.android.AndroidEntryPoint;
+
+@AndroidEntryPoint
 public class MainActivity extends AppCompatActivity {
     static final private String TAG = MainActivity.class.getSimpleName();
     static final private int REQUEST_CODE_LOGIN = 1;
