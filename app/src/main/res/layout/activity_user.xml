@@ -60,29 +60,6 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/LayoutFullName"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="350dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="2dp"
-                    android:hint="@string/Full_name"
-                    app:boxStrokeColor="@color/fui_bgEmail"
-                    app:errorEnabled="true"
-                    app:startIconDrawable="@drawable/baseline_person_24">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/fullName"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:imeOptions="actionNext"
-                        android:inputType="textMultiLine"
-                        android:maxLength="25"
-                        android:maxLines="2"
-                        android:textSize="20sp" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/LayoutEmail"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="350dp"
