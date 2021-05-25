@@ -18,19 +18,21 @@ import club.partymaker.partymaker.R;
 import club.partymaker.partymaker.databinding.FragmentDashboardBinding;
 import club.partymaker.partymaker.party.CreatePartyActivity;
 import club.partymaker.partymaker.party.ViewPartyActivity;
-import club.partymaker.partymaker.user.UserViewModel;
+import club.partymaker.partymaker.user.DashboardViewModel;
+import dagger.hilt.android.AndroidEntryPoint;
 
+@AndroidEntryPoint
 public class DashboardFragment extends Fragment {
     private FragmentDashboardBinding dataBinding;
-    private UserViewModel userViewModel;
+    private DashboardViewModel viewModel;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         dataBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_dashboard, container, false);
         dataBinding.setLifecycleOwner(requireActivity());
-        userViewModel = new ViewModelProvider(requireActivity()).get(UserViewModel.class);
-        dataBinding.setViewmodel(userViewModel);
+        viewModel = new ViewModelProvider(requireActivity()).get(DashboardViewModel.class);
+        dataBinding.setViewmodel(viewModel);
         dataBinding.setFragment(this);
 
         return dataBinding.getRoot();
