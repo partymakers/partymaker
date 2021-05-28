@@ -26,4 +26,11 @@
     <color name="pastel_aquamarine_darker">#FF88CACA</color>
     <color name="button_cancel_inactive">#B3B2B2</color>
     <color name="pastel_green">#ededd0</color>
+
+    <color name="persian_indigo_darker">#1F043A</color>
+    <color name="persian_indigo">#360568</color>
+    <color name="magenta_pantone">#d14081</color>
+    <color name="magenta_pantone_darker">#B3326C</color>
+    <color name="eggshell">#f9f5e3</color>
+
 </resources>

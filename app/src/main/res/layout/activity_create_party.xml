@@ -360,11 +360,13 @@
                                 android:layout_height="match_parent"
                                 android:background="@color/fui_transparent"
                                 android:onClick="onAddChip"
-                                app:srcCompat="@drawable/ic_baseline_add_circle_24" />
+                                app:srcCompat="@drawable/ic_baseline_add_circle_24"
+                                android:tint="?attr/colorSecondary" />
                         </LinearLayout>
 
                         <com.google.android.material.chip.ChipGroup
                             android:id="@+id/foodChipGroup"
+                            style="CustomChipStyle"
                             android:layout_width="350dp"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
@@ -439,11 +441,13 @@
                                 android:layout_height="match_parent"
                                 android:background="@color/fui_transparent"
                                 android:onClick="onAddChip"
-                                app:srcCompat="@drawable/ic_baseline_add_circle_24" />
+                                app:srcCompat="@drawable/ic_baseline_add_circle_24"
+                                android:tint="?attr/colorSecondary"/>
                         </LinearLayout>
 
                         <com.google.android.material.chip.ChipGroup
                             android:id="@+id/drinksChipGroup"
+                            style="CustomChipStyle"
                             android:layout_width="350dp"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
@@ -508,7 +512,6 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="5dp"
                             android:text="Guests can bring along"
-                            android:textColor="@color/black"
                             android:textSize="16sp" />
 
                         <CheckBox

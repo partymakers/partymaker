@@ -2,24 +2,26 @@
     <!-- Base application theme. -->
     <style name="Theme.PartyMaker" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/gorgeous_purple</item>
-        <item name="colorPrimaryVariant">@color/gorgeous_purple_darker</item>
-        <item name="colorOnPrimary">@color/black</item>
+        <item name="colorPrimary">@color/persian_indigo</item>
+        <item name="colorPrimaryVariant">@color/persian_indigo_darker</item>
+        <item name="colorOnPrimary">@color/eggshell</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/pastel_aquamarine_darker</item>
-        <item name="colorSecondaryVariant">@color/pastel_aquamarine</item>
-        <item name="colorOnSecondary">#402A50</item>
+        <item name="colorSecondary">@color/magenta_pantone</item>
+        <item name="colorSecondaryVariant">@color/magenta_pantone_darker</item>
+        <item name="colorOnSecondary">@color/eggshell</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:alertDialogTheme">@style/DialogTheme</item>
         <item name="materialButtonStyle">@style/customButtonStyle</item>
+        <item name="android:textColor">@android:color/black</item>
     </style>
 
 
     <style name="CustomChipStyle" parent="Widget.MaterialComponents.Chip.Choice">
         <item name="chipBackgroundColor">@color/chip_backgroud_color</item>
+        <item name="android:textColor">@color/chip_text_color</item>
     </style>
 
     <style name="Theme.PartyMaker.NoActionBar">
@@ -37,15 +39,15 @@
     <style name="Theme.PartyMaker.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />>
 
     <style name="DialogTheme" parent="Theme.AppCompat.Light.Dialog">
-        <item name="colorAccent">@color/gorgeous_purple</item>
+        <item name="colorAccent">?attr/colorSecondary</item>
     </style>
 
 
     <style name="LoginTheme" parent="FirebaseUI">
-        <item name="colorPrimary">@color/gorgeous_purple</item>
-        <item name="colorPrimaryDark">@color/gorgeous_purple_darker</item>
-        <item name="colorAccent">@color/dark_pink</item>
-        <item name="colorButtonNormal">@color/pastel_purple</item>
+        <item name="colorPrimary">@color/persian_indigo</item>
+        <item name="colorPrimaryDark">@color/persian_indigo_darker</item>
+        <item name="colorAccent">@color/magenta_pantone</item>
+        <item name="colorButtonNormal">@color/magenta_pantone</item>
         <item name="colorControlNormal">@color/pastel_purple</item>
         <item name="colorControlActivated">@android:color/white</item>
         <item name="colorControlHighlight">@android:color/white</item>
