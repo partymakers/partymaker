@@ -30,7 +30,14 @@
     <color name="persian_indigo_darker">#1F043A</color>
     <color name="persian_indigo">#360568</color>
     <color name="magenta_pantone">#d14081</color>
+    <color name="magenta_chip">#F195BE</color>
     <color name="magenta_pantone_darker">#B3326C</color>
     <color name="eggshell">#f9f5e3</color>
+
+    <color name="space_cadet_darker">#132142</color>
+    <color name="space_cadet">#192a51</color>
+    <color name="tangerine">#F8730E</color>
+    <color name="tangerine_darker">#F4700B</color>
+    <color name="lavender_blush">#f5e6e8</color>
 
 </resources>

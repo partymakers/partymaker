@@ -17,7 +17,6 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/main_backgr_opaque"
         tools:context=".party.CreatePartyActivity">
 
         <ScrollView
@@ -48,12 +47,11 @@
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/PartyName"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        style="@style/CustomOutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
                         android:layout_marginBottom="2dp"
-                        app:boxStrokeColor="@color/fui_bgEmail"
                         app:counterEnabled="true"
                         app:counterMaxLength="80"
                         app:errorEnabled="true"
@@ -78,7 +76,7 @@
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/PartyDescription"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        style="@style/CustomOutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="2dp"
@@ -120,7 +118,7 @@
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/layoutDatePicker"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        style="@style/CustomOutlinedBox"
                         android:layout_width="180dp"
                         android:layout_height="match_parent"
                         android:layout_marginStart="0dp"
@@ -146,7 +144,7 @@
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/layoutTimePicker"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        style="@style/CustomOutlinedBox"
                         android:layout_width="160dp"
                         android:layout_height="match_parent"
                         android:layout_marginStart="0dp"
@@ -185,7 +183,7 @@
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/layoutLocation"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        style="@style/CustomOutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:counterEnabled="true"
@@ -232,7 +230,7 @@
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/themeInputLayout"
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            style="@style/CustomOutlinedBox"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
@@ -269,7 +267,7 @@
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/dressCodeInputLayout"
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            style="@style/CustomOutlinedBox"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
@@ -332,7 +330,7 @@
 
                             <com.google.android.material.textfield.TextInputLayout
                                 android:id="@+id/foodInputLayout"
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                style="@style/CustomOutlinedBox"
                                 android:layout_width="290dp"
                                 android:layout_height="match_parent"
                                 android:layout_marginTop="0dp"
@@ -413,7 +411,7 @@
 
                             <com.google.android.material.textfield.TextInputLayout
                                 android:id="@+id/drinksInputLayout"
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                style="@style/CustomOutlinedBox"
                                 android:layout_width="290dp"
                                 android:layout_height="match_parent"
                                 android:layout_marginTop="0dp"
@@ -469,7 +467,7 @@
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/feeInputLayout"
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            style="@style/CustomOutlinedBox"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="0dp"
@@ -561,7 +559,7 @@
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/parkingInputLayout"
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            style="@style/CustomOutlinedBox"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
@@ -598,7 +596,7 @@
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/infoAddInputLayout"
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            style="@style/CustomOutlinedBox"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"

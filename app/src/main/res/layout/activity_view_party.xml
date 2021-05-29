@@ -59,7 +59,7 @@
                         android:layout_marginBottom="2dp"
                         android:gravity="center"
                         android:text='@{!viewmodel.isOrganiser ? "You have been invited to" : "My party"}'
-                        android:textColor="?attr/colorPrimary"
+                        android:textColor="?attr/colorSecondary"
                         android:textSize="28sp"
                         android:textStyle="bold"
                         android:visibility="@{viewmodel.party.name != null ? View.VISIBLE : View.GONE}"
@@ -91,7 +91,7 @@
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="10dp"
                         android:text='@{viewmodel.party.name}'
-                        android:textColor="?attr/colorPrimary"
+                        android:textColor="?attr/colorSecondary"
                         android:textSize="26sp"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -122,7 +122,7 @@
                         android:layout_height="50dp"
                         android:layout_gravity="center"
                         android:layout_marginEnd="26dp"
-                        android:backgroundTint="@color/white"
+                        android:backgroundTint="@color/fui_transparent"
                         android:onClick="onEdit"
                         android:visibility="@{viewmodel.isOrganiser ? View.VISIBLE : View.GONE}"
                         app:layout_constraintBottom_toTopOf="@+id/linearLayoutViewParty"
@@ -205,7 +205,7 @@
                         android:layout_marginTop="20dp"
                         android:layout_marginBottom="10dp"
                         android:text='@string/Description'
-                        android:textColor="?attr/colorPrimary"
+                        android:textColor="?attr/colorSecondary"
                         android:textSize="20sp"
                         android:textStyle="bold|italic"
                         android:visibility="@{viewmodel.party.description != null ? View.VISIBLE : View.GONE}" />
@@ -226,7 +226,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
                         android:text='@string/Theme'
-                        android:textColor="?attr/colorPrimary"
+                        android:textColor="?attr/colorSecondary"
                         android:textSize="20sp"
                         android:textStyle="bold|italic"
                         android:visibility="@{viewmodel.party.theme != null ? View.VISIBLE : View.GONE}" />
@@ -246,7 +246,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
                         android:text='@string/Dress_code'
-                        android:textColor="?attr/colorPrimary"
+                        android:textColor="?attr/colorSecondary"
                         android:textSize="20sp"
                         android:textStyle="bold|italic"
                         android:visibility="@{viewmodel.party.dressCode != null ? View.VISIBLE : View.GONE}" />
@@ -266,7 +266,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
                         android:text='@{"Servings"}'
-                        android:textColor="?attr/colorPrimary"
+                        android:textColor="?attr/colorSecondary"
                         android:textSize="20sp"
                         android:textStyle="bold|italic"
                         android:visibility="@{(viewmodel.party.food != null || viewmodel.party.drinks != null) ? View.VISIBLE : View.GONE}" />
@@ -327,7 +327,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
                         android:text='@string/Entry_fee'
-                        android:textColor="?attr/colorPrimary"
+                        android:textColor="?attr/colorSecondary"
                         android:textSize="20sp"
                         android:textStyle="bold|italic"
                         android:visibility="@{viewmodel.party.fee != null ? View.VISIBLE : View.GONE}" />
@@ -347,7 +347,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
                         android:text='@{"You can bring along"}'
-                        android:textColor="?attr/colorPrimary"
+                        android:textColor="?attr/colorSecondary"
                         android:textSize="20sp"
                         android:textStyle="bold|italic"
                         android:visibility="@{(viewmodel.party.allowsPartner || viewmodel.party.allowsFriends || viewmodel.party.allowsPets) ? View.VISIBLE : View.GONE}" />
@@ -452,7 +452,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
                         android:text='@string/Parking_details'
-                        android:textColor="?attr/colorPrimary"
+                        android:textColor="?attr/colorSecondary"
                         android:textSize="20sp"
                         android:textStyle="bold|italic"
                         android:visibility="@{viewmodel.party.parkingDetails != null ? View.VISIBLE : View.GONE}" />
@@ -472,7 +472,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
                         android:text='@{"Additional information"}'
-                        android:textColor="?attr/colorPrimary"
+                        android:textColor="?attr/colorSecondary"
                         android:textSize="20sp"
                         android:textStyle="bold|italic"
                         android:visibility="@{viewmodel.party.additionalInformation != null ? View.VISIBLE : View.GONE}" />

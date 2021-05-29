@@ -176,7 +176,7 @@ public class CreatePartyActivity extends AppCompatActivity {
                     calendar.set(Calendar.MINUTE, minute);
                     party.setTimestamp(calendar.getTimeInMillis());
                 },
-                currentHour, currentMinute, android.text.format.DateFormat.is24HourFormat(getApplicationContext())
+                currentHour, currentMinute, true
         ).show();
     }
 

@@ -8,7 +8,7 @@
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/magenta_pantone</item>
         <item name="colorSecondaryVariant">@color/magenta_pantone_darker</item>
-        <item name="colorOnSecondary">@color/eggshell</item>
+        <item name="colorOnSecondary">@color/persian_indigo_darker</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
@@ -20,8 +20,7 @@
 
 
     <style name="CustomChipStyle" parent="Widget.MaterialComponents.Chip.Choice">
-        <item name="chipBackgroundColor">@color/chip_backgroud_color</item>
-        <item name="android:textColor">@color/chip_text_color</item>
+        <item name="chipBackgroundColor">@color/chip_background_color_day</item>
     </style>
 
     <style name="Theme.PartyMaker.NoActionBar">
@@ -38,10 +37,9 @@
 
     <style name="Theme.PartyMaker.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />>
 
-    <style name="DialogTheme" parent="Theme.AppCompat.Light.Dialog">
+    <style name="DialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
         <item name="colorAccent">?attr/colorSecondary</item>
     </style>
-
 
     <style name="LoginTheme" parent="FirebaseUI">
         <item name="colorPrimary">@color/persian_indigo</item>
@@ -69,5 +67,10 @@
 
     <style name="FirebaseUI.Text.Link">
         <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="CustomOutlinedBox" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/box_stroke_color_day</item>
+        <item name="hintTextColor">?attr/colorSecondary</item>
     </style>
 </resources>
