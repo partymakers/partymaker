@@ -116,4 +116,8 @@ public class UserRepository {
                     .addOnFailureListener(activity, onFailureListener);
         }
     }
+
+    public void signOut(){
+        FirebaseAuth.getInstance().signOut();
+    }
 }

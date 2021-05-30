@@ -26,4 +26,8 @@ public class UserSettingsViewModel extends ViewModel {
     public void updatePassword(String oldPassword, String newPassword){
         this.userRepository.updateEmail(oldPassword, newPassword, v->{}, v->{});
     }
+
+    public void signOut() {
+        this.userRepository.signOut();
+    }
 }

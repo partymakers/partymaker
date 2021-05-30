@@ -174,7 +174,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:backgroundTint="@color/button_cancel_inactive"
-                    android:text="Logout" />
+                    android:text="Logout"
+                    android:onClick="onLogout"/>
 
                 <Button
                     android:id="@+id/buttonDeleteAccount"

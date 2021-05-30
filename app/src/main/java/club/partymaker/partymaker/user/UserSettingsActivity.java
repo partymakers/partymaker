@@ -1,5 +1,6 @@
 package club.partymaker.partymaker.user;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -8,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
 
+import club.partymaker.partymaker.MainActivity;
 import club.partymaker.partymaker.R;
 import club.partymaker.partymaker.databinding.ActivityUserSettingsBinding;
 import dagger.hilt.android.AndroidEntryPoint;
@@ -36,5 +38,10 @@ public class UserSettingsActivity extends AppCompatActivity {
 
     public void onUpdatePassword(View view){
         if (!dataBinding.passwordOld.getText().toString().trim().isEmpty() && !dataBinding.passwordNew.getText().toString().trim().isEmpty()) {viewModel.updatePassword(dataBinding.passwordOld.getText().toString(), dataBinding.passwordNew.getText().toString());}
+    }
+
+    public void onLogout(View view) {
+        viewModel.signOut();
+        startActivity(new Intent(UserSettingsActivity.this, MainActivity.class));
     }
 }
