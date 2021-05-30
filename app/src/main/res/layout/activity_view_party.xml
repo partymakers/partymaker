@@ -59,7 +59,7 @@
                         android:layout_marginBottom="2dp"
                         android:gravity="center"
                         android:text='@{!viewmodel.isOrganiser ? "You have been invited to" : "My party"}'
-                        android:textColor="@color/white"
+                        android:textColor="?attr/colorSecondary"
                         android:textSize="28sp"
                         android:textStyle="bold"
                         android:visibility="@{viewmodel.party.name != null ? View.VISIBLE : View.GONE}"
@@ -91,7 +91,7 @@
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="10dp"
                         android:text='@{viewmodel.party.name}'
-                        android:textColor="@color/gorgeous_purple"
+                        android:textColor="?attr/colorSecondary"
                         android:textSize="26sp"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -110,7 +110,6 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:text='@{!viewmodel.isOrganiser ? "Here are the details" : "Details"}'
-                        android:textColor="@color/black"
                         android:textSize="18sp"
                         android:textStyle="italic"
                         app:layout_constraintBottom_toTopOf="@+id/linearLayoutViewParty"
@@ -123,13 +122,14 @@
                         android:layout_height="50dp"
                         android:layout_gravity="center"
                         android:layout_marginEnd="26dp"
-                        android:backgroundTint="@color/white"
+                        android:backgroundTint="@color/fui_transparent"
                         android:onClick="onEdit"
                         android:visibility="@{viewmodel.isOrganiser ? View.VISIBLE : View.GONE}"
                         app:layout_constraintBottom_toTopOf="@+id/linearLayoutViewParty"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/headerLayout"
-                        app:srcCompat="@drawable/ic_baseline_edit_24" />
+                        app:srcCompat="@drawable/ic_baseline_edit_24"
+                        android:tint="@color/magenta_pantone"/>
 
                 </LinearLayout>
 
@@ -170,7 +170,7 @@
                             android:layout_marginTop="5dp"
                             android:layout_marginBottom="10dp"
                             android:text='@{viewmodel.formattedDateTime}'
-                            android:textColor="@color/black"
+
                             android:textSize="20sp" />
                     </LinearLayout>
 
@@ -196,7 +196,6 @@
                             android:layout_marginTop="5dp"
                             android:layout_marginBottom="10dp"
                             android:text='@{viewmodel.party.location}'
-                            android:textColor="@color/black"
                             android:textSize="20sp" />
                     </LinearLayout>
 
@@ -206,7 +205,7 @@
                         android:layout_marginTop="20dp"
                         android:layout_marginBottom="10dp"
                         android:text='@string/Description'
-                        android:textColor="@color/gorgeous_purple"
+                        android:textColor="?attr/colorSecondary"
                         android:textSize="20sp"
                         android:textStyle="bold|italic"
                         android:visibility="@{viewmodel.party.description != null ? View.VISIBLE : View.GONE}" />
@@ -217,7 +216,6 @@
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="10dp"
                         android:text='@{viewmodel.party.description}'
-                        android:textColor="@color/black"
                         android:textSize="20sp"
                         android:visibility="@{viewmodel.party.description != null ? View.VISIBLE : View.GONE}" />
 
@@ -228,7 +226,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
                         android:text='@string/Theme'
-                        android:textColor="@color/gorgeous_purple"
+                        android:textColor="?attr/colorSecondary"
                         android:textSize="20sp"
                         android:textStyle="bold|italic"
                         android:visibility="@{viewmodel.party.theme != null ? View.VISIBLE : View.GONE}" />
@@ -239,7 +237,6 @@
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="10dp"
                         android:text='@{viewmodel.party.theme}'
-                        android:textColor="@color/black"
                         android:textSize="20sp"
                         android:visibility="@{viewmodel.party.theme != null ? View.VISIBLE : View.GONE}" />
 
@@ -249,7 +246,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
                         android:text='@string/Dress_code'
-                        android:textColor="@color/gorgeous_purple"
+                        android:textColor="?attr/colorSecondary"
                         android:textSize="20sp"
                         android:textStyle="bold|italic"
                         android:visibility="@{viewmodel.party.dressCode != null ? View.VISIBLE : View.GONE}" />
@@ -260,7 +257,6 @@
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="10dp"
                         android:text='@{viewmodel.party.dressCode}'
-                        android:textColor="@color/black"
                         android:textSize="20sp"
                         android:visibility="@{viewmodel.party.dressCode != null ? View.VISIBLE : View.GONE}" />
 
@@ -270,7 +266,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
                         android:text='@{"Servings"}'
-                        android:textColor="@color/gorgeous_purple"
+                        android:textColor="?attr/colorSecondary"
                         android:textSize="20sp"
                         android:textStyle="bold|italic"
                         android:visibility="@{(viewmodel.party.food != null || viewmodel.party.drinks != null) ? View.VISIBLE : View.GONE}" />
@@ -296,7 +292,6 @@
                             android:layout_gravity="center"
                             android:layout_marginLeft="10dp"
                             android:text='@{viewmodel.party.food.toString().replace("[", "").replace("]", "")}'
-                            android:textColor="@color/black"
                             android:textSize="20sp" />
 
 
@@ -323,7 +318,6 @@
                             android:layout_gravity="center"
                             android:layout_marginLeft="10dp"
                             android:text='@{viewmodel.party.drinks.toString().replace("[", "").replace("]", "")}'
-                            android:textColor="@color/black"
                             android:textSize="20sp" />
                     </LinearLayout>
 
@@ -333,7 +327,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
                         android:text='@string/Entry_fee'
-                        android:textColor="@color/gorgeous_purple"
+                        android:textColor="?attr/colorSecondary"
                         android:textSize="20sp"
                         android:textStyle="bold|italic"
                         android:visibility="@{viewmodel.party.fee != null ? View.VISIBLE : View.GONE}" />
@@ -344,7 +338,6 @@
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="10dp"
                         android:text='@{viewmodel.party.fee}'
-                        android:textColor="@color/black"
                         android:textSize="20sp"
                         android:visibility="@{viewmodel.party.fee != null ? View.VISIBLE : View.GONE}" />
 
@@ -354,7 +347,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
                         android:text='@{"You can bring along"}'
-                        android:textColor="@color/gorgeous_purple"
+                        android:textColor="?attr/colorSecondary"
                         android:textSize="20sp"
                         android:textStyle="bold|italic"
                         android:visibility="@{(viewmodel.party.allowsPartner || viewmodel.party.allowsFriends || viewmodel.party.allowsPets) ? View.VISIBLE : View.GONE}" />
@@ -459,7 +452,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
                         android:text='@string/Parking_details'
-                        android:textColor="@color/gorgeous_purple"
+                        android:textColor="?attr/colorSecondary"
                         android:textSize="20sp"
                         android:textStyle="bold|italic"
                         android:visibility="@{viewmodel.party.parkingDetails != null ? View.VISIBLE : View.GONE}" />
@@ -470,7 +463,6 @@
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="10dp"
                         android:text='@{viewmodel.party.parkingDetails}'
-                        android:textColor="@color/black"
                         android:textSize="20sp"
                         android:visibility="@{viewmodel.party.parkingDetails != null ? View.VISIBLE : View.GONE}" />
 
@@ -480,7 +472,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
                         android:text='@{"Additional information"}'
-                        android:textColor="@color/gorgeous_purple"
+                        android:textColor="?attr/colorSecondary"
                         android:textSize="20sp"
                         android:textStyle="bold|italic"
                         android:visibility="@{viewmodel.party.additionalInformation != null ? View.VISIBLE : View.GONE}" />
@@ -491,7 +483,6 @@
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="10dp"
                         android:text='@{viewmodel.party.additionalInformation}'
-                        android:textColor="@color/black"
                         android:textSize="20sp"
                         android:visibility="@{viewmodel.party.additionalInformation != null ? View.VISIBLE : View.GONE}" />
 
@@ -521,7 +512,7 @@
                         android:backgroundTint="@color/pastel_purple_light"
                         android:onClick="onRespond"
                         android:text='@{viewmodel.isParticipant ? "Not Going" : "Reject"}'
-                        android:textColor="@color/gorgeous_purple_darker"
+                        android:textColor="?attr/colorPrimary"
                         android:visibility="@{!viewmodel.isOrganiser ? View.VISIBLE : View.GONE}" />
 
                     <Button
@@ -529,10 +520,8 @@
                         android:layout_width="120dp"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        android:backgroundTint="@color/gorgeous_purple"
                         android:onClick="onRespond"
                         android:text="Accept"
-                        android:textColor="@color/pastel_purple"
                         android:visibility="@{(!viewmodel.isParticipant &amp;&amp; !viewmodel.isOrganiser )? View.VISIBLE : View.GONE}" />
 
                 </LinearLayout>

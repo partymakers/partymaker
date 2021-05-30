@@ -1,29 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="light_pink">#FFF1FF</color>
-    <color name="dark_pink">#AF8EB5</color>
-    <color name="logo_backgr">#E36D85</color>
-    <color name="logo_backgr_light">#e87d93</color>
-    <color name="gorgeous_purple">#857399</color>
-    <color name="gorgeous_purple_darker">#78668c</color>
-    <color name="pastel_nude">#fcecdd</color>
     <color name="pastel_purple">#f6dfeb</color>
     <color name="fui_bgEmail">#402A50</color>
     <color name="pastel_purple_light">#F1F1F6</color>
-
-
-    <color name="pastel_purple_dark">#907fa4</color>
-    <color name="pastel_purple_action_bar">#857399</color>
-    <color name="pastel_purple_">#a58faa</color>
-    <color name="pastel_aquamarine">#a6d6d6</color>
-    <color name="pastel_aquamarine_darker">#FF88CACA</color>
     <color name="button_cancel_inactive">#B3B2B2</color>
-    <color name="pastel_green">#ededd0</color>
+
+    <color name="persian_indigo_darker">#1F043A</color>
+    <color name="persian_indigo">#360568</color>
+    <color name="magenta_pantone">#d14081</color>
+    <color name="magenta_chip">#F195BE</color>
+    <color name="magenta_pantone_darker">#B3326C</color>
+    <color name="eggshell">#f9f5e3</color>
+
+    <color name="space_cadet_darker">#132142</color>
+    <color name="space_cadet">#192a51</color>
+    <color name="tangerine">#F8730E</color>
+    <color name="tangerine_darker">#F4700B</color>
+    <color name="lavender_blush">#f5e6e8</color>
+
 </resources>

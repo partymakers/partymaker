@@ -20,9 +20,9 @@
                 android:id="@+id/tabs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="?attr/colorSecondary"
-                app:tabIndicatorColor="@color/fui_bgEmail"
-                app:tabTextColor="@color/fui_bgEmail" />
+                android:background="?attr/colorPrimary"
+                app:tabIndicatorColor="?attr/colorSecondary"
+                app:tabTextColor="?attr/colorOnPrimary" />
         </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.viewpager.widget.ViewPager
