@@ -1,5 +1,6 @@
 package club.partymaker.partymaker.dashboard;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import club.partymaker.partymaker.R;
 import club.partymaker.partymaker.databinding.FragmentUpcomingPartiesBinding;
+import club.partymaker.partymaker.party.CreatePartyActivity;
 import dagger.hilt.android.AndroidEntryPoint;
 
 @AndroidEntryPoint
@@ -36,8 +38,14 @@ public class UpcomingPartiesFragment extends Fragment {
         RecyclerView.ItemDecoration dividerItemDecoration = new DividerItemDecorator(getContext());
         recyclerView.addItemDecoration(dividerItemDecoration);
         dataBinding.setMyAdapter(recyclerAdapter);
+        dataBinding.setFragment(this);
 
         return dataBinding.getRoot();
+    }
+
+    public void onOrganize(View view) {
+        Intent intent = new Intent(getActivity(), CreatePartyActivity.class);
+        startActivity(intent);
     }
 
 }

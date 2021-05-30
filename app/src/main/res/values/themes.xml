@@ -15,6 +15,7 @@
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:alertDialogTheme">@style/DialogTheme</item>
         <item name="materialButtonStyle">@style/customButtonStyle</item>
+        <item name="floatingActionButtonStyle">@style/customFloatingButtonStyle</item>
         <item name="android:textColor">@android:color/black</item>
     </style>
 
@@ -30,7 +31,12 @@
 
     <style name="customButtonStyle" parent="Widget.AppCompat.Button.Colored">
         <item name="colorButtonNormal">?attr/colorSecondary</item>
-        <item name="android:textColor">?attr/colorOnSecondary</item>
+        <item name="android:textColor">@color/eggshell</item>
+    </style>
+
+    <style name="customFloatingButtonStyle" parent="Widget.MaterialComponents.FloatingActionButton">
+        <item name="colorButtonNormal">?attr/colorSecondary</item>
+        <item name="android:textColor">@color/eggshell</item>
     </style>
 
     <style name="Theme.PartyMaker.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
