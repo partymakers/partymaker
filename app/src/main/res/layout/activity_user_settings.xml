@@ -24,7 +24,6 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-
                 <ImageView
                     android:id="@+id/imageView"
                     android:layout_width="187dp"
@@ -88,14 +87,12 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/LayoutNickname"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="350dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="30dp"
                     android:layout_marginBottom="2dp"
                     android:hint="@string/Nickname"
-                    app:boxStrokeColor="@color/fui_bgEmail"
                     app:errorEnabled="true"
                     app:startIconDrawable="@drawable/baseline_insert_emoticon_24">
 
@@ -120,14 +117,12 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/LayoutEmail"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="350dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="30dp"
                     android:layout_marginBottom="2dp"
                     android:hint="@string/Email"
-                    app:boxStrokeColor="@color/fui_bgEmail"
                     app:errorEnabled="true"
                     app:startIconDrawable="@drawable/ic_baseline_email_24">
 
@@ -153,14 +148,12 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/LayoutPasswordOld"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="350dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="30dp"
                     android:layout_marginBottom="2dp"
                     android:hint="@string/Password_old"
-                    app:boxStrokeColor="@color/fui_bgEmail"
                     app:errorEnabled="true"
                     app:startIconDrawable="@drawable/ic_baseline_vpn_key_24">
 
@@ -178,13 +171,11 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/LayoutPasswordNew"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="350dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginBottom="2dp"
                     android:hint="@string/Password_new"
-                    app:boxStrokeColor="@color/fui_bgEmail"
                     app:errorEnabled="true"
                     app:startIconDrawable="@drawable/ic_baseline_vpn_key_24">
 

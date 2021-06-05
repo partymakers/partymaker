@@ -17,6 +17,7 @@
         <item name="materialButtonStyle">@style/customButtonStyle</item>
         <item name="floatingActionButtonStyle">@style/customFloatingButtonStyle</item>
         <item name="android:textColor">@android:color/black</item>
+        <item name="textInputStyle">@style/CustomOutlinedBox</item>
     </style>
 
 

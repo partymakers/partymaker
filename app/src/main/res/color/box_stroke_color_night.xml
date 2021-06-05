@@ -1,6 +1,6 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:color="?attr/colorSecondary" android:state_focused="true" />
-    <item android:color="?attr/colorSecondary" android:state_hovered="true" />
-    <item android:color="?attr/colorSecondary" android:state_enabled="false" />
-    <item android:color="?attr/colorOnSecondary" />  <!-- unfocused -->
+    <item android:color="@color/tangerine" android:state_focused="true" />
+    <item android:color="@color/tangerine" android:state_hovered="true" />
+    <item android:color="@color/tangerine" android:state_enabled="false" />
+    <item android:color="@color/space_cadet_darker" />  <!-- unfocused -->
 </selector>
