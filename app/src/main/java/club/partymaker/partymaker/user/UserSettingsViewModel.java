@@ -30,4 +30,12 @@ public class UserSettingsViewModel extends ViewModel {
     public void signOut() {
         this.userRepository.signOut();
     }
+
+    public String getDisplayedName() {
+        return this.userRepository.getDisplayedName();
+    }
+
+    public String getEmail() {
+        return this.userRepository.getEmail();
+    }
 }

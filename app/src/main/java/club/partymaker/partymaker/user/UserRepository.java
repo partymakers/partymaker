@@ -120,4 +120,14 @@ public class UserRepository {
     public void signOut(){
         FirebaseAuth.getInstance().signOut();
     }
+
+    public String getDisplayedName() {
+        FirebaseUser user = firebaseUser.getValue();
+        return user.getDisplayName();
+    }
+
+    public String getEmail() {
+        FirebaseUser user = firebaseUser.getValue();
+        return user.getEmail();
+    }
 }

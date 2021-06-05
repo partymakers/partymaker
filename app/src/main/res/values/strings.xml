@@ -23,8 +23,9 @@
 
     <string name="Profile_photo">Profile photo</string>
     <string name="Nickname">Nickname</string>
-    <string name="Full_name">Full Name</string>
+    <string name="Nickname2">Nickname:</string>
     <string name="Email">Email</string>
+    <string name="Email2">Email:</string>
     <string name="Password_old">Old password</string>
     <string name="Password_new">New assword</string>
 
