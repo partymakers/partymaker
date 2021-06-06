@@ -14,6 +14,9 @@
             android:name=".user.UserSettingsActivity"
             android:parentActivityName=".MainActivity"></activity>
         <activity
+            android:name=".user.UserEditActivity"
+            android:parentActivityName=".user.UserSettingsActivity"></activity>
+        <activity
             android:name=".party.ViewPartyActivity"
             android:parentActivityName=".MainActivity">
             <intent-filter>

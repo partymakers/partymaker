@@ -85,136 +85,24 @@
                         android:textSize="16sp" />
                 </LinearLayout>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/LayoutNickname"
+                <Button
+                    android:id="@+id/buttonEditUser"
                     android:layout_width="350dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="30dp"
-                    android:layout_marginBottom="2dp"
-                    android:hint="@string/Nickname"
-                    app:errorEnabled="true"
-                    app:startIconDrawable="@drawable/baseline_insert_emoticon_24">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/nickname"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:imeOptions="actionNext"
-                        android:inputType="textMultiLine"
-                        android:maxLength="25"
-                        android:maxLines="2"
-                        android:textSize="20sp" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <Button
-                    android:id="@+id/buttonUpdateNickname"
-                    android:layout_width="350dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Update nickname"
-                    android:onClick="onUpdateNickname"/>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/LayoutEmail"
-                    android:layout_width="350dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginBottom="2dp"
-                    android:hint="@string/Email"
-                    app:errorEnabled="true"
-                    app:startIconDrawable="@drawable/ic_baseline_email_24">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/email"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:imeOptions="actionNext"
-                        android:inputType="textMultiLine"
-                        android:maxLength="150"
-                        android:maxLines="2"
-                        android:nextFocusDown="@+id/textPartyDescription"
-                        android:textSize="20sp" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <Button
-                    android:id="@+id/buttonUpdateEmail"
-                    android:layout_width="350dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Update email"
-                    android:onClick="onUpdateEmail"/>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/LayoutPasswordOld"
-                    android:layout_width="350dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginBottom="2dp"
-                    android:hint="@string/Password_old"
-                    app:errorEnabled="true"
-                    app:startIconDrawable="@drawable/ic_baseline_vpn_key_24">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/passwordOld"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:imeOptions="actionNext"
-                        android:inputType="textMultiLine"
-                        android:maxLength="150"
-                        android:maxLines="2"
-                        android:nextFocusDown="@+id/textPartyDescription"
-                        android:textSize="20sp" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/LayoutPasswordNew"
-                    android:layout_width="350dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="2dp"
-                    android:hint="@string/Password_new"
-                    app:errorEnabled="true"
-                    app:startIconDrawable="@drawable/ic_baseline_vpn_key_24">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/passwordNew"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:imeOptions="actionNext"
-                        android:inputType="textMultiLine"
-                        android:maxLength="150"
-                        android:maxLines="2"
-                        android:nextFocusDown="@+id/textPartyDescription"
-                        android:textSize="20sp" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <Button
-                    android:id="@+id/buttonUpdatePassword"
-                    android:layout_width="350dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Update password"
-                    android:onClick="onUpdatePassword"/>
-
-                <Button
-                    android:id="@+id/buttonSync"
-                    android:layout_width="350dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="30dp"
-                    android:text="Sync with Google" />
+                    android:onClick="onEditUser"
+                    android:text="Edit profile" />
 
                 <Button
                     android:id="@+id/buttonLogout"
                     android:layout_width="350dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:layout_marginTop="30dp"
                     android:backgroundTint="@color/button_cancel_inactive"
-                    android:text="Logout"
-                    android:onClick="onLogout"/>
+                    android:onClick="onLogout"
+                    android:text="Logout" />
 
                 <Button
                     android:id="@+id/buttonDeleteAccount"
