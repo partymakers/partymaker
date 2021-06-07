@@ -23,8 +23,13 @@
 
     <string name="Profile_photo">Profile photo</string>
     <string name="Nickname">Nickname</string>
-    <string name="Full_name">Full Name</string>
+    <string name="NicknameColon">Nickname:</string>
     <string name="Email">Email</string>
-    <string name="Password">Password</string>
+    <string name="EmailColon">Email:</string>
+    <string name="Password_old">Old password</string>
+    <string name="Password_new">New password</string>
+
+    <string name="profile_settings">Profile</string>
+    <string name="profile_settings_description">Profile settings</string>
 
 </resources>

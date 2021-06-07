@@ -39,6 +39,7 @@ public class UpcomingPartiesFragment extends Fragment {
         recyclerView.addItemDecoration(dividerItemDecoration);
         dataBinding.setMyAdapter(recyclerAdapter);
         dataBinding.setFragment(this);
+
         return dataBinding.getRoot();
     }
 

@@ -8,14 +8,16 @@
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/magenta_pantone</item>
         <item name="colorSecondaryVariant">@color/magenta_pantone_darker</item>
-        <item name="colorOnSecondary">@color/persian_indigo_darker</item>
+        <item name="colorOnSecondary">@color/eggshell</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:alertDialogTheme">@style/DialogTheme</item>
-        <item name="materialButtonStyle">@style/customButtonStyle</item>
+        <item name="materialButtonStyle">@style/CustomButtonStyle</item>
+        <item name="floatingActionButtonStyle">@style/CustomFloatingButtonStyle</item>
         <item name="android:textColor">@android:color/black</item>
+        <item name="textInputStyle">@style/CustomOutlinedBox</item>
     </style>
 
 
@@ -28,9 +30,14 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="customButtonStyle" parent="Widget.AppCompat.Button.Colored">
+    <style name="CustomButtonStyle" parent="Widget.AppCompat.Button.Colored">
         <item name="colorButtonNormal">?attr/colorSecondary</item>
-        <item name="android:textColor">?attr/colorOnSecondary</item>
+        <item name="android:textColor">@color/eggshell</item>
+    </style>
+
+    <style name="CustomFloatingButtonStyle" parent="Widget.MaterialComponents.FloatingActionButton">
+        <item name="colorButtonNormal">?attr/colorSecondary</item>
+        <item name="android:textColor">@color/eggshell</item>
     </style>
 
     <style name="Theme.PartyMaker.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

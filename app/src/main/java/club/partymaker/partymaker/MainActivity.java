@@ -2,7 +2,11 @@ package club.partymaker.partymaker;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
@@ -19,6 +23,7 @@ import java.util.List;
 import club.partymaker.partymaker.dashboard.SectionsPagerAdapter;
 import club.partymaker.partymaker.databinding.ActivityMainBinding;
 import club.partymaker.partymaker.user.DashboardViewModel;
+import club.partymaker.partymaker.user.UserSettingsActivity;
 import dagger.hilt.android.AndroidEntryPoint;
 
 @AndroidEntryPoint
@@ -75,5 +80,24 @@ public class MainActivity extends AppCompatActivity {
     private void handleLoginResult(int resultCode, Intent intent) {
         IdpResponse response = IdpResponse.fromResultIntent(intent);
         viewModel.handleAuthUiResult(resultCode, response, TAG);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_app_bar, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int itemId = item.getItemId();
+        if (itemId == R.id.itemProfileSettings) {
+            Intent intent = new Intent(MainActivity.this, UserSettingsActivity.class);
+            startActivity(intent);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+
     }
 }

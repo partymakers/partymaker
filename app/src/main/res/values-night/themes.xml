@@ -8,14 +8,25 @@
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/tangerine</item>
         <item name="colorSecondaryVariant">@color/tangerine</item>
-        <item name="colorOnSecondary">@color/lavender_blush</item>
+        <item name="colorOnSecondary">@color/space_cadet_darker</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:alertDialogTheme">@style/DialogTheme</item>
-        <item name="materialButtonStyle">@style/customButtonStyle</item>
+        <item name="materialButtonStyle">@style/CustomButtonStyle</item>
+        <item name="textInputStyle">@style/CustomOutlinedBox</item>
         <item name="android:textColor">@color/white</item>
+        <item name="actionBarStyle">@style/CustomActionBar</item>
+    </style>
+
+    <style name="CustomActionBar" parent="@style/Widget.AppCompat.Light.ActionBar">
+        <item name="background">@color/space_cadet</item>
+        <item name="titleTextStyle">@style/ActionBarTextStyle</item>
+    </style>
+
+    <style name="ActionBarTextStyle" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/lavender_blush</item>
     </style>
 
     <style name="CustomChipStyle" parent="Widget.MaterialComponents.Chip.Choice">
@@ -27,7 +38,7 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="customButtonStyle" parent="Widget.AppCompat.Button.Colored">
+    <style name="CustomButtonStyle" parent="Widget.AppCompat.Button.Colored">
         <item name="colorButtonNormal">?attr/colorSecondary</item>
         <item name="android:textColor">?attr/colorOnSecondary</item>
     </style>
