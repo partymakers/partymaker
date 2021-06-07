@@ -146,15 +146,6 @@
                     android:layout_marginTop="30dp"
                     android:text="Sync with Google" />
 
-                <Button
-                    android:id="@+id/buttonExit"
-                    android:layout_width="350dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:backgroundTint="@color/button_cancel_inactive"
-                    android:onClick="onExit"
-                    android:text="Exit" />
-
 
             </LinearLayout>
         </ScrollView>

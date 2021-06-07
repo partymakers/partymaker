@@ -38,7 +38,4 @@ public class UserEditActivity extends AppCompatActivity {
         if (!dataBinding.passwordOld.getText().toString().trim().isEmpty() && !dataBinding.passwordNew.getText().toString().trim().isEmpty()) {viewModel.updatePassword(dataBinding.passwordOld.getText().toString(), dataBinding.passwordNew.getText().toString());}
     }
 
-    public void onExit(View view) {
-        finish();
-    }
 }

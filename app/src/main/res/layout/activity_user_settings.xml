@@ -50,7 +50,7 @@
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="@string/Nickname2"
+                        android:text="@string/NicknameColon"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
@@ -73,7 +73,7 @@
                         android:layout_width="60dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="@string/Email2"
+                        android:text="@string/EmailColon"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 

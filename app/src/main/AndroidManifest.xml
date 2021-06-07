@@ -12,10 +12,10 @@
         android:theme="@style/Theme.PartyMaker">
         <activity
             android:name=".user.UserSettingsActivity"
-            android:parentActivityName=".MainActivity"></activity>
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".user.UserEditActivity"
-            android:parentActivityName=".user.UserSettingsActivity"></activity>
+            android:parentActivityName=".user.UserSettingsActivity" />
         <activity
             android:name=".party.ViewPartyActivity"
             android:parentActivityName=".MainActivity">
