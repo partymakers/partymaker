@@ -44,7 +44,9 @@ public class UserRepository {
         FirebaseAuth.getInstance().addAuthStateListener(firebaseAuth -> {
             mutableFirebaseUser.setValue(firebaseAuth.getCurrentUser());
             mutableUserId.setValue(firebaseAuth.getUid());
-            updatePublicUserDetails();
+            if (firebaseAuth.getCurrentUser() != null) {
+                updatePublicUserDetails();
+            }
         });
         this.firebaseUser = mutableFirebaseUser;
         this.userId = mutableUserId;
