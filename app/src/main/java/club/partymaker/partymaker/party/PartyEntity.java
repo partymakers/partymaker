@@ -6,11 +6,12 @@ import android.os.Parcelable;
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
 
-import club.partymaker.partymaker.BR;
 import com.google.firebase.firestore.DocumentId;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import club.partymaker.partymaker.BR;
 
 public class PartyEntity extends BaseObservable implements Parcelable {
 

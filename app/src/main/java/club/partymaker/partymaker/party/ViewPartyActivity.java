@@ -82,7 +82,7 @@ public class ViewPartyActivity extends AppCompatActivity {
         }
     }
 
-    public void onAddToCalendar(View view){
+    public void onAddToCalendar(View view) {
         Intent intent = new Intent(Intent.ACTION_INSERT);
         intent.setData(CalendarContract.Events.CONTENT_URI);
         intent.putExtra(CalendarContract.Events.TITLE, viewModel.getPartyNameValue());
@@ -92,7 +92,7 @@ public class ViewPartyActivity extends AppCompatActivity {
 
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
-        } else{
+        } else {
             Toast.makeText(ViewPartyActivity.this, "Failed to open Calendar app", Toast.LENGTH_SHORT).show();
         }
     }

@@ -124,12 +124,12 @@
                         android:layout_marginEnd="26dp"
                         android:backgroundTint="@color/fui_transparent"
                         android:onClick="onEdit"
+                        android:tint="?attr/colorSecondary"
                         android:visibility="@{viewmodel.isOrganiser ? View.VISIBLE : View.GONE}"
                         app:layout_constraintBottom_toTopOf="@+id/linearLayoutViewParty"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/headerLayout"
-                        app:srcCompat="@drawable/ic_baseline_edit_24"
-                        android:tint="?attr/colorSecondary"/>
+                        app:srcCompat="@drawable/ic_baseline_edit_24" />
 
                 </LinearLayout>
 
@@ -526,30 +526,45 @@
 
                 </LinearLayout>
 
-                <Button
-                    android:id="@+id/buttonCalendar"
-                    android:layout_width="160dp"
-                    android:layout_height="100dp"
-                    android:layout_weight="1"
-                    android:layout_gravity="center"
-                    android:onClick="onAddToCalendar"
-                    android:text="Add to google calendar" />
             </LinearLayout>
 
 
         </ScrollView>
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingButtonShare"
-            android:layout_width="60dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:onClick="onShare"
-            android:src="@drawable/ic_baseline_share_24"
-            android:visibility="@{viewmodel.isParticipant ? View.VISIBLE : View.GONE}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom|right"
+            tools:context=".party.ViewPartyActivity">>
+
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/floatingButtonShare"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/floatingButtonAddToCalendar"
+                android:layout_alignRight="@+id/floatingButtonAddToCalendar"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="end|bottom"
+                android:onClick="onShare"
+                android:src="@drawable/ic_baseline_share_24"
+                android:visibility="@{viewmodel.isParticipant ? View.VISIBLE : View.GONE}" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/floatingButtonAddToCalendar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/floatingButtonShare"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="end|bottom"
+                android:layout_marginBottom="20dp"
+                android:onClick="onAddToCalendar"
+                android:src="@drawable/ic_baseline_date_range_24" />
+
+        </RelativeLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
