@@ -31,5 +31,9 @@
 
     <string name="profile_settings">Profile</string>
     <string name="profile_settings_description">Profile settings</string>
+    <string name="participant_profile_picture">Participant\'s profile picture</string>
+    <string name="displayed_name_placeholder">Displayed Name</string>
+    <string name="participant_has_a_comment">Participant has a comment</string>
+    <string name="participants">Participants</string>
 
 </resources>

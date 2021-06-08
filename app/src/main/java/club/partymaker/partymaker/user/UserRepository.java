@@ -17,6 +17,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.auth.OAuthProvider;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.firestore.FieldPath;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Arrays;
 import java.util.List;
@@ -42,6 +44,9 @@ public class UserRepository {
         FirebaseAuth.getInstance().addAuthStateListener(firebaseAuth -> {
             mutableFirebaseUser.setValue(firebaseAuth.getCurrentUser());
             mutableUserId.setValue(firebaseAuth.getUid());
+            if (firebaseAuth.getCurrentUser() != null) {
+                updatePublicUserDetails();
+            }
         });
         this.firebaseUser = mutableFirebaseUser;
         this.userId = mutableUserId;
@@ -129,5 +134,27 @@ public class UserRepository {
     public String getEmail() {
         FirebaseUser user = firebaseUser.getValue();
         return user.getEmail();
+    }
+
+    public void updatePublicUserDetails() {
+        PublicUserDetailsEntity user = new PublicUserDetailsEntity();
+        user.setUserId(getUserIdValue());
+        user.setDisplayedName(getDisplayedName());
+
+        FirebaseFirestore.getInstance().collection("publicUser")
+                .document(getUserIdValue())
+                .set(user);
+    }
+
+    public LiveData<List<PublicUserDetailsEntity>> getPublicUserDetails(List<String> userIds) {
+        MutableLiveData<List<PublicUserDetailsEntity>> details = new MutableLiveData<>();
+        FirebaseFirestore.getInstance().collection("publicUser")
+                .whereIn(FieldPath.documentId(), userIds)
+                .addSnapshotListener((value, error) -> {
+                    if (value != null) {
+                        details.setValue(value.toObjects(PublicUserDetailsEntity.class));
+                    }
+                });
+        return details;
     }
 }
