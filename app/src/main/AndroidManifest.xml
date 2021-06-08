@@ -10,6 +10,7 @@
         android:roundIcon="@mipmap/logo_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PartyMaker">
+        <activity android:name=".party.ParticipantsActivity" />
         <activity
             android:name=".user.UserSettingsActivity"
             android:parentActivityName=".MainActivity" />
