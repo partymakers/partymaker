@@ -537,6 +537,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="bottom|right"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
             tools:context=".party.ViewPartyActivity">>
 
 
