@@ -96,4 +96,10 @@ public class ViewPartyActivity extends AppCompatActivity {
             Toast.makeText(ViewPartyActivity.this, "Failed to open Calendar app", Toast.LENGTH_SHORT).show();
         }
     }
+
+    public void onOpenParticipantsList(View view) {
+        Intent intent = new Intent(ViewPartyActivity.this, ParticipantsActivity.class);
+        intent.putExtra("partyId", viewModel.getPartyIdValue());
+        startActivity(intent);
+    }
 }

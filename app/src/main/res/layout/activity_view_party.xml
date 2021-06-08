@@ -59,7 +59,7 @@
                         android:layout_marginBottom="2dp"
                         android:gravity="center"
                         android:text='@{!viewmodel.isOrganiser ? "You have been invited to" : "My party"}'
-                        android:textColor="?attr/colorSecondary"
+                        android:textColor="@color/eggshell"
                         android:textSize="28sp"
                         android:textStyle="bold"
                         android:visibility="@{viewmodel.party.name != null ? View.VISIBLE : View.GONE}"
@@ -560,9 +560,21 @@
                 android:layout_alignParentStart="true"
                 android:layout_alignParentRight="true"
                 android:layout_gravity="end|bottom"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="10dp"
                 android:onClick="onAddToCalendar"
                 android:src="@drawable/ic_baseline_date_range_24" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/floatingButtonParticipants"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/floatingButtonAddToCalendar"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="end|bottom"
+                android:layout_marginBottom="10dp"
+                android:onClick="onOpenParticipantsList"
+                android:src="@drawable/ic_baseline_people_alt_24" />
 
         </RelativeLayout>
 
