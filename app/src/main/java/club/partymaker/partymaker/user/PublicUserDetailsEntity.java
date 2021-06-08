@@ -1,6 +1,9 @@
 package club.partymaker.partymaker.user;
 
+import com.google.firebase.firestore.DocumentId;
+
 public class PublicUserDetailsEntity {
+    @DocumentId
     private String userId;
     private String displayedName;
 
