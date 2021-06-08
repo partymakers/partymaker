@@ -127,6 +127,10 @@ public class ViewPartyViewModel extends ViewModel {
         return getPartyValue().getDescription();
     }
 
+    public String getPartyLocationValue() {
+        return getPartyValue().getLocation();
+    }
+
     public LiveData<PartyEntity> getParty() {
         return party;
     }
@@ -142,6 +146,8 @@ public class ViewPartyViewModel extends ViewModel {
     public LiveData<Boolean> getIsOrganiser() {
         return isOrganiser;
     }
+
+    public Long getTimeStamp() { return getPartyValue().getTimestamp();}
 
     private void throwIfPartyIdIsNotSet() {
         String message = "Party id has not been set";

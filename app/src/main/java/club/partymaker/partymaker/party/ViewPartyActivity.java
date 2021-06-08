@@ -2,7 +2,9 @@ package club.partymaker.partymaker.party;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.CalendarContract;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
@@ -77,6 +79,21 @@ public class ViewPartyActivity extends AppCompatActivity {
             if (!viewModel.rejectInvitation()) {
                 finish();
             }
+        }
+    }
+
+    public void onAddToCalendar(View view) {
+        Intent intent = new Intent(Intent.ACTION_INSERT);
+        intent.setData(CalendarContract.Events.CONTENT_URI);
+        intent.putExtra(CalendarContract.Events.TITLE, viewModel.getPartyNameValue());
+        intent.putExtra(CalendarContract.Events.DESCRIPTION, viewModel.getPartyDescriptionValue());
+        intent.putExtra(CalendarContract.Events.EVENT_LOCATION, viewModel.getPartyLocationValue());
+        intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, viewModel.getTimeStamp());
+
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        } else {
+            Toast.makeText(ViewPartyActivity.this, "Failed to open Calendar app", Toast.LENGTH_SHORT).show();
         }
     }
 }
