@@ -17,6 +17,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.auth.OAuthProvider;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Arrays;
 import java.util.List;
@@ -42,6 +43,7 @@ public class UserRepository {
         FirebaseAuth.getInstance().addAuthStateListener(firebaseAuth -> {
             mutableFirebaseUser.setValue(firebaseAuth.getCurrentUser());
             mutableUserId.setValue(firebaseAuth.getUid());
+            updatePublicUserDetails();
         });
         this.firebaseUser = mutableFirebaseUser;
         this.userId = mutableUserId;
@@ -129,5 +131,15 @@ public class UserRepository {
     public String getEmail() {
         FirebaseUser user = firebaseUser.getValue();
         return user.getEmail();
+    }
+
+    public void updatePublicUserDetails() {
+        PublicUserDetailsEntity user = new PublicUserDetailsEntity();
+        user.setUserId(getUserIdValue());
+        user.setDisplayedName(getDisplayedName());
+
+        FirebaseFirestore.getInstance().collection("publicUser")
+                .document(getUserIdValue())
+                .set(user);
     }
 }
