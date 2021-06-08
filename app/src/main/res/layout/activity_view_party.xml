@@ -526,7 +526,14 @@
 
                 </LinearLayout>
 
-
+                <Button
+                    android:id="@+id/buttonCalendar"
+                    android:layout_width="160dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:onClick="onAddToCalendar"
+                    android:text="Add to google calendar" />
             </LinearLayout>
 
 
