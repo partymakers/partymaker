@@ -18,6 +18,7 @@
             android:parentActivityName=".user.UserSettingsActivity" />
         <activity
             android:name=".party.ViewPartyActivity"
+            android:exported="true"
             android:parentActivityName=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -41,7 +42,9 @@
             android:name=".party.CreatePartyActivity"
             android:parentActivityName=".MainActivity" />
         <activity android:name=".user.LoginActivity" />
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
